@@ -4,26 +4,28 @@ import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton(
-      {super.key, this.onPressed, required this.text, this.width});
+  const CustomButton({
+    super.key,
+    this.onPressed,
+    this.textColor,
+    required this.text,
+    this.color = AppColors.kBrandColorBlack,
+  });
   final String text;
-  final double? width;
   final void Function()? onPressed;
+  final Color? color, textColor;
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
+    return MaterialButton(
       height: 60.h,
-      child: MaterialButton(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
-        color: AppColors.kBrandColorBlack,
-        onPressed: onPressed,
-        child: Text(
-          text,
-          style: AppTextStyles.button2.copyWith(color: Colors.white),
-        ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      color: color,
+      onPressed: onPressed,
+      child: Text(
+        text,
+        style: AppTextStyles.button2.copyWith(color: textColor ?? Colors.white),
       ),
     );
   }

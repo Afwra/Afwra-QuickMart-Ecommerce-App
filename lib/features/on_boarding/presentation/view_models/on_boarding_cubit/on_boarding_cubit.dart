@@ -9,7 +9,8 @@ import 'package:quick_mart/features/on_boarding/presentation/view_models/on_boar
 
 class OnBoardingCubit extends Cubit<OnBoardingState> {
   OnBoardingCubit() : super(OnBoardingInitial());
-  final PageController pageController = PageController();
+  OnBoardingCubit get(context) => BlocProvider.of<OnBoardingCubit>(context);
+  final PageController pageController = PageController(initialPage: 0);
 
   final List<OnBoardingItemModel> onBoardingItems = [
     OnBoardingItemModel(
@@ -34,6 +35,7 @@ class OnBoardingCubit extends Cubit<OnBoardingState> {
   int index = 0;
   void changeIndex(int index) {
     this.index = index;
+    log(this.index.toString());
     emit(OnBoardingChangeIndex());
   }
 
