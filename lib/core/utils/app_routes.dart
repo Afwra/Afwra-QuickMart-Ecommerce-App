@@ -1,5 +1,7 @@
 import 'package:go_router/go_router.dart';
+import 'package:quick_mart/features/auth/presentaion/views/forgot_password_view.dart';
 import 'package:quick_mart/features/auth/presentaion/views/login_view.dart';
+import 'package:quick_mart/features/auth/presentaion/views/password_created_success_view.dart';
 import 'package:quick_mart/features/auth/presentaion/views/register_view.dart';
 import 'package:quick_mart/features/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:quick_mart/features/splash_screen/presentation/views/splash_screen_view.dart';
@@ -8,6 +10,8 @@ abstract class AppRoutes {
   static const kOnBoardingView = '/OnBoardingView';
   static const kLoginView = '/LoginView';
   static const kRegisterView = '/RegisterView';
+  static const kForgotPasswordView = '/ForgotPasswordView';
+  static const kPasswordChangeSuccess = '/PasswordChangeSuccess';
   static const kHomeView = '/homeView';
   static const kDetailsView = '/detailsView';
   static const kSearchView = '/searchView';
@@ -28,6 +32,14 @@ abstract class AppRoutes {
       GoRoute(
         path: kRegisterView,
         builder: (context, state) => const RegisterView(),
+      ),
+      GoRoute(
+        path: kForgotPasswordView,
+        builder: (context, state) => const ForgotPasswordView(),
+      ),
+      GoRoute(
+        path: kPasswordChangeSuccess,
+        builder: (context, state) => const PasswordCreatedSuccessView(),
       ),
       // GoRoute(
       //   path: kDetailsView,

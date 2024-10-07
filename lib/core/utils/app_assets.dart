@@ -9,4 +9,5 @@ class AppAssets {
   static const String arrowRight = 'assets/images/arrow-right.svg';
   static const String google = 'assets/images/google.svg';
   static const String passwordVisible = 'assets/images/password_visible.svg';
+  static const String newPassword = 'assets/images/new_password.png';
 }

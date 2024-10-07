@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:quick_mart/core/utils/app_assets.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
+import 'package:quick_mart/core/utils/app_routes.dart';
 import 'package:quick_mart/core/widgets/custom_button.dart';
 import 'package:quick_mart/core/widgets/custom_button_with_icon.dart';
 import 'package:quick_mart/features/auth/presentaion/views/widgets/custom_text_button.dart';
@@ -39,7 +41,11 @@ class LoginFormField extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            CustomTextButton(buttonText: 'Forgot Password?', onPressed: () {}),
+            CustomTextButton(
+                buttonText: 'Forgot Password?',
+                onPressed: () {
+                  GoRouter.of(context).push(AppRoutes.kForgotPasswordView);
+                }),
           ],
         ),
         const SizedBox(
