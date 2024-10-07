@@ -4,11 +4,10 @@ import 'package:go_router/go_router.dart';
 import 'package:quick_mart/core/utils/app_routes.dart';
 import 'package:quick_mart/features/auth/presentaion/views/widgets/auth_title_and_subtitle.dart';
 import 'package:quick_mart/features/auth/presentaion/views/widgets/custom_auth_app_bar.dart';
-import 'package:quick_mart/features/auth/presentaion/views/widgets/custom_terms_widget.dart';
-import 'package:quick_mart/features/auth/presentaion/views/widgets/login_form_field.dart';
+import 'package:quick_mart/features/auth/presentaion/views/widgets/register_form_field.dart';
 
-class LoginViewBody extends StatelessWidget {
-  const LoginViewBody({super.key});
+class RegisterViewBody extends StatelessWidget {
+  const RegisterViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,11 +30,11 @@ class LoginViewBody extends StatelessWidget {
           ),
           SliverToBoxAdapter(
             child: AuthTitleAndSubtitle(
-              title: 'Login',
-              subTitle: 'Don\'t have an account?',
-              buttonText: 'Sign Up',
+              title: 'Sign Up',
+              subTitle: 'Already have an account?',
+              buttonText: 'Login',
               onPressed: () {
-                GoRouter.of(context).go(AppRoutes.kRegisterView);
+                GoRouter.of(context).go(AppRoutes.kLoginView);
               },
             ),
           ),
@@ -45,17 +44,8 @@ class LoginViewBody extends StatelessWidget {
             ),
           ),
           const SliverToBoxAdapter(
-            child: LoginFormField(),
+            child: RegisterFormField(),
           ),
-          const SliverFillRemaining(
-            hasScrollBody: false,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                CustomTermsWidget(),
-              ],
-            ),
-          )
         ],
       ),
     );

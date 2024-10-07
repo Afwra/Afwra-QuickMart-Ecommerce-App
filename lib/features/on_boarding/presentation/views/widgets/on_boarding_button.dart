@@ -55,7 +55,7 @@ class OnBoardingButton extends StatelessWidget {
                   color: Colors.black,
                   iconPath: AppAssets.arrowRight,
                   onPressed: () {
-                    GoRouter.of(context).go(AppRoutes.kLoginView);
+                    GoRouter.of(context).go(AppRoutes.kRegisterView);
                   },
                 ),
               ),

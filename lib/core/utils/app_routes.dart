@@ -1,11 +1,13 @@
 import 'package:go_router/go_router.dart';
 import 'package:quick_mart/features/auth/presentaion/views/login_view.dart';
+import 'package:quick_mart/features/auth/presentaion/views/register_view.dart';
 import 'package:quick_mart/features/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:quick_mart/features/splash_screen/presentation/views/splash_screen_view.dart';
 
 abstract class AppRoutes {
   static const kOnBoardingView = '/OnBoardingView';
   static const kLoginView = '/LoginView';
+  static const kRegisterView = '/RegisterView';
   static const kHomeView = '/homeView';
   static const kDetailsView = '/detailsView';
   static const kSearchView = '/searchView';
@@ -22,6 +24,10 @@ abstract class AppRoutes {
       GoRoute(
         path: kLoginView,
         builder: (context, state) => const LoginView(),
+      ),
+      GoRoute(
+        path: kRegisterView,
+        builder: (context, state) => const RegisterView(),
       ),
       // GoRoute(
       //   path: kDetailsView,
