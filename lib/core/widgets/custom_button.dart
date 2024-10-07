@@ -10,16 +10,21 @@ class CustomButton extends StatelessWidget {
     this.textColor,
     required this.text,
     this.color,
+    this.borderColor,
+    this.elevation,
   });
   final String text;
+  final double? elevation;
   final void Function()? onPressed;
-  final Color? color, textColor;
+  final Color? color, textColor, borderColor;
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
+      elevation: elevation,
       height: 60.h,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
+        side: BorderSide(color: borderColor ?? Colors.transparent, width: 2),
       ),
       color: color ?? AppColors.kBrandColorBlack,
       onPressed: onPressed,

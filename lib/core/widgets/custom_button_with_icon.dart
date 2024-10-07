@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:quick_mart/core/utils/app_assets.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
 import 'package:svg_flutter/svg.dart';
 
-class CustomGoogleButton extends StatelessWidget {
-  const CustomGoogleButton(
+class CustomButtonWithIcon extends StatelessWidget {
+  const CustomButtonWithIcon(
       {super.key,
       required this.text,
       this.onPressed,
       this.color,
       this.textColor,
-      this.borderColor});
-  final String text;
+      this.borderColor,
+      required this.iconPath});
+  final String text, iconPath;
   final void Function()? onPressed;
   final Color? color, textColor, borderColor;
   @override
@@ -36,7 +36,7 @@ class CustomGoogleButton extends StatelessWidget {
           const SizedBox(
             width: 8,
           ),
-          SvgPicture.asset(AppAssets.google),
+          SvgPicture.asset(iconPath),
         ],
       ),
     );

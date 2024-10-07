@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
 
@@ -11,6 +12,7 @@ class CustomTextFormField extends StatelessWidget {
   final TextInputType keyboardType;
   final TextEditingController? controller;
   final FormFieldValidator<String>? validator;
+  final Widget? suffix;
 
   const CustomTextFormField({
     super.key,
@@ -22,6 +24,7 @@ class CustomTextFormField extends StatelessWidget {
     this.controller,
     this.validator,
     required this.titleText,
+    this.suffix,
   });
 
   @override
@@ -46,6 +49,11 @@ class CustomTextFormField extends StatelessWidget {
                 const EdgeInsets.symmetric(vertical: 22.5, horizontal: 16),
             labelText: labelText,
             hintText: hintText,
+            suffixIcon: suffix,
+            suffixIconConstraints: BoxConstraints(
+              maxHeight: 48.h,
+              maxWidth: 48.w,
+            ),
             hintStyle: AppTextStyles.captionRegular
                 .copyWith(color: AppColors.kGrey100),
             prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
