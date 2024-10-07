@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 import 'package:quick_mart/core/utils/app_assets.dart';
+import 'package:quick_mart/core/utils/app_constants.dart';
 import 'package:quick_mart/features/on_boarding/data/models/on_boarding_item_model.dart';
 import 'package:quick_mart/features/on_boarding/presentation/view_models/on_boarding_cubit/on_boarding_state.dart';
 
@@ -53,8 +54,8 @@ class OnBoardingCubit extends Cubit<OnBoardingState> {
 
   @override
   Future<void> close() async {
-    var box = Hive.box('settings');
-    await box.put('onboarding_completed', true);
+    var box = Hive.box(AppConstants.settingsBox);
+    await box.put(AppConstants.onboardingCompleted, true);
     log('OnBoarding Saved');
     pageController.dispose();
     return super.close();
