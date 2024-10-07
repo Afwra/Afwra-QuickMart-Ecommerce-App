@@ -6,4 +6,5 @@ class AppAssets {
   static const String onBoarding3 = 'assets/images/on_boarding_3.png';
   static const String quickMartLogo = 'assets/images/quickmart.svg';
   static const String arrowLeft = 'assets/images/arrow-left.svg';
+  static const String google = 'assets/images/google.svg';
 }

@@ -9,7 +9,7 @@ class CustomButton extends StatelessWidget {
     this.onPressed,
     this.textColor,
     required this.text,
-    this.color = AppColors.kBrandColorBlack,
+    this.color,
   });
   final String text;
   final void Function()? onPressed;
@@ -21,7 +21,7 @@ class CustomButton extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),
-      color: color,
+      color: color ?? AppColors.kBrandColorBlack,
       onPressed: onPressed,
       child: Text(
         text,
