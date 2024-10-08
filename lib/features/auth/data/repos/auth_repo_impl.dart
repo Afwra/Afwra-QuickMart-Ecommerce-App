@@ -37,9 +37,9 @@ class AuthRepoImpl extends AuthRepo {
   Future<Either<Failures, AuthModel>> register(
       {required String email, required String password}) async {
     try {
-      var data = await apiService.get(
-        endpoint: AppConstants.loginEndpoint,
-      );
+      var data = await apiService.post(
+          endpoint: AppConstants.loginEndpoint,
+          data: {'username': email, 'password': password});
       return right(AuthModel.fromJson(data));
     } catch (e) {
       if (e is DioException) {
