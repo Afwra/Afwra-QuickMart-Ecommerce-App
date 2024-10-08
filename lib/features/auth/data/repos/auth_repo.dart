@@ -7,6 +7,7 @@ abstract class AuthRepo {
     required String email,
     required String password,
   });
+  Future<Either<Failures, AuthModel>> loginViaGoogle();
   Future<Either<Failures, AuthModel>> register({
     required String email,
     required String password,

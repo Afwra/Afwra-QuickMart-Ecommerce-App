@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "1074391323036",
+    "project_id": "quick-mart-ecommerce-app",
+    "storage_bucket": "quick-mart-ecommerce-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1074391323036:android:c2d099d548935fbf717859",
+        "android_client_info": {
+          "package_name": "com.example.quick_mart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1074391323036-8vbpp81jikv9ngs42hdrnjkj1rdrlnl7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.quick_mart",
+            "certificate_hash": "fd07d6b312804d896bdaa51432b2767b056f29ac"
+          }
+        },
+        {
+          "client_id": "1074391323036-2okl69lhcqsncfsieqk6sl6jat84o072.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWoDsP-pcxXOe1exGvJdBR1nadhI-VxRI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1074391323036-2okl69lhcqsncfsieqk6sl6jat84o072.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1074391323036-72lhhpcojop10no9pakkgs7ffvo0hjac.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.quickMart"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

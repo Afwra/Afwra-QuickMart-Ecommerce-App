@@ -34,10 +34,13 @@ class LoginButtonsBody extends StatelessWidget {
         const SizedBox(
           height: 16,
         ),
-        const Row(
+        Row(
           children: [
             Expanded(
               child: CustomButtonWithIcon(
+                onPressed: () {
+                  cubit.loginViaGoogle();
+                },
                 text: 'Login With Google',
                 iconPath: AppAssets.google,
                 color: Colors.white,

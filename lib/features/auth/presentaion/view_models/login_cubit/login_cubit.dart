@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quick_mart/features/auth/data/repos/auth_repo.dart';
@@ -12,6 +11,21 @@ class LoginCubit extends Cubit<LoginState> {
   void login(String email, String password) async {
     emit(LoginLoading());
     var result = await authRepo.login(email: email, password: password);
+    result.fold(
+      (fail) {
+        emit(LoginFail(fail.errMsg));
+        log('login -- ${fail.errMsg}');
+      },
+      (login) {
+        emit(LoginSuccess(login.token));
+        log('login -- ${login.token}');
+      },
+    );
+  }
+
+  void loginViaGoogle() async {
+    emit(LoginLoading());
+    var result = await authRepo.loginViaGoogle();
     result.fold(
       (fail) {
         emit(LoginFail(fail.errMsg));
