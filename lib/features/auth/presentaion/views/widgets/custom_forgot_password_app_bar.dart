@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quick_mart/core/utils/app_assets.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
+import 'package:quick_mart/features/auth/presentaion/view_models/forgot_password_cubit/forgot_password_cubit.dart';
+import 'package:quick_mart/features/auth/presentaion/view_models/forgot_password_cubit/forgot_password_state.dart';
 import 'package:svg_flutter/svg.dart';
 
 class CustomForgotPasswordAppBar extends StatelessWidget {
@@ -13,6 +16,7 @@ class CustomForgotPasswordAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ForgotPasswordCubit cubit = BlocProvider.of<ForgotPasswordCubit>(context);
     return Row(
       children: [
         GestureDetector(
@@ -32,9 +36,13 @@ class CustomForgotPasswordAppBar extends StatelessWidget {
           style: AppTextStyles.body2Medium,
         ),
         const Spacer(),
-        Text(
-          '01/',
-          style: AppTextStyles.body2Medium,
+        BlocBuilder<ForgotPasswordCubit, ForgotPasswordState>(
+          builder: (context, state) {
+            return Text(
+              '0${cubit.pageIndex + 1}/',
+              style: AppTextStyles.body2Medium,
+            );
+          },
         ),
         Text(
           '03',

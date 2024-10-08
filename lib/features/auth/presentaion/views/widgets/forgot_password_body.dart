@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
-import 'package:quick_mart/core/utils/app_routes.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
 import 'package:quick_mart/core/widgets/custom_button.dart';
 import 'package:quick_mart/features/auth/data/models/forget_password_view_model.dart';
+import 'package:quick_mart/features/auth/presentaion/view_models/forgot_password_cubit/forgot_password_cubit.dart';
+import 'package:quick_mart/features/auth/presentaion/view_models/forgot_password_cubit/forgot_password_state.dart';
 import 'package:quick_mart/features/auth/presentaion/views/widgets/custom_forgot_password_app_bar.dart';
+import 'package:quick_mart/features/auth/presentaion/views/widgets/forgot_password_page_view.dart';
 
 class ForgotPasswordBody extends StatelessWidget {
   const ForgotPasswordBody({super.key});
 
   @override
   Widget build(BuildContext context) {
+    ForgotPasswordCubit cubit = BlocProvider.of<ForgotPasswordCubit>(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -27,48 +30,54 @@ class ForgotPasswordBody extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
-        Text(
-          'Confirmation Email',
-          style: AppTextStyles.heading2Bold,
+        BlocBuilder<ForgotPasswordCubit, ForgotPasswordState>(
+          builder: (context, state) {
+            return Text(
+              forgetPasswordList[cubit.pageIndex].title,
+              style: AppTextStyles.heading2Bold,
+            );
+          },
         ),
         const SizedBox(
           height: 8,
         ),
-        Text(
-          'Enter your email address for verification.',
-          style: AppTextStyles.body2Regular.copyWith(color: AppColors.kGrey150),
+        BlocBuilder<ForgotPasswordCubit, ForgotPasswordState>(
+          builder: (context, state) {
+            return Text(
+              forgetPasswordList[cubit.pageIndex].subTitle,
+              style: AppTextStyles.body2Regular
+                  .copyWith(color: AppColors.kGrey150),
+            );
+          },
         ),
         const SizedBox(
           height: 16,
         ),
-        Flexible(child: const ForgotPasswordPageView()),
+        const Flexible(child: ForgotPasswordPageView()),
         const SizedBox(
           height: 24,
         ),
-        Row(
-          children: [
-            Expanded(
-                child: CustomButton(
-              text: 'Send',
-              onPressed: () {
-                GoRouter.of(context).go(AppRoutes.kPasswordChangeSuccess);
-              },
-            )),
-          ],
+        BlocBuilder<ForgotPasswordCubit, ForgotPasswordState>(
+          builder: (context, state) {
+            if (state is ForgotPasswordLoading) {
+              return const Center(
+                child: CircularProgressIndicator(
+                  color: AppColors.kBrandColorCyan,
+                ),
+              );
+            }
+            return Row(
+              children: [
+                Expanded(
+                    child: CustomButton(
+                  text: forgetPasswordList[cubit.pageIndex].buttonText,
+                  onPressed: () => cubit.buttonLogic(context),
+                )),
+              ],
+            );
+          },
         ),
       ],
-    );
-  }
-}
-
-class ForgotPasswordPageView extends StatelessWidget {
-  const ForgotPasswordPageView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return PageView.builder(
-      itemBuilder: (context, index) => forgetPasswordList[index].widget,
-      itemCount: forgetPasswordList.length,
     );
   }
 }
