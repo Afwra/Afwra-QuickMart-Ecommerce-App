@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quick_mart/core/functions/hive_functions.dart';
 import 'package:quick_mart/features/auth/data/repos/auth_repo.dart';
 import 'package:quick_mart/features/auth/presentaion/view_models/login_cubit/login_state.dart';
 
@@ -17,6 +18,7 @@ class LoginCubit extends Cubit<LoginState> {
         log('login -- ${fail.errMsg}');
       },
       (login) {
+        saveLoginToken(login.token);
         emit(LoginSuccess(login.token));
         log('login -- ${login.token}');
       },

@@ -1,10 +1,8 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hive/hive.dart';
+import 'package:quick_mart/core/functions/hive_functions.dart';
 import 'package:quick_mart/core/utils/app_assets.dart';
-import 'package:quick_mart/core/utils/app_constants.dart';
 import 'package:quick_mart/core/utils/app_routes.dart';
 import 'package:svg_flutter/svg_flutter.dart';
 
@@ -19,10 +17,13 @@ class _SplashScreenBodyState extends State<SplashScreenBody> {
   @override
   void initState() {
     super.initState();
-    var settingsBox = Hive.box(AppConstants.settingsBox);
     Timer(const Duration(seconds: 3), () {
-      if (settingsBox.get(AppConstants.onboardingCompleted) == true) {
-        GoRouter.of(context).go(AppRoutes.kLoginView);
+      if (getOnBoardingCompleted() == true) {
+        if (getLoginToken() == null) {
+          GoRouter.of(context).go(AppRoutes.kLoginView);
+        } else {
+          GoRouter.of(context).go(AppRoutes.kHomeView);
+        }
       } else {
         GoRouter.of(context).go(AppRoutes.kOnBoardingView);
       }

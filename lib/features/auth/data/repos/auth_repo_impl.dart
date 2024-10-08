@@ -71,7 +71,7 @@ class AuthRepoImpl extends AuthRepo {
       return Right(AuthModel(token: ''));
     } catch (e) {
       log("Google Sign-In Error: $e");
-      return Left(ServerFailure(e.toString()));
+      return Left(ServerFailure('Cannot Connect To Google Server'));
     }
   }
 }
