@@ -19,35 +19,41 @@ class ForgotPasswordCubit extends Cubit<ForgotPasswordState> {
   int pageIndex = 0;
 
   void buttonLogic(BuildContext context) {
-    emit(ForgotPasswordLoading());
-    Timer(
-      const Duration(seconds: 2),
-      () {
-        if (pageIndex == 0) {
-          if (formKey.currentState!.validate()) {
-            pageIndex += 1;
-            pageController.nextPage(
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.bounceInOut);
-            emit(ForgotPasswordChangePage());
-          }
-        } else if (pageIndex == 1) {
-          if (pinFormKey.currentState!.validate()) {
-            pageIndex += 1;
-            pageController.nextPage(
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.bounceInOut);
-            emit(ForgotPasswordChangePage());
-          }
-        } else if (pageIndex == 2) {
-          if (confirmPasswordFormKey.currentState!.validate()) {
-            emit(ForgotPasswordChangePage());
+    if (pageIndex == 0) {
+      if (formKey.currentState!.validate()) {
+        emit(ForgotPasswordLoading());
 
-            GoRouter.of(context).go(AppRoutes.kPasswordChangeSuccess);
-          }
-        }
-      },
-    );
+        Timer(const Duration(seconds: 2), () {
+          pageIndex += 1;
+          pageController.nextPage(
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.bounceInOut);
+          emit(ForgotPasswordChangePage());
+        });
+      }
+    } else if (pageIndex == 1) {
+      if (pinFormKey.currentState!.validate()) {
+        emit(ForgotPasswordLoading());
+
+        Timer(const Duration(seconds: 2), () {
+          pageIndex += 1;
+          pageController.nextPage(
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.bounceInOut);
+          emit(ForgotPasswordChangePage());
+        });
+      }
+    } else if (pageIndex == 2) {
+      if (confirmPasswordFormKey.currentState!.validate()) {
+        emit(ForgotPasswordLoading());
+
+        Timer(const Duration(seconds: 2), () {
+          emit(ForgotPasswordChangePage());
+
+          GoRouter.of(context).go(AppRoutes.kPasswordChangeSuccess);
+        });
+      }
+    }
   }
 
   bool field1Visible = true;
