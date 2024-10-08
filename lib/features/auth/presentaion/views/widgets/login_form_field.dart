@@ -35,22 +35,30 @@ class LoginFormField extends StatelessWidget {
           const SizedBox(
             height: 16,
           ),
-          CustomTextFormField(
-            controller: cubit.passwordController,
-            hintText: 'Enter Your Password',
-            titleText: 'Password',
-            suffix: Padding(
-              padding: const EdgeInsets.only(right: 8.0),
-              child: SvgPicture.asset(
-                AppAssets.passwordVisible,
-              ),
-            ),
-            keyboardType: TextInputType.visiblePassword,
-            validator: (value) {
-              if (value!.isEmpty) {
-                return 'Please Enter Password';
-              }
-              return null;
+          BlocBuilder<LoginCubit, LoginState>(
+            builder: (context, state) {
+              return CustomTextFormField(
+                controller: cubit.passwordController,
+                hintText: 'Enter Your Password',
+                titleText: 'Password',
+                suffix: Padding(
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: GestureDetector(
+                    onTap: cubit.changePasswordVisibility,
+                    child: SvgPicture.asset(
+                      AppAssets.passwordVisible,
+                    ),
+                  ),
+                ),
+                keyboardType: TextInputType.visiblePassword,
+                obscureText: cubit.isVisible,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please Enter Password';
+                  }
+                  return null;
+                },
+              );
             },
           ),
           const SizedBox(

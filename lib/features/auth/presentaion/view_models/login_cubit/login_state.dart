@@ -2,6 +2,8 @@ sealed class LoginState {}
 
 final class LoginInitial extends LoginState {}
 
+final class ChangePasswordVisibility extends LoginState {}
+
 final class LoginSuccess extends LoginState {
   final String token;
   LoginSuccess(this.token);
