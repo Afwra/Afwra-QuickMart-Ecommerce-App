@@ -6,11 +6,13 @@ import 'package:quick_mart/core/utils/app_constants.dart';
 import 'package:quick_mart/core/utils/bloc_observer.dart';
 import 'package:quick_mart/core/utils/app_routes.dart';
 import 'package:quick_mart/core/utils/app_themes.dart';
+import 'package:quick_mart/core/utils/service_locator.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   await Hive.openBox(AppConstants.settingsBox);
+  setupAuthServiceLocator();
   Bloc.observer = MyBlocObserver();
   runApp(const QuickMartApp());
 }
