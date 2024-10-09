@@ -9,12 +9,14 @@ class AppColors {
 
   //Grey
   static const Color kGrey50 = Color(0xFFF4F5FD);
+  static const Color kGrey50DarkMode = Color(0xFF282828);
   static const Color kGrey100 = Color(0xFFC0C0C0);
   static const Color kGrey150 = Color(0xFF6F7384);
 
   //General
   static const Color kRed = Color(0xFFEE4D4D);
   static const Color kCyan50 = Color(0xFFF4FDFA);
+  static const Color kCyan50DarkMode = Color(0xFF212322);
   static const Color kBlue = Color(0xFF1F88DA);
   static const Color kPurble = Color(0xFF4F1FDA);
   static const Color kYellow = Color(0xFFEBEF14);

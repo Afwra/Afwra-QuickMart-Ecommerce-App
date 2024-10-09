@@ -9,6 +9,17 @@ class AppThemes {
 
   static ThemeData darkTheme = ThemeData(
     scaffoldBackgroundColor: AppColors.kBrandColorBlack,
+    textTheme: const TextTheme(
+      bodyLarge: TextStyle(color: Colors.white), // For larger body text
+      bodyMedium: TextStyle(color: Colors.white), // For medium body text
+      bodySmall: TextStyle(color: Colors.white), // For smaller body text
+      headlineLarge: TextStyle(color: Colors.white), // For large headlines
+      headlineMedium: TextStyle(color: Colors.white), // For medium headlines
+      headlineSmall: TextStyle(color: Colors.white), // For small headlines
+      titleLarge: TextStyle(color: Colors.white), // For large titles
+      titleMedium: TextStyle(color: Colors.white), // For medium titles
+      titleSmall: TextStyle(color: Colors.white), // For small titles
+    ),
   );
 
   static const SystemUiOverlayStyle lightModeStatusBarTheme =

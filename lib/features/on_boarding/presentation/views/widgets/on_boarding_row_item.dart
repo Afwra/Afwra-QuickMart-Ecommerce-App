@@ -15,15 +15,26 @@ class OnBoardingRowItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     OnBoardingCubit cubit = BlocProvider.of<OnBoardingCubit>(context);
+    bool darkMode = cubit.darkMode;
+
     return BlocBuilder<OnBoardingCubit, OnBoardingState>(
       builder: (context, state) {
         return Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             cubit.index == 0
-                ? SvgPicture.asset(AppAssets.quickMartLogo)
+                ? SvgPicture.asset(
+                    darkMode
+                        ? AppAssets.quickMartLogoDarkMode
+                        : AppAssets.quickMartLogo,
+                  )
                 : GestureDetector(
-                    child: SvgPicture.asset(AppAssets.arrowLeft),
+                    child: SvgPicture.asset(
+                      AppAssets.arrowLeft,
+                      colorFilter: ColorFilter.mode(
+                          darkMode ? Colors.white : AppColors.kBrandColorBlack,
+                          BlendMode.srcIn),
+                    ),
                     onTap: () {
                       cubit.previousPage(context);
                     },

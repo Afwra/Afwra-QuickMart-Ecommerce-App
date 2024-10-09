@@ -15,7 +15,7 @@ class OnBoardingButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     OnBoardingCubit cubit = BlocProvider.of<OnBoardingCubit>(context);
-
+    bool darkMode = cubit.darkMode;
     return BlocBuilder<OnBoardingCubit, OnBoardingState>(
       builder: (context, state) {
         if (cubit.index < cubit.onBoardingItems.length - 1) {
@@ -24,6 +24,9 @@ class OnBoardingButton extends StatelessWidget {
               Expanded(
                 child: CustomButton(
                   text: 'Next',
+                  color: darkMode
+                      ? AppColors.kBrandColorCyan
+                      : AppColors.kBrandColorBlack,
                   onPressed: () {
                     cubit.nextPage(context);
                   },
@@ -37,10 +40,15 @@ class OnBoardingButton extends StatelessWidget {
               Expanded(
                 child: CustomButton(
                   text: 'Login',
+                  color: darkMode
+                      ? AppColors.kBrandColorBlack
+                      : AppColors.kBrandColorWhite,
+                  textColor: darkMode
+                      ? AppColors.kBrandColorCyan
+                      : AppColors.kBrandColorBlack,
                   elevation: 0,
-                  color: AppColors.kBrandColorWhite,
-                  borderColor: AppColors.kGrey50,
-                  textColor: AppColors.kBrandColorBlack,
+                  borderColor:
+                      darkMode ? AppColors.kGrey50DarkMode : AppColors.kGrey50,
                   onPressed: () {
                     GoRouter.of(context).go(AppRoutes.kLoginView);
                   },
@@ -52,7 +60,7 @@ class OnBoardingButton extends StatelessWidget {
               Expanded(
                 child: CustomButtonWithIcon(
                   text: 'Get Started',
-                  color: Colors.black,
+                  color: darkMode ? AppColors.kBrandColorCyan : Colors.black,
                   iconPath: AppAssets.arrowRight,
                   onPressed: () {
                     GoRouter.of(context).go(AppRoutes.kRegisterView);
