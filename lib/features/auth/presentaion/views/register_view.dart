@@ -13,7 +13,8 @@ class RegisterView extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
           child: BlocProvider(
-        create: (context) => RegisterCubit(getIt.get<AuthRepoImpl>()),
+        create: (context) =>
+            RegisterCubit(getIt.get<AuthRepoImpl>())..setupDarkMode(),
         child: const RegisterViewBody(),
       )),
     );

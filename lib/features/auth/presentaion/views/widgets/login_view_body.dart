@@ -17,6 +17,7 @@ class LoginViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    LoginCubit cubit = BlocProvider.of<LoginCubit>(context);
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16.w),
       child: BlocListener<LoginCubit, LoginState>(
@@ -37,8 +38,10 @@ class LoginViewBody extends StatelessWidget {
                 height: 10,
               ),
             ),
-            const SliverToBoxAdapter(
-              child: CustomAuthAppBar(),
+            SliverToBoxAdapter(
+              child: CustomAuthAppBar(
+                darkMode: cubit.darkMode,
+              ),
             ),
             const SliverToBoxAdapter(
               child: SizedBox(
@@ -47,6 +50,7 @@ class LoginViewBody extends StatelessWidget {
             ),
             SliverToBoxAdapter(
               child: AuthTitleAndSubtitle(
+                darkMode: cubit.darkMode,
                 title: 'Login',
                 subTitle: 'Don\'t have an account?',
                 buttonText: 'Sign Up',
@@ -63,12 +67,14 @@ class LoginViewBody extends StatelessWidget {
             const SliverToBoxAdapter(
               child: LoginFormField(),
             ),
-            const SliverFillRemaining(
+            SliverFillRemaining(
               hasScrollBody: false,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  CustomTermsWidget(),
+                  CustomTermsWidget(
+                    darkMode: cubit.darkMode,
+                  ),
                 ],
               ),
             )

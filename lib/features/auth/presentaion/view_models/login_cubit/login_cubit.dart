@@ -43,6 +43,11 @@ class LoginCubit extends Cubit<LoginState> {
   final formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  late bool darkMode;
+  void setupDarkMode() {
+    darkMode = getDarkMode();
+  }
+
   bool isVisible = true;
   void changePasswordVisibility() {
     isVisible = !isVisible;

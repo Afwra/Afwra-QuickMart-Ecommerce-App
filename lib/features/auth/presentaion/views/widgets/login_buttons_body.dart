@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quick_mart/core/utils/app_assets.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/core/widgets/custom_button.dart';
-import 'package:quick_mart/core/widgets/custom_button_with_icon.dart';
 import 'package:quick_mart/features/auth/presentaion/view_models/login_cubit/login_cubit.dart';
+import 'package:quick_mart/features/auth/presentaion/views/widgets/custom_google_button.dart';
 
 class LoginButtonsBody extends StatelessWidget {
   const LoginButtonsBody({
@@ -21,6 +20,9 @@ class LoginButtonsBody extends StatelessWidget {
             Expanded(
               child: CustomButton(
                 text: 'Login',
+                color: cubit.darkMode
+                    ? AppColors.kBrandColorCyan
+                    : AppColors.kBrandColorBlack,
                 onPressed: () {
                   if (cubit.formKey.currentState!.validate()) {
                     cubit.login(cubit.emailController.text,
@@ -37,15 +39,10 @@ class LoginButtonsBody extends StatelessWidget {
         Row(
           children: [
             Expanded(
-              child: CustomButtonWithIcon(
-                onPressed: () {
-                  cubit.loginViaGoogle();
-                },
+              child: CustomGoogleButton(
                 text: 'Login With Google',
-                iconPath: AppAssets.google,
-                color: Colors.white,
-                textColor: AppColors.kBrandColorBlack,
-                borderColor: AppColors.kGrey50,
+                darkMode: cubit.darkMode,
+                onPressed: cubit.loginViaGoogle,
               ),
             ),
           ],

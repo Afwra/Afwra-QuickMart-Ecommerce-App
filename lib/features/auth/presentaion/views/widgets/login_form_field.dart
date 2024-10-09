@@ -21,6 +21,7 @@ class LoginFormField extends StatelessWidget {
       child: Column(
         children: [
           CustomTextFormField(
+            darkMode: cubit.darkMode,
             controller: cubit.emailController,
             hintText: 'Enter Your Email',
             titleText: 'Email',
@@ -38,15 +39,22 @@ class LoginFormField extends StatelessWidget {
           BlocBuilder<LoginCubit, LoginState>(
             builder: (context, state) {
               return CustomTextFormField(
+                darkMode: cubit.darkMode,
                 controller: cubit.passwordController,
                 hintText: 'Enter Your Password',
                 titleText: 'Password',
                 suffix: Padding(
-                  padding: const EdgeInsets.only(right: 8.0),
+                  padding: const EdgeInsets.only(right: 16.0),
                   child: GestureDetector(
                     onTap: cubit.changePasswordVisibility,
                     child: SvgPicture.asset(
                       AppAssets.passwordVisible,
+                      colorFilter: ColorFilter.mode(
+                        cubit.darkMode
+                            ? Colors.white
+                            : AppColors.kBrandColorBlack,
+                        BlendMode.srcIn,
+                      ),
                     ),
                   ),
                 ),

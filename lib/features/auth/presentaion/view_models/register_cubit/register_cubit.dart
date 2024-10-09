@@ -45,6 +45,11 @@ class RegisterCubit extends Cubit<RegisterState> {
   final nameController = TextEditingController();
   final passwordController = TextEditingController();
   bool isVisible = true;
+  late bool darkMode;
+  void setupDarkMode() {
+    darkMode = getDarkMode();
+  }
+
   void changePasswordVisibility() {
     isVisible = !isVisible;
     emit(ChangePasswordVisibility());

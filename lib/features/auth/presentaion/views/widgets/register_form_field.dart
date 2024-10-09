@@ -19,6 +19,7 @@ class RegisterFormField extends StatelessWidget {
       child: Column(
         children: [
           CustomTextFormField(
+            darkMode: cubit.darkMode,
             controller: cubit.nameController,
             validator: (value) {
               return cubit.validateTextField(value, 'Enter Your Name');
@@ -27,7 +28,11 @@ class RegisterFormField extends StatelessWidget {
             titleText: 'Full Name',
             keyboardType: TextInputType.emailAddress,
           ),
+          const SizedBox(
+            height: 16,
+          ),
           CustomTextFormField(
+            darkMode: cubit.darkMode,
             controller: cubit.emailController,
             validator: (value) =>
                 cubit.validateTextField(value, 'Enter Your Email'),
@@ -41,6 +46,7 @@ class RegisterFormField extends StatelessWidget {
           BlocBuilder<RegisterCubit, RegisterState>(
             builder: (context, state) {
               return CustomTextFormField(
+                darkMode: cubit.darkMode,
                 hintText: 'Enter Your Password',
                 controller: cubit.passwordController,
                 validator: (value) =>
@@ -50,9 +56,15 @@ class RegisterFormField extends StatelessWidget {
                 suffix: GestureDetector(
                   onTap: () => cubit.changePasswordVisibility(),
                   child: Padding(
-                    padding: const EdgeInsets.only(right: 8.0),
+                    padding: const EdgeInsets.only(right: 16.0),
                     child: SvgPicture.asset(
                       AppAssets.passwordVisible,
+                      colorFilter: ColorFilter.mode(
+                        cubit.darkMode
+                            ? Colors.white
+                            : AppColors.kBrandColorBlack,
+                        BlendMode.srcIn,
+                      ),
                     ),
                   ),
                 ),

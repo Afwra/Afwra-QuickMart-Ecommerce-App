@@ -16,6 +16,7 @@ class RegisterViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = BlocProvider.of<RegisterCubit>(context);
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16.w),
       child: BlocListener<RegisterCubit, RegisterState>(
@@ -36,8 +37,10 @@ class RegisterViewBody extends StatelessWidget {
                 height: 10,
               ),
             ),
-            const SliverToBoxAdapter(
-              child: CustomAuthAppBar(),
+            SliverToBoxAdapter(
+              child: CustomAuthAppBar(
+                darkMode: cubit.darkMode,
+              ),
             ),
             const SliverToBoxAdapter(
               child: SizedBox(
@@ -46,6 +49,7 @@ class RegisterViewBody extends StatelessWidget {
             ),
             SliverToBoxAdapter(
               child: AuthTitleAndSubtitle(
+                darkMode: cubit.darkMode,
                 title: 'Sign Up',
                 subTitle: 'Already have an account?',
                 buttonText: 'Login',

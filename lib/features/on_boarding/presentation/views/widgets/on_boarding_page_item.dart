@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quick_mart/features/on_boarding/data/models/on_boarding_item_model.dart';
-import 'package:quick_mart/features/on_boarding/presentation/views/widgets/on_boarding_bottom_items.dart';
+import 'package:quick_mart/features/on_boarding/presentation/views/widgets/on_boarding_title_and_subtitle.dart';
 import 'package:quick_mart/features/on_boarding/presentation/views/widgets/on_boarding_container.dart';
 
 class OnBoardingPageItem extends StatelessWidget {
@@ -17,7 +17,7 @@ class OnBoardingPageItem extends StatelessWidget {
         const SizedBox(
           height: 20,
         ),
-        OnBoardingBottomItems(item: item),
+        OnBoardingTitleAndSubtitle(item: item),
       ],
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
 import 'package:quick_mart/features/auth/presentaion/views/widgets/custom_text_button.dart';
 
@@ -8,9 +9,11 @@ class AuthTitleAndSubtitle extends StatelessWidget {
       required this.title,
       required this.subTitle,
       required this.buttonText,
-      this.onPressed});
+      this.onPressed,
+      required this.darkMode});
   final String title, subTitle, buttonText;
   final void Function()? onPressed;
+  final bool darkMode;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -18,13 +21,17 @@ class AuthTitleAndSubtitle extends StatelessWidget {
       children: [
         Text(
           title,
-          style: AppTextStyles.heading2Bold,
+          style: AppTextStyles.heading2Bold.copyWith(
+              color: darkMode ? Colors.white : AppColors.kBrandColorBlack),
         ),
         Row(
           children: [
             Text(
               subTitle,
-              style: AppTextStyles.body2Regular,
+              style: AppTextStyles.body2Regular.copyWith(
+                  color: darkMode
+                      ? AppColors.kGrey150
+                      : AppColors.kBrandColorBlack),
             ),
             CustomTextButton(buttonText: buttonText, onPressed: onPressed),
           ],

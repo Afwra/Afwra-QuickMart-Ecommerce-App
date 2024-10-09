@@ -13,6 +13,7 @@ class CustomTextFormField extends StatelessWidget {
   final TextEditingController? controller;
   final FormFieldValidator<String>? validator;
   final Widget? suffix;
+  final bool darkMode;
 
   const CustomTextFormField({
     super.key,
@@ -25,6 +26,7 @@ class CustomTextFormField extends StatelessWidget {
     this.validator,
     required this.titleText,
     this.suffix,
+    this.darkMode = false,
   });
 
   @override
@@ -34,7 +36,8 @@ class CustomTextFormField extends StatelessWidget {
       children: [
         Text(
           titleText,
-          style: AppTextStyles.body2Medium,
+          style: AppTextStyles.body2Medium.copyWith(
+              color: darkMode ? Colors.white : AppColors.kBrandColorBlack),
         ),
         const SizedBox(
           height: 8,
@@ -67,8 +70,8 @@ class CustomTextFormField extends StatelessWidget {
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12.0),
-              borderSide: const BorderSide(
-                color: AppColors.kGrey50,
+              borderSide: BorderSide(
+                color: darkMode ? AppColors.kGrey50DarkMode : AppColors.kGrey50,
                 width: 2,
               ),
             ),

@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
 import 'package:quick_mart/features/auth/presentaion/views/widgets/custom_text_button.dart';
@@ -6,8 +6,9 @@ import 'package:quick_mart/features/auth/presentaion/views/widgets/custom_text_b
 class CustomTermsWidget extends StatelessWidget {
   const CustomTermsWidget({
     super.key,
+    this.darkMode = false,
   });
-
+  final bool darkMode;
   @override
   Widget build(BuildContext context) {
     return Wrap(
@@ -17,7 +18,8 @@ class CustomTermsWidget extends StatelessWidget {
       children: [
         Text(
           'By login, you agree to our ',
-          style: AppTextStyles.captionSemiBold,
+          style: AppTextStyles.captionSemiBold.copyWith(
+              color: darkMode ? Colors.white : AppColors.kBrandColorBlack),
         ),
         CustomTextButton(
           buttonText: 'Privacy Policy',
@@ -26,7 +28,8 @@ class CustomTermsWidget extends StatelessWidget {
         ),
         Text(
           ' and ',
-          style: AppTextStyles.captionSemiBold,
+          style: AppTextStyles.captionSemiBold.copyWith(
+              color: darkMode ? Colors.white : AppColors.kBrandColorBlack),
         ),
         CustomTextButton(
           buttonText: 'Terms & Conditions',

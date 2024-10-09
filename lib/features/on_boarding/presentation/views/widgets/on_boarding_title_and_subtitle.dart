@@ -5,8 +5,8 @@ import 'package:quick_mart/core/utils/app_text_styles.dart';
 import 'package:quick_mart/features/on_boarding/data/models/on_boarding_item_model.dart';
 import 'package:quick_mart/features/on_boarding/presentation/view_models/on_boarding_cubit/on_boarding_cubit.dart';
 
-class OnBoardingBottomItems extends StatelessWidget {
-  const OnBoardingBottomItems({super.key, required this.item});
+class OnBoardingTitleAndSubtitle extends StatelessWidget {
+  const OnBoardingTitleAndSubtitle({super.key, required this.item});
   final OnBoardingItemModel item;
   @override
   Widget build(BuildContext context) {
