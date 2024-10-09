@@ -34,7 +34,10 @@ class ForgotPasswordBody extends StatelessWidget {
           builder: (context, state) {
             return Text(
               forgetPasswordList[cubit.pageIndex].title,
-              style: AppTextStyles.heading2Bold,
+              style: AppTextStyles.heading2Bold.copyWith(
+                color:
+                    cubit.darkMode ? Colors.white : AppColors.kBrandColorBlack,
+              ),
             );
           },
         ),
@@ -70,6 +73,9 @@ class ForgotPasswordBody extends StatelessWidget {
               children: [
                 Expanded(
                     child: CustomButton(
+                  color: cubit.darkMode
+                      ? AppColors.kBrandColorCyan
+                      : AppColors.kBrandColorBlack,
                   text: forgetPasswordList[cubit.pageIndex].buttonText,
                   onPressed: () => cubit.buttonLogic(context),
                 )),

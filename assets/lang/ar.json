@@ -39,6 +39,12 @@
         "forgot_password_body_3": "كلمة مرور جديدة",
         "forgot_password_sub_body_3": "أدخل كلمة المرور الجديدة وتذكرها.",
         "pin_message": "يرجى إدخال رمز مكون من 6 أرقام",
-        "confirm_password_message": "تأكد من تطابق كلمة المرور"
+        "confirm_password_message": "تأكد من تطابق كلمة المرور",
+        "send": "إرسال",
+        "proceed": "متابعة",
+        "save": "حفظ",
+        "resend_code": "اعادة ارسال الرمز",
+        "password_success_title": "تم تعيين كلمة المرور الجديدة بنجاح",
+        "password_success_sub_title": "تهانينا! تم تعيين كلمة المرور الخاصة بك بنجاح. يرجى الانتقال إلى شاشة تسجيل الدخول للتحقق من حسابك."
     }
 }

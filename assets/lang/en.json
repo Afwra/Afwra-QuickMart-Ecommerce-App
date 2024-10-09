@@ -39,7 +39,13 @@
         "forgot_password_body_3":"New Password",
         "forgot_password_sub_body_3":"Enter your new password and remember it.",
         "pin_message":"Please Enter 6 Digit Pin",
-        "confirm_password_message":"Make Sure Password Match"
+        "confirm_password_message":"Make Sure Password Match",
+        "send":"Send",
+        "proceed":"Proceed",
+        "save":"Save",
+        "resend_code":"Resend Code",
+        "password_success_title":"New password set successfully",
+        "password_success_sub_title":"Congratulations! Your password has been set successfully. Please proceed to the login screen to verify your account."
     }
     
 

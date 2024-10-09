@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
+import 'package:quick_mart/core/utils/app_texts.dart';
 import 'package:quick_mart/features/auth/presentaion/view_models/forgot_password_cubit/forgot_password_cubit.dart';
 
 class CustomPinCodeTextField extends StatelessWidget {
@@ -21,7 +23,7 @@ class CustomPinCodeTextField extends StatelessWidget {
         errorTextSpace: 20,
         validator: (value) {
           if (value!.isEmpty) {
-            return 'Please Enter Code';
+            return AppTexts.pinMessage.tr();
           }
           return null;
         },

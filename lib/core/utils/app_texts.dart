@@ -43,4 +43,11 @@ class AppTexts {
       'Auth.forgot_password_sub_body_3';
   static const String pinMessage = 'Auth.pin_message';
   static const String confirmPasswordMessage = 'Auth.confirm_password_message';
+  static const String send = 'Auth.send';
+  static const String proceed = 'Auth.proceed';
+  static const String save = 'Auth.save';
+  static const String resendCode = 'Auth.resend_code';
+  static const String passwordSuccessTitle = 'Auth.password_success_title';
+  static const String passwordSuccessSubTitle =
+      'Auth.password_success_sub_title';
 }
