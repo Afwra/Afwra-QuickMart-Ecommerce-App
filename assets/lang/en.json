@@ -1,0 +1,16 @@
+{
+    "OnBoarding":{
+        "txt_button": "Skip For Now",
+        "title_1":"Explore a wide range of products",
+        "title_2":"Unlock exclusive offers and discounts",
+        "title_3":"Safe and secure payments",
+        "sub_title_1": "Explore a wide range of products at your fingertips. QuickMart offers an extensive collection to suit your needs.", 
+        "sub_title_2": "Get access to limited-time deals and special promotions available only to our valued customers.",
+        "sub_title_3": " QuickMart employs industry-leading encryption and trusted payment gateways to safeguard your financial information.",
+        "next": "Next",
+        "login":"Login",
+        "get_started":"Get Started"
+    }
+
+  }
+  

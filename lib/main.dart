@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -19,6 +20,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await EasyLocalization.ensureInitialized();
   setupAuthServiceLocator();
   Bloc.observer = MyBlocObserver();
   SystemChrome.setSystemUIOverlayStyle(
@@ -26,7 +28,14 @@ void main() async {
         ? AppThemes.darkModeStatusBarTheme
         : AppThemes.lightModeStatusBarTheme,
   );
-  runApp(const QuickMartApp());
+  runApp(
+    EasyLocalization(
+      supportedLocales: const [Locale('en'), Locale('ar')],
+      fallbackLocale: const Locale('en'),
+      path: 'assets/lang', // Path to the localization files
+      child: const QuickMartApp(),
+    ),
+  );
 }
 
 class QuickMartApp extends StatelessWidget {
@@ -42,6 +51,9 @@ class QuickMartApp extends StatelessWidget {
         routerConfig: AppRoutes.router,
         theme: getDarkMode() ? AppThemes.darkTheme : AppThemes.lightTheme,
         debugShowCheckedModeBanner: false,
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
       ),
     );
   }

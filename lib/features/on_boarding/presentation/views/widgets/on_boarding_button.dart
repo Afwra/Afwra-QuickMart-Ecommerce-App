@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -23,7 +24,7 @@ class OnBoardingButton extends StatelessWidget {
             children: [
               Expanded(
                 child: CustomButton(
-                  text: 'Next',
+                  text: 'OnBoarding.next'.tr(),
                   color: darkMode
                       ? AppColors.kBrandColorCyan
                       : AppColors.kBrandColorBlack,
@@ -39,7 +40,7 @@ class OnBoardingButton extends StatelessWidget {
             children: [
               Expanded(
                 child: CustomButton(
-                  text: 'Login',
+                  text: 'OnBoarding.login'.tr(),
                   color: darkMode
                       ? AppColors.kBrandColorBlack
                       : AppColors.kBrandColorWhite,
@@ -59,9 +60,11 @@ class OnBoardingButton extends StatelessWidget {
               ),
               Expanded(
                 child: CustomButtonWithIcon(
-                  text: 'Get Started',
+                  text: 'OnBoarding.get_started'.tr(),
                   color: darkMode ? AppColors.kBrandColorCyan : Colors.black,
-                  iconPath: AppAssets.arrowRight,
+                  iconPath: context.locale.languageCode == 'ar'
+                      ? AppAssets.arrowLeft
+                      : AppAssets.arrowRight,
                   onPressed: () {
                     GoRouter.of(context).go(AppRoutes.kRegisterView);
                   },

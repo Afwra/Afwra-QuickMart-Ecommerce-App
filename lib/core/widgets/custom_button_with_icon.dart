@@ -11,10 +11,11 @@ class CustomButtonWithIcon extends StatelessWidget {
       this.color,
       this.textColor,
       this.borderColor,
-      required this.iconPath});
+      required this.iconPath,
+      this.iconColor});
   final String text, iconPath;
   final void Function()? onPressed;
-  final Color? color, textColor, borderColor;
+  final Color? color, textColor, borderColor, iconColor;
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
@@ -36,7 +37,11 @@ class CustomButtonWithIcon extends StatelessWidget {
           const SizedBox(
             width: 8,
           ),
-          SvgPicture.asset(iconPath),
+          SvgPicture.asset(
+            iconPath,
+            colorFilter:
+                ColorFilter.mode(iconColor ?? Colors.white, BlendMode.srcIn),
+          ),
         ],
       ),
     );

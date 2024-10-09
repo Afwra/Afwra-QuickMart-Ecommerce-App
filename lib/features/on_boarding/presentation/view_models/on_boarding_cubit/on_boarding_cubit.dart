@@ -22,21 +22,18 @@ class OnBoardingCubit extends Cubit<OnBoardingState> {
 
   final List<OnBoardingItemModel> onBoardingItems = [
     OnBoardingItemModel(
-      title: 'Welcome to Quick Mart',
-      subtitle:
-          'Explore a wide range of products at your fingertips. QuickMart offers an extensive collection to suit your needs.',
+      title: 'OnBoarding.title_1',
+      subtitle: 'OnBoarding.sub_title_1',
       image: AppAssets.onBoarding1,
     ),
     OnBoardingItemModel(
-      title: 'Unlock exclusive offers and discounts',
-      subtitle:
-          'Get access to limited-time deals and special promotions available only to our valued customers.',
+      title: 'OnBoarding.title_2',
+      subtitle: 'OnBoarding.sub_title_2',
       image: AppAssets.onBoarding2,
     ),
     OnBoardingItemModel(
-      title: 'Safe and secure payments',
-      subtitle:
-          ' QuickMart employs industry-leading encryption and trusted payment gateways to safeguard your financial information.',
+      title: 'OnBoarding.title_3',
+      subtitle: 'OnBoarding.sub_title_3',
       image: AppAssets.onBoarding3,
     ),
   ];

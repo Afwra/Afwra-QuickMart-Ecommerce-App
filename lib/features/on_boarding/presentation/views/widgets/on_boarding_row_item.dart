@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -16,7 +17,6 @@ class OnBoardingRowItem extends StatelessWidget {
   Widget build(BuildContext context) {
     OnBoardingCubit cubit = BlocProvider.of<OnBoardingCubit>(context);
     bool darkMode = cubit.darkMode;
-
     return BlocBuilder<OnBoardingCubit, OnBoardingState>(
       builder: (context, state) {
         return Row(
@@ -30,7 +30,9 @@ class OnBoardingRowItem extends StatelessWidget {
                   )
                 : GestureDetector(
                     child: SvgPicture.asset(
-                      AppAssets.arrowLeft,
+                      context.locale.languageCode == 'ar'
+                          ? AppAssets.arrowRight
+                          : AppAssets.arrowLeft,
                       colorFilter: ColorFilter.mode(
                           darkMode ? Colors.white : AppColors.kBrandColorBlack,
                           BlendMode.srcIn),
@@ -45,7 +47,7 @@ class OnBoardingRowItem extends StatelessWidget {
                       GoRouter.of(context).go(AppRoutes.kLoginView);
                     },
                     child: Text(
-                      'Skip For Now',
+                      'OnBoarding.txt_button'.tr(),
                       style: AppTextStyles.body2Medium
                           .copyWith(color: AppColors.kBrandColorCyan),
                     ),

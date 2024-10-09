@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
@@ -16,7 +17,7 @@ class OnBoardingTitleAndSubtitle extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text(
-          item.title,
+          item.title.tr(),
           style: AppTextStyles.heading2Bold.copyWith(
               color: darkMode ? Colors.white : AppColors.kBrandColorBlack),
           textAlign: TextAlign.center,
@@ -25,7 +26,7 @@ class OnBoardingTitleAndSubtitle extends StatelessWidget {
           height: 16,
         ),
         Text(
-          item.subtitle,
+          item.subtitle.tr(),
           style: AppTextStyles.body2Regular.copyWith(color: AppColors.kGrey150),
           textAlign: TextAlign.center,
         ),
