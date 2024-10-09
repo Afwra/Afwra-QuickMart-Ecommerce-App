@@ -6,6 +6,7 @@ import 'package:quick_mart/core/utils/app_assets.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/core/utils/app_routes.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
+import 'package:quick_mart/core/utils/app_texts.dart';
 import 'package:quick_mart/features/on_boarding/presentation/view_models/on_boarding_cubit/on_boarding_cubit.dart';
 import 'package:quick_mart/features/on_boarding/presentation/view_models/on_boarding_cubit/on_boarding_state.dart';
 import 'package:svg_flutter/svg.dart';
@@ -47,7 +48,7 @@ class OnBoardingRowItem extends StatelessWidget {
                       GoRouter.of(context).go(AppRoutes.kLoginView);
                     },
                     child: Text(
-                      'OnBoarding.txt_button'.tr(),
+                      AppTexts.txtButton.tr(),
                       style: AppTextStyles.body2Medium
                           .copyWith(color: AppColors.kBrandColorCyan),
                     ),

@@ -6,6 +6,7 @@ import 'package:hive/hive.dart';
 import 'package:quick_mart/core/functions/hive_functions.dart';
 import 'package:quick_mart/core/utils/app_assets.dart';
 import 'package:quick_mart/core/utils/app_constants.dart';
+import 'package:quick_mart/core/utils/app_texts.dart';
 import 'package:quick_mart/features/on_boarding/data/models/on_boarding_item_model.dart';
 import 'package:quick_mart/features/on_boarding/presentation/view_models/on_boarding_cubit/on_boarding_state.dart';
 
@@ -22,18 +23,18 @@ class OnBoardingCubit extends Cubit<OnBoardingState> {
 
   final List<OnBoardingItemModel> onBoardingItems = [
     OnBoardingItemModel(
-      title: 'OnBoarding.title_1',
-      subtitle: 'OnBoarding.sub_title_1',
+      title: AppTexts.title1,
+      subtitle: AppTexts.subTitle1,
       image: AppAssets.onBoarding1,
     ),
     OnBoardingItemModel(
-      title: 'OnBoarding.title_2',
-      subtitle: 'OnBoarding.sub_title_2',
+      title: AppTexts.title2,
+      subtitle: AppTexts.subTitle2,
       image: AppAssets.onBoarding2,
     ),
     OnBoardingItemModel(
-      title: 'OnBoarding.title_3',
-      subtitle: 'OnBoarding.sub_title_3',
+      title: AppTexts.title3,
+      subtitle: AppTexts.subTitle3,
       image: AppAssets.onBoarding3,
     ),
   ];

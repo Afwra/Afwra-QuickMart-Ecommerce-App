@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:quick_mart/core/utils/app_assets.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/core/utils/app_routes.dart';
+import 'package:quick_mart/core/utils/app_texts.dart';
 import 'package:quick_mart/core/widgets/custom_button.dart';
 import 'package:quick_mart/core/widgets/custom_button_with_icon.dart';
 import 'package:quick_mart/features/on_boarding/presentation/view_models/on_boarding_cubit/on_boarding_cubit.dart';
@@ -24,7 +25,7 @@ class OnBoardingButton extends StatelessWidget {
             children: [
               Expanded(
                 child: CustomButton(
-                  text: 'OnBoarding.next'.tr(),
+                  text: AppTexts.next.tr(),
                   color: darkMode
                       ? AppColors.kBrandColorCyan
                       : AppColors.kBrandColorBlack,
@@ -40,7 +41,7 @@ class OnBoardingButton extends StatelessWidget {
             children: [
               Expanded(
                 child: CustomButton(
-                  text: 'OnBoarding.login'.tr(),
+                  text: AppTexts.login.tr(),
                   color: darkMode
                       ? AppColors.kBrandColorBlack
                       : AppColors.kBrandColorWhite,
@@ -60,7 +61,7 @@ class OnBoardingButton extends StatelessWidget {
               ),
               Expanded(
                 child: CustomButtonWithIcon(
-                  text: 'OnBoarding.get_started'.tr(),
+                  text: AppTexts.getStarted.tr(),
                   color: darkMode ? AppColors.kBrandColorCyan : Colors.black,
                   iconPath: context.locale.languageCode == 'ar'
                       ? AppAssets.arrowLeft
