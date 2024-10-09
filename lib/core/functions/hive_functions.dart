@@ -6,7 +6,7 @@ void saveOnBoardingCompleted(bool completed) {
   settingBox.put(AppConstants.onboardingCompleted, completed);
 }
 
-bool? getOnBoardingCompleted() {
+bool getOnBoardingCompleted() {
   var settingBox = Hive.box(AppConstants.settingsBox);
   return settingBox.get(AppConstants.onboardingCompleted, defaultValue: false);
 }
@@ -19,4 +19,14 @@ void saveLoginToken(String token) {
 String? getLoginToken() {
   var settingBox = Hive.box(AppConstants.settingsBox);
   return settingBox.get(AppConstants.loginToken);
+}
+
+bool getDarkMode() {
+  var settingBox = Hive.box(AppConstants.settingsBox);
+  return settingBox.get(AppConstants.darkModeStatus, defaultValue: false);
+}
+
+void saveDarkMode(bool enabledDarkMode) {
+  var settingBox = Hive.box(AppConstants.settingsBox);
+  settingBox.put(AppConstants.darkModeStatus, enabledDarkMode);
 }

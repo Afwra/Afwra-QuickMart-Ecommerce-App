@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quick_mart/core/functions/hive_functions.dart';
 import 'package:quick_mart/core/utils/app_assets.dart';
@@ -41,7 +42,11 @@ class _SplashScreenBodyState extends State<SplashScreenBody> {
         builder: (context, value, child) => Transform.translate(
           offset: value * MediaQuery.of(context).size.height,
           child: SvgPicture.asset(
-            AppAssets.splashScreenLogo,
+            getDarkMode()
+                ? AppAssets.splashScreenLogoDarkMode
+                : AppAssets.splashScreenLogo,
+            height: 76.h,
+            fit: BoxFit.cover,
           ),
         ),
       ),
