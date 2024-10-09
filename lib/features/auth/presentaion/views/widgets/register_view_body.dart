@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -5,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:quick_mart/core/functions/flutter_toast.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/core/utils/app_routes.dart';
+import 'package:quick_mart/core/utils/app_texts.dart';
 import 'package:quick_mart/features/auth/presentaion/view_models/register_cubit/register_cubit.dart';
 import 'package:quick_mart/features/auth/presentaion/view_models/register_cubit/register_state.dart';
 import 'package:quick_mart/features/auth/presentaion/views/widgets/auth_title_and_subtitle.dart';
@@ -50,9 +52,9 @@ class RegisterViewBody extends StatelessWidget {
             SliverToBoxAdapter(
               child: AuthTitleAndSubtitle(
                 darkMode: cubit.darkMode,
-                title: 'Sign Up',
-                subTitle: 'Already have an account?',
-                buttonText: 'Login',
+                title: AppTexts.register.tr(),
+                subTitle: AppTexts.registerSubTitle.tr(),
+                buttonText: AppTexts.registerTextButton.tr(),
                 onPressed: () {
                   GoRouter.of(context).go(AppRoutes.kLoginView);
                 },

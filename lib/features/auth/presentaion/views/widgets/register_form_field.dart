@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quick_mart/core/utils/app_assets.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
+import 'package:quick_mart/core/utils/app_texts.dart';
 import 'package:quick_mart/features/auth/presentaion/view_models/register_cubit/register_cubit.dart';
 import 'package:quick_mart/features/auth/presentaion/view_models/register_cubit/register_state.dart';
 import 'package:quick_mart/features/auth/presentaion/views/widgets/custom_text_field.dart';
@@ -22,10 +24,10 @@ class RegisterFormField extends StatelessWidget {
             darkMode: cubit.darkMode,
             controller: cubit.nameController,
             validator: (value) {
-              return cubit.validateTextField(value, 'Enter Your Name');
+              return cubit.validateTextField(value, AppTexts.enterName.tr());
             },
-            hintText: 'Enter Your Name',
-            titleText: 'Full Name',
+            hintText: AppTexts.enterName.tr(),
+            titleText: AppTexts.name.tr(),
             keyboardType: TextInputType.emailAddress,
           ),
           const SizedBox(
@@ -35,9 +37,9 @@ class RegisterFormField extends StatelessWidget {
             darkMode: cubit.darkMode,
             controller: cubit.emailController,
             validator: (value) =>
-                cubit.validateTextField(value, 'Enter Your Email'),
-            hintText: 'Enter Your Email',
-            titleText: 'Email',
+                cubit.validateTextField(value, AppTexts.enterEmail.tr()),
+            hintText: AppTexts.enterEmail.tr(),
+            titleText: AppTexts.email.tr(),
             keyboardType: TextInputType.emailAddress,
           ),
           const SizedBox(
@@ -47,16 +49,16 @@ class RegisterFormField extends StatelessWidget {
             builder: (context, state) {
               return CustomTextFormField(
                 darkMode: cubit.darkMode,
-                hintText: 'Enter Your Password',
+                hintText: AppTexts.enterPassword.tr(),
                 controller: cubit.passwordController,
                 validator: (value) =>
-                    cubit.validateTextField(value, 'Enter Your Password'),
-                titleText: 'Password',
+                    cubit.validateTextField(value, AppTexts.enterPassword.tr()),
+                titleText: AppTexts.password.tr(),
                 obscureText: cubit.isVisible,
                 suffix: GestureDetector(
                   onTap: () => cubit.changePasswordVisibility(),
                   child: Padding(
-                    padding: const EdgeInsets.only(right: 16.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: SvgPicture.asset(
                       AppAssets.passwordVisible,
                       colorFilter: ColorFilter.mode(
