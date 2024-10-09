@@ -10,7 +10,38 @@
         "next": "Next",
         "login":"Login",
         "get_started":"Get Started"
+    },
+    "Auth":{
+        "login":"Login",
+        "login_with_google":"Login With Google",
+        "login_sub_title":"Don't have an account?",
+        "login_txt_btn":"Sign Up",
+        "forgot_password":"Forgot Password?",
+        "register":"Sign Up",
+        "signup_with_google":"Sign Up With Google",
+        "register_sub_title":"Already have an account?",
+        "register_txt_btn":"Login",
+        "name":"Full Name",
+        "email":"Email",
+        "password":"Password",
+        "enter_password":"Enter Your Password",
+        "enter_Name":"Enter Your Name",
+        "enter_email":"Enter Your Email",
+        "terms_1":"By login , you agree to our",
+        "terms_btn_1":"Privacy Policy",
+        "terms_2":"and",
+        "terms_btn_2":"Terms & Conditions",
+        "forgot_password_title":"Forgot Password",
+        "forgot_password_body_1":"Confirmation Email",
+        "forgot_password_sub_body_1":"Enter your email address for verification.",
+        "forgot_password_body_2":"Email Verification",
+        "forgot_password_sub_body_2":"Enter the 6-digit verification code send to your email address.",
+        "forgot_password_body_3":"New Password",
+        "forgot_password_sub_body_3":"Enter your new password and remember it.",
+        "pin_message":"Please Enter 6 Digit Pin",
+        "confirm_password_message":"Make Sure Password Match"
     }
+    
 
   }
   

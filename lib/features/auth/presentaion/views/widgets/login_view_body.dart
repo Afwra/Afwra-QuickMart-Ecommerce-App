@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -5,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:quick_mart/core/functions/flutter_toast.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/core/utils/app_routes.dart';
+import 'package:quick_mart/core/utils/app_texts.dart';
 import 'package:quick_mart/features/auth/presentaion/view_models/login_cubit/login_cubit.dart';
 import 'package:quick_mart/features/auth/presentaion/view_models/login_cubit/login_state.dart';
 import 'package:quick_mart/features/auth/presentaion/views/widgets/auth_title_and_subtitle.dart';
@@ -51,9 +53,9 @@ class LoginViewBody extends StatelessWidget {
             SliverToBoxAdapter(
               child: AuthTitleAndSubtitle(
                 darkMode: cubit.darkMode,
-                title: 'Login',
-                subTitle: 'Don\'t have an account?',
-                buttonText: 'Sign Up',
+                title: AppTexts.authlogin.tr(),
+                subTitle: AppTexts.loginSubTitle.tr(),
+                buttonText: AppTexts.loginTextButton.tr(),
                 onPressed: () {
                   GoRouter.of(context).go(AppRoutes.kRegisterView);
                 },

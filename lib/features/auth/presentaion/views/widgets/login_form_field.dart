@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quick_mart/core/utils/app_assets.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/core/utils/app_routes.dart';
+import 'package:quick_mart/core/utils/app_texts.dart';
 import 'package:quick_mart/features/auth/presentaion/view_models/login_cubit/login_cubit.dart';
 import 'package:quick_mart/features/auth/presentaion/view_models/login_cubit/login_state.dart';
 import 'package:quick_mart/features/auth/presentaion/views/widgets/custom_text_button.dart';
@@ -23,12 +25,12 @@ class LoginFormField extends StatelessWidget {
           CustomTextFormField(
             darkMode: cubit.darkMode,
             controller: cubit.emailController,
-            hintText: 'Enter Your Email',
-            titleText: 'Email',
+            hintText: AppTexts.enterEmail.tr(),
+            titleText: AppTexts.email.tr(),
             keyboardType: TextInputType.emailAddress,
             validator: (string) {
               if (string!.isEmpty) {
-                return 'Please Enter Email';
+                return AppTexts.enterEmail.tr();
               }
               return null;
             },
@@ -41,10 +43,10 @@ class LoginFormField extends StatelessWidget {
               return CustomTextFormField(
                 darkMode: cubit.darkMode,
                 controller: cubit.passwordController,
-                hintText: 'Enter Your Password',
-                titleText: 'Password',
+                hintText: AppTexts.enterPassword.tr(),
+                titleText: AppTexts.password.tr(),
                 suffix: Padding(
-                  padding: const EdgeInsets.only(right: 16.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: GestureDetector(
                     onTap: cubit.changePasswordVisibility,
                     child: SvgPicture.asset(
@@ -62,7 +64,7 @@ class LoginFormField extends StatelessWidget {
                 obscureText: cubit.isVisible,
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return 'Please Enter Password';
+                    return AppTexts.enterPassword.tr();
                   }
                   return null;
                 },
@@ -76,7 +78,7 @@ class LoginFormField extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               CustomTextButton(
-                  buttonText: 'Forgot Password?',
+                  buttonText: AppTexts.forgotPassword.tr(),
                   onPressed: () {
                     GoRouter.of(context).push(AppRoutes.kForgotPasswordView);
                   }),

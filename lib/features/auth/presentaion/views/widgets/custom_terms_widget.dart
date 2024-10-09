@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
+import 'package:quick_mart/core/utils/app_texts.dart';
 import 'package:quick_mart/features/auth/presentaion/views/widgets/custom_text_button.dart';
 
 class CustomTermsWidget extends StatelessWidget {
@@ -17,22 +19,22 @@ class CustomTermsWidget extends StatelessWidget {
       runSpacing: -15,
       children: [
         Text(
-          'By login, you agree to our ',
+          AppTexts.terms1.tr(),
           style: AppTextStyles.captionSemiBold.copyWith(
               color: darkMode ? Colors.white : AppColors.kBrandColorBlack),
         ),
         CustomTextButton(
-          buttonText: 'Privacy Policy',
+          buttonText: ' ${AppTexts.termsButton1.tr()} ',
           padding: EdgeInsets.zero,
           style: AppTextStyles.captionSemiBold.copyWith(color: AppColors.kBlue),
         ),
         Text(
-          ' and ',
+          ' ${AppTexts.terms2.tr()} ',
           style: AppTextStyles.captionSemiBold.copyWith(
               color: darkMode ? Colors.white : AppColors.kBrandColorBlack),
         ),
         CustomTextButton(
-          buttonText: 'Terms & Conditions',
+          buttonText: AppTexts.termsButton2.tr(),
           padding: EdgeInsets.zero,
           style: AppTextStyles.captionSemiBold.copyWith(color: AppColors.kBlue),
         ),

@@ -33,6 +33,9 @@ class AuthTitleAndSubtitle extends StatelessWidget {
                       ? AppColors.kGrey150
                       : AppColors.kBrandColorBlack),
             ),
+            const SizedBox(
+              width: 5,
+            ),
             CustomTextButton(buttonText: buttonText, onPressed: onPressed),
           ],
         ),
