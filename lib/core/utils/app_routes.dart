@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:quick_mart/core/utils/app_animations.dart';
 import 'package:quick_mart/features/auth/presentaion/views/forgot_password_view.dart';
 import 'package:quick_mart/features/auth/presentaion/views/login_view.dart';
 import 'package:quick_mart/features/auth/presentaion/views/password_created_success_view.dart';
@@ -24,15 +25,18 @@ abstract class AppRoutes {
       ),
       GoRoute(
         path: kOnBoardingView,
-        builder: (context, state) => const OnBoardingView(),
+        pageBuilder: (context, state) =>
+            AppAnimations.customGrowTransition(state, const OnBoardingView()),
       ),
       GoRoute(
         path: kLoginView,
-        builder: (context, state) => const LoginView(),
+        pageBuilder: (context, state) =>
+            AppAnimations.customSlideUpTransition(state, const LoginView()),
       ),
       GoRoute(
         path: kRegisterView,
-        builder: (context, state) => const RegisterView(),
+        pageBuilder: (context, state) =>
+            AppAnimations.customSlideUpTransition(state, const RegisterView()),
       ),
       GoRoute(
         path: kForgotPasswordView,

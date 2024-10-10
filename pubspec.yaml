@@ -1,6 +1,6 @@
 name: quick_mart
 description: "A new Flutter project."
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
@@ -16,6 +16,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.6
+  flutter_launcher_icons: ^0.14.1
   flutter_screenutil: ^5.9.3
   fluttertoast: ^8.2.8
   get_it: ^8.0.0
@@ -25,6 +26,7 @@ dependencies:
   hive_flutter: ^1.1.0
   modal_progress_hud_nsn: ^0.5.1
   pin_code_fields: ^8.0.1
+  rename: ^3.0.2
   smooth_page_indicator: ^1.2.0+3
   svg_flutter: ^0.0.1
 
@@ -34,7 +36,6 @@ dev_dependencies:
     sdk: flutter
 
 flutter:
-
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
