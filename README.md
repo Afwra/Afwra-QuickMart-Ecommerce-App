@@ -1,16 +1,14 @@
-# quick_mart
+## QuickMart - Personal eCommerce App
+QuickMart is a personal eCommerce application built using Flutter. This project follows the MVVM (Model-View-ViewModel) design pattern and uses Cubit for state management. API handling is done with the Dio package, and it utilizes the FakeStore API to fetch dummy data. The design of the app is based on a community template from Figma created by Harsh Advani.
 
-A new Flutter project.
+## Project Overview
+- Framework: Flutter
+- State Management: Cubit
+- Architecture Pattern: MVVM
+- API Handling: Dio
+- Data Source: FakeStore API
+- Design Reference: Figma Design by Harsh Advani
+- Purpose: Personal project for learning and enhancing Flutter development skills
+## About the Developer
+This project was developed as a personal endeavor by a recent graduate who is currently learning and improving Flutter development skills. The goal of QuickMart is to provide a solid foundation in building modern eCommerce applications with clean architecture and responsive design.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
