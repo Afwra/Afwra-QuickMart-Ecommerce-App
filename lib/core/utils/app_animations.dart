@@ -30,7 +30,7 @@ class AppAnimations {
     return CustomTransitionPage(
       key: state.pageKey,
       child: screen,
-      transitionDuration: const Duration(milliseconds: 2000),
+      transitionDuration: const Duration(milliseconds: 500),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         const curve = Curves.easeInOut;
 

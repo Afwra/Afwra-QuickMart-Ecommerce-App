@@ -23,7 +23,7 @@ class _SplashScreenBodyState extends State<SplashScreenBody> {
         if (getLoginToken() == null) {
           GoRouter.of(context).go(AppRoutes.kLoginView);
         } else {
-          GoRouter.of(context).go(AppRoutes.kHomeView);
+          GoRouter.of(context).go(AppRoutes.kHomeLayout);
         }
       } else {
         GoRouter.of(context).go(AppRoutes.kOnBoardingView);
@@ -37,7 +37,7 @@ class _SplashScreenBodyState extends State<SplashScreenBody> {
       child: TweenAnimationBuilder(
         tween:
             Tween<Offset>(begin: const Offset(0, -1), end: const Offset(0, 0)),
-        duration: const Duration(seconds: 3),
+        duration: const Duration(seconds: 2),
         curve: Curves.bounceOut,
         builder: (context, value, child) => Transform.translate(
           offset: value * MediaQuery.of(context).size.height,

@@ -22,7 +22,7 @@ class CustomPinCodeTextField extends StatelessWidget {
         controller: cubit.codeController,
         errorTextSpace: 20,
         validator: (value) {
-          if (value!.isEmpty) {
+          if (value!.isEmpty || value.length < 6) {
             return AppTexts.pinMessage.tr();
           }
           return null;
