@@ -27,7 +27,7 @@ class RegisterViewBody extends StatelessWidget {
             showFlutterToast(
                 msg: 'Register Success',
                 backGroundColor: AppColors.kBrandColorCyan);
-            GoRouter.of(context).go(AppRoutes.kHomeView);
+            GoRouter.of(context).go(AppRoutes.kHomeLayout);
           } else if (state is RegisterFail) {
             showFlutterToast(msg: state.message);
           }

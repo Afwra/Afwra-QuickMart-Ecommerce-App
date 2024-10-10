@@ -11,6 +11,11 @@ class AppAssets {
       'assets/images/quickmart_dark_mode.svg';
   static const String arrowLeft = 'assets/images/arrow-left.svg';
   static const String arrowRight = 'assets/images/arrow-right.svg';
+  static const String homeIcon = 'assets/images/home_icon.svg';
+  static const String categoriesIcon = 'assets/images/categories_icon.svg';
+  static const String profileIcon = 'assets/images/profile_icon.svg';
+  static const String cartIcon = 'assets/images/cart_icon.svg';
+  static const String whichListIcon = 'assets/images/heart_icon.svg';
   static const String google = 'assets/images/google.svg';
   static const String passwordVisible = 'assets/images/password_visible.svg';
   static const String newPassword = 'assets/images/new_password.png';

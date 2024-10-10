@@ -28,7 +28,7 @@ class LoginViewBody extends StatelessWidget {
             showFlutterToast(
                 msg: 'Login Success',
                 backGroundColor: AppColors.kBrandColorCyan);
-            GoRouter.of(context).go(AppRoutes.kHomeView);
+            GoRouter.of(context).go(AppRoutes.kHomeLayout);
           } else if (state is LoginFail) {
             showFlutterToast(msg: state.message);
           }

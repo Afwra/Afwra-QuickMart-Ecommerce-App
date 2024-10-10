@@ -37,7 +37,7 @@ class RegisterButtonBody extends StatelessWidget {
           children: [
             Expanded(
               child: CustomGoogleButton(
-                text: AppTexts.loginWithGoogle.tr(),
+                text: AppTexts.signupWithGoogle.tr(),
                 darkMode: cubit.darkMode,
                 onPressed: cubit.loginViaGoogle,
               ),

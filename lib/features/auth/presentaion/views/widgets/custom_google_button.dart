@@ -18,6 +18,7 @@ class CustomGoogleButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomButtonWithIcon(
+      iconColor: AppColors.kBrandColorCyan,
       text: text,
       onPressed: onPressed,
       iconPath: AppAssets.google,
