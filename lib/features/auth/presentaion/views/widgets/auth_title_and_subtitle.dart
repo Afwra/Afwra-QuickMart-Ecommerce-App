@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
-import 'package:quick_mart/features/auth/presentaion/views/widgets/custom_text_button.dart';
+import 'package:quick_mart/core/widgets/custom_text_button.dart';
 
 class AuthTitleAndSubtitle extends StatelessWidget {
   const AuthTitleAndSubtitle(

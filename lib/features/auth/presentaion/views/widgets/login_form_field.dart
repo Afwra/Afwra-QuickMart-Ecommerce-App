@@ -8,7 +8,7 @@ import 'package:quick_mart/core/utils/app_routes.dart';
 import 'package:quick_mart/core/utils/app_texts.dart';
 import 'package:quick_mart/features/auth/presentaion/view_models/login_cubit/login_cubit.dart';
 import 'package:quick_mart/features/auth/presentaion/view_models/login_cubit/login_state.dart';
-import 'package:quick_mart/features/auth/presentaion/views/widgets/custom_text_button.dart';
+import 'package:quick_mart/core/widgets/custom_text_button.dart';
 import 'package:quick_mart/features/auth/presentaion/views/widgets/custom_text_field.dart';
 import 'package:quick_mart/features/auth/presentaion/views/widgets/login_buttons_body.dart';
 import 'package:svg_flutter/svg.dart';
