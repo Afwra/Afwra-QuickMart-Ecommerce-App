@@ -21,7 +21,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await EasyLocalization.ensureInitialized();
-  setupAuthServiceLocator();
+  setupServiceLocator();
   Bloc.observer = MyBlocObserver();
   SystemChrome.setSystemUIOverlayStyle(
     getDarkMode()

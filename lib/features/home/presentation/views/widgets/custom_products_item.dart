@@ -3,13 +3,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
 import 'package:quick_mart/core/widgets/custom_image_widget.dart';
+import 'package:quick_mart/features/home/data/models/products_model/products_model.dart';
 
 class CustomProductsItem extends StatelessWidget {
   const CustomProductsItem({
     super.key,
     this.darkMode = false,
+    required this.product,
   });
   final bool darkMode;
+  final ProductsModel product;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -22,7 +25,8 @@ class CustomProductsItem extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(24.r),
                 child: CustomImageWidget(
-                  imageUrl: 'https://t.ly/w0j3d',
+                  imageUrl: product.image.toString(),
+                  boxFit: BoxFit.scaleDown,
                   height: 138.h,
                   width: 160.w,
                 ),
@@ -33,7 +37,7 @@ class CustomProductsItem extends StatelessWidget {
                 child: const CircleAvatar(
                   backgroundColor: Colors.black,
                   child: Icon(
-                    Icons.heart_broken,
+                    Icons.favorite_border_outlined,
                     color: Colors.white,
                   ),
                 ),
@@ -85,7 +89,7 @@ class CustomProductsItem extends StatelessWidget {
             height: 8,
           ),
           Text(
-            'Nike air jordan retro fashion',
+            product.title,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: AppTextStyles.body2Medium.copyWith(
@@ -93,7 +97,7 @@ class CustomProductsItem extends StatelessWidget {
             ),
           ),
           Text(
-            '\$126.00',
+            '\$${product.price}',
             style: AppTextStyles.captionSemiBold.copyWith(
               color: darkMode ? Colors.white : AppColors.kBrandColorBlack,
             ),

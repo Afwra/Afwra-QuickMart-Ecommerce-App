@@ -8,6 +8,8 @@ class AppConstants {
   static const String apiEndpoint = 'https://fakestoreapi.com';
   static const String loginEndpoint = '/auth/login';
   static const String registerEndpoint = '/auth/login';
+  static const String latestProductsEndpoint = '/products?limit=7';
+  static const String productsEndpoint = '/products';
 
   //others
   static const String profilePictureLink = 'https://t.ly/3msp8';

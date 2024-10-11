@@ -7,7 +7,7 @@ class ApiService {
 
   ApiService(this._dio);
 
-  Future<Map<String, dynamic>> get(
+  Future<dynamic> get(
       {required String endpoint,
       Map<String, dynamic>? queryParameters,
       Map<String, dynamic>? body}) async {
