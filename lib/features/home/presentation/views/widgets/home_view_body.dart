@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quick_mart/features/home/presentation/view_model/home_cubit/home_cubit.dart';
-import 'package:quick_mart/features/home/presentation/views/widgets/custom_banner_item.dart';
+import 'package:quick_mart/features/home/presentation/views/widgets/custom_banner_page_view.dart';
 import 'package:quick_mart/features/home/presentation/views/widgets/custom_home_view_app_bar.dart';
 import 'package:quick_mart/features/home/presentation/views/widgets/custom_home_view_category_row.dart';
 import 'package:quick_mart/features/home/presentation/views/widgets/custom_home_view_title.dart';
@@ -24,7 +24,7 @@ class HomeViewBody extends StatelessWidget {
             height: 24,
           ),
         ),
-        const SliverToBoxAdapter(child: CustomBannerItem()),
+        const SliverToBoxAdapter(child: CustomBannerPageView()),
         const SliverToBoxAdapter(
           child: SizedBox(
             height: 24,

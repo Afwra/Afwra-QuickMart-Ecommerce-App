@@ -9,7 +9,7 @@ class CategoriesCubit extends Cubit<CategoriesState> {
 
   HomeRepo homeRepo;
   bool isLoading = false;
-  late List<CategoryModel> categories;
+  late List<CategoryModel> categories = [];
   void getCategories() async {
     isLoading = !isLoading;
 

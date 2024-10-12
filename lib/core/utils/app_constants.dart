@@ -10,6 +10,7 @@ class AppConstants {
   static const String loginEndpoint = 'login';
   static const String registerEndpoint = 'register';
   static const String latestProductsEndpoint = 'home';
+  static const String bannersEndpoint = 'banners';
   static const String categoriesEndpoint = 'categories';
 
   //others
