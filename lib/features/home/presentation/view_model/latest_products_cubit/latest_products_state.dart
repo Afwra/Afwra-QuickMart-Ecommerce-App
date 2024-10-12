@@ -1,4 +1,4 @@
-import 'package:quick_mart/features/home/data/models/products_model/products_model.dart';
+import 'package:quick_mart/features/home/data/models/product_model.dart';
 
 sealed class LatestProductsState {}
 
@@ -7,7 +7,7 @@ final class LatestProductsInitial extends LatestProductsState {}
 final class LatestProductsLoading extends LatestProductsState {}
 
 final class LatestProductsSuccess extends LatestProductsState {
-  List<ProductsModel> products;
+  List<ProductModel> products;
   LatestProductsSuccess({required this.products});
 }
 

@@ -9,18 +9,21 @@ import 'package:quick_mart/features/auth/presentaion/view_models/register_cubit/
 class RegisterCubit extends Cubit<RegisterState> {
   RegisterCubit(this.authRepo) : super(RegisterInitial());
   final AuthRepo authRepo;
-  void register(String email, String password, String phoneNumber) async {
+  void register(
+      String name, String email, String password, String phoneNumber) async {
     emit(RegisterLoading());
-    var result = await authRepo.login(email: email, password: password);
+    var result = await authRepo.register(
+        name: name, email: email, password: password, phoneNumber: phoneNumber);
+
     result.fold(
       (fail) {
         emit(RegisterFail(fail.errMsg));
-        log('login -- ${fail.errMsg}');
+        log('register -- ${fail.errMsg}');
       },
       (login) {
         saveLoginToken(login.token);
         emit(RegisterSuccess(login.token));
-        log('login -- ${login.token}');
+        log('register -- ${login.token}');
       },
     );
   }
@@ -55,6 +58,8 @@ class RegisterCubit extends Cubit<RegisterState> {
     context.locale.languageCode == 'en'
         ? context.setLocale(const Locale('ar'))
         : context.setLocale(const Locale('en'));
+    saveLanguageCode(context.locale.languageCode);
+
     emit(ChangeAppLocale());
   }
 
@@ -72,8 +77,8 @@ class RegisterCubit extends Cubit<RegisterState> {
 
   void validateForm() {
     if (formKey.currentState!.validate()) {
-      register(emailController.text, passwordController.text,
-          phoneNumberController.text);
+      register(nameController.text, emailController.text,
+          passwordController.text, phoneNumberController.text);
     }
   }
 

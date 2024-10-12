@@ -31,7 +31,7 @@ class LoginButtonsBody extends StatelessWidget {
                     onPressed: () {
                       if (cubit.formKey.currentState!.validate()) {
                         cubit.login(cubit.emailController.text,
-                            cubit.passwordController.text);
+                            cubit.passwordController.text, context);
                       }
                     },
                   ),

@@ -30,3 +30,13 @@ void saveDarkMode(bool enabledDarkMode) {
   var settingBox = Hive.box(AppConstants.settingsBox);
   settingBox.put(AppConstants.darkModeStatus, enabledDarkMode);
 }
+
+String getLanguageCode() {
+  var settingBox = Hive.box(AppConstants.settingsBox);
+  return settingBox.get(AppConstants.languageCode, defaultValue: 'en');
+}
+
+void saveLanguageCode(String code) {
+  var settingBox = Hive.box(AppConstants.settingsBox);
+  settingBox.put(AppConstants.languageCode, code);
+}

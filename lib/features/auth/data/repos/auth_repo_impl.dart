@@ -8,6 +8,7 @@ import 'package:quick_mart/core/errors/failures.dart';
 import 'package:quick_mart/core/utils/api_service.dart';
 import 'package:quick_mart/core/utils/app_constants.dart';
 import 'package:quick_mart/features/auth/data/models/auth_model.dart';
+import 'package:quick_mart/features/auth/data/models/user_model.dart';
 import 'package:quick_mart/features/auth/data/repos/auth_repo.dart';
 
 class AuthRepoImpl extends AuthRepo {
@@ -17,13 +18,21 @@ class AuthRepoImpl extends AuthRepo {
   AuthRepoImpl({required this.apiService});
 
   @override
-  Future<Either<Failures, AuthModel>> login(
-      {required String email, required String password}) async {
+  Future<Either<Failures, UserModel>> login(
+      {required String email,
+      required String password,
+      String lang = 'en'}) async {
     try {
       var data = await apiService.post(
-          endpoint: AppConstants.loginEndpoint,
-          data: {'username': email, 'password': password});
-      return right(AuthModel.fromJson(data));
+        endpoint: AppConstants.loginEndpoint,
+        data: {'email': email, 'password': password},
+        headers: {'lang': lang},
+      );
+      if (data['status'] == true) {
+        return right(UserModel.fromJson(data['data']));
+      } else {
+        return left(ServerFailure(data['message']));
+      }
     } catch (e) {
       if (e is DioException) {
         return left(ServerFailure.dioError(e));
@@ -34,13 +43,28 @@ class AuthRepoImpl extends AuthRepo {
   }
 
   @override
-  Future<Either<Failures, AuthModel>> register(
-      {required String email, required String password}) async {
+  Future<Either<Failures, UserModel>> register(
+      {required String name,
+      required String email,
+      required String password,
+      required String phoneNumber,
+      String lang = 'en'}) async {
     try {
       var data = await apiService.post(
-          endpoint: AppConstants.loginEndpoint,
-          data: {'username': email, 'password': password});
-      return right(AuthModel.fromJson(data));
+        endpoint: AppConstants.registerEndpoint,
+        data: {
+          'name': name,
+          'email': email,
+          'password': password,
+          'phone': phoneNumber
+        },
+        headers: {'lang': lang},
+      );
+      if (data['status'] == true) {
+        return right(UserModel.fromJson(data['data']));
+      } else {
+        return left(ServerFailure(data['message']));
+      }
     } catch (e) {
       if (e is DioException) {
         return left(ServerFailure.dioError(e));

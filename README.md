@@ -6,7 +6,7 @@ QuickMart is a personal eCommerce application built using Flutter. This project 
 - State Management: Cubit
 - Architecture Pattern: MVVM
 - API Handling: Dio
-- Data Source: FakeStore API
+- Data Source: Softagi API
 - Design Reference: Figma Design by Harsh Advani
 - Purpose: Personal project for learning and enhancing Flutter development skills
 ## About the Developer

@@ -4,11 +4,12 @@ class AppConstants {
   static const String onboardingCompleted = 'onboarding_completed';
   static const String loginToken = 'login_token';
   static const String darkModeStatus = 'dark_mode_status';
+  static const String languageCode = 'language_code';
   //api
-  static const String apiEndpoint = 'https://fakestoreapi.com';
-  static const String loginEndpoint = '/auth/login';
-  static const String registerEndpoint = '/auth/login';
-  static const String latestProductsEndpoint = '/products?limit=7';
+  static const String apiEndpoint = 'https://student.valuxapps.com/api/';
+  static const String loginEndpoint = 'login';
+  static const String registerEndpoint = 'register';
+  static const String latestProductsEndpoint = 'home';
   static const String productsEndpoint = '/products';
 
   //others

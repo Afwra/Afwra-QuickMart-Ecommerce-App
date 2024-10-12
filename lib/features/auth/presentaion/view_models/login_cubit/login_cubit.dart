@@ -10,9 +10,10 @@ class LoginCubit extends Cubit<LoginState> {
   LoginCubit(this.authRepo) : super(LoginInitial());
 
   final AuthRepo authRepo;
-  void login(String email, String password) async {
+  void login(String email, String password, BuildContext context) async {
     emit(LoginLoading());
-    var result = await authRepo.login(email: email, password: password);
+    var result = await authRepo.login(
+        email: email, password: password, lang: context.locale.languageCode);
     result.fold(
       (fail) {
         emit(LoginFail(fail.errMsg));
@@ -53,6 +54,7 @@ class LoginCubit extends Cubit<LoginState> {
     context.locale.languageCode == 'en'
         ? context.setLocale(const Locale('ar'))
         : context.setLocale(const Locale('en'));
+    saveLanguageCode(context.locale.languageCode);
     emit(ChangeAppLocale());
   }
 
