@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:quick_mart/core/errors/failures.dart';
 import 'package:quick_mart/core/utils/api_service.dart';
 import 'package:quick_mart/core/utils/app_constants.dart';
+import 'package:quick_mart/features/home/data/models/category_model.dart';
 import 'package:quick_mart/features/home/data/models/product_model.dart';
 import 'package:quick_mart/features/home/data/repos/home_repo.dart';
 
@@ -27,6 +28,34 @@ class HomeRepoImpl implements HomeRepo {
           products.add(ProductModel.fromJson(item));
         }
         return right(products);
+      } else {
+        return Left(ServerFailure(data['message']));
+      }
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.dioError(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
+  }
+
+  @override
+  Future<Either<Failures, List<CategoryModel>>> getCategories(
+      {String lang = 'en'}) async {
+    try {
+      var data = await apiService.get(
+        endpoint: AppConstants.categoriesEndpoint,
+        headers: {
+          'lang': lang,
+        },
+      );
+      if (data['status'] == true) {
+        List<CategoryModel> categories = [];
+        for (var item in data['data']['data']) {
+          categories.add(CategoryModel.fromJson(item));
+        }
+        return right(categories);
       } else {
         return Left(ServerFailure(data['message']));
       }

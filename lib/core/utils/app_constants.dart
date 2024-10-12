@@ -10,7 +10,7 @@ class AppConstants {
   static const String loginEndpoint = 'login';
   static const String registerEndpoint = 'register';
   static const String latestProductsEndpoint = 'home';
-  static const String productsEndpoint = '/products';
+  static const String categoriesEndpoint = 'categories';
 
   //others
   static const String profilePictureLink = 'https://t.ly/3msp8';
