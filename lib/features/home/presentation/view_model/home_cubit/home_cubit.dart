@@ -12,4 +12,5 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   bool isDarkMode = getDarkMode();
+  String lang = getLanguageCode();
 }

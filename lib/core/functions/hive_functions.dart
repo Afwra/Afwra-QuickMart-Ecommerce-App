@@ -23,7 +23,7 @@ String? getLoginToken() {
 
 bool getDarkMode() {
   var settingBox = Hive.box(AppConstants.settingsBox);
-  return settingBox.get(AppConstants.darkModeStatus, defaultValue: false);
+  return settingBox.get(AppConstants.darkModeStatus, defaultValue: true);
 }
 
 void saveDarkMode(bool enabledDarkMode) {

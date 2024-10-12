@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quick_mart/core/utils/app_texts.dart';
 import 'package:quick_mart/features/home/presentation/view_model/home_cubit/home_cubit.dart';
 import 'package:quick_mart/features/home/presentation/views/widgets/custom_banner_page_view.dart';
 import 'package:quick_mart/features/home/presentation/views/widgets/custom_home_view_app_bar.dart';
@@ -32,7 +34,7 @@ class HomeViewBody extends StatelessWidget {
         ),
         SliverToBoxAdapter(
           child: CustomHomeViewTitle(
-            title: 'Categories',
+            title: AppTexts.categories.tr(),
             darkMode: cubit.isDarkMode,
             onPressed: () {},
           ),
@@ -50,7 +52,7 @@ class HomeViewBody extends StatelessWidget {
         ),
         SliverToBoxAdapter(
           child: CustomHomeViewTitle(
-            title: 'Latest Products',
+            title: AppTexts.latestProducts.tr(),
             darkMode: cubit.isDarkMode,
             onPressed: () {},
           ),

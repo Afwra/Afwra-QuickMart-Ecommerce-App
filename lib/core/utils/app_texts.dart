@@ -55,4 +55,13 @@ class AppTexts {
   static const String passwordSuccessTitle = 'Auth.password_success_title';
   static const String passwordSuccessSubTitle =
       'Auth.password_success_sub_title';
+
+  //home section
+  static const String profile = 'Home.profile';
+  static const String home = 'Home.home';
+  static const String categories = 'Home.categories';
+  static const String myCart = 'Home.my_cart';
+  static const String myWishlist = 'Home.my_wishlist';
+  static const String latestProducts = 'Home.latest_products';
+  static const String seeAll = 'Home.see_all';
 }

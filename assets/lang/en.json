@@ -50,8 +50,16 @@
         "resend_code":"Resend Code",
         "password_success_title":"New password set successfully",
         "password_success_sub_title":"Congratulations! Your password has been set successfully. Please proceed to the login screen to verify your account."
+    },
+    "Home":{
+        "profile":"Profile",
+        "home":"Home",
+        "categories":"Categories",
+        "my_cart":"My Cart",
+        "my_wishlist":"WishList",
+        "latest_products":"Latest Products",
+        "see_all":"See All"
     }
-    
 
   }
   

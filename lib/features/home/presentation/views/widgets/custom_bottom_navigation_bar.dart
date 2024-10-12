@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quick_mart/core/utils/app_assets.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
+import 'package:quick_mart/core/utils/app_texts.dart';
 import 'package:svg_flutter/svg.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
@@ -34,11 +36,15 @@ class CustomBottomNavigationBar extends StatelessWidget {
         unselectedItemColor: AppColors.kGrey150,
         enableFeedback: false,
         items: [
-          customBottomNavigationItem('Home', AppAssets.homeIcon, 0),
-          customBottomNavigationItem('Categories', AppAssets.categoriesIcon, 1),
-          customBottomNavigationItem('My Cart', AppAssets.cartIcon, 2),
-          customBottomNavigationItem('Whishlist', AppAssets.whichListIcon, 3),
-          customBottomNavigationItem('Profile', AppAssets.profileIcon, 4),
+          customBottomNavigationItem(AppTexts.home.tr(), AppAssets.homeIcon, 0),
+          customBottomNavigationItem(
+              AppTexts.categories.tr(), AppAssets.categoriesIcon, 1),
+          customBottomNavigationItem(
+              AppTexts.myCart.tr(), AppAssets.cartIcon, 2),
+          customBottomNavigationItem(
+              AppTexts.myWishlist.tr(), AppAssets.whichListIcon, 3),
+          customBottomNavigationItem(
+              AppTexts.profile.tr(), AppAssets.profileIcon, 4),
         ],
       ),
     );

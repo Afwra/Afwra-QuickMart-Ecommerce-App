@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
 import 'package:quick_mart/core/widgets/custom_image_widget.dart';
 import 'package:quick_mart/features/home/data/models/banner_model.dart';
+import 'package:quick_mart/features/home/presentation/view_model/home_cubit/home_cubit.dart';
 
 class CustomBannerItem extends StatelessWidget {
   const CustomBannerItem({
@@ -39,7 +41,8 @@ class CustomBannerItem extends StatelessWidget {
         ),
         Positioned(
           bottom: 10.h,
-          left: 12.w,
+          left: BlocProvider.of<HomeCubit>(context).lang == 'en' ? 12.w : 0,
+          right: BlocProvider.of<HomeCubit>(context).lang == 'ar' ? 12.w : 0,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
