@@ -33,54 +33,62 @@ class LoginViewBody extends StatelessWidget {
             showFlutterToast(msg: state.message);
           }
         },
-        child: CustomScrollView(
-          slivers: [
-            const SliverToBoxAdapter(
-              child: SizedBox(
-                height: 10,
-              ),
-            ),
-            SliverToBoxAdapter(
-              child: CustomAuthAppBar(
-                darkMode: cubit.darkMode,
-              ),
-            ),
-            const SliverToBoxAdapter(
-              child: SizedBox(
-                height: 24,
-              ),
-            ),
-            SliverToBoxAdapter(
-              child: AuthTitleAndSubtitle(
-                darkMode: cubit.darkMode,
-                title: AppTexts.authlogin.tr(),
-                subTitle: AppTexts.loginSubTitle.tr(),
-                buttonText: AppTexts.loginTextButton.tr(),
-                onPressed: () {
-                  GoRouter.of(context).go(AppRoutes.kRegisterView);
-                },
-              ),
-            ),
-            const SliverToBoxAdapter(
-              child: SizedBox(
-                height: 32,
-              ),
-            ),
-            const SliverToBoxAdapter(
-              child: LoginFormField(),
-            ),
-            SliverFillRemaining(
-              hasScrollBody: false,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  CustomTermsWidget(
-                    darkMode: cubit.darkMode,
+        child: BlocBuilder<LoginCubit, LoginState>(
+          builder: (context, state) {
+            return CustomScrollView(
+              slivers: [
+                const SliverToBoxAdapter(
+                  child: SizedBox(
+                    height: 10,
                   ),
-                ],
-              ),
-            )
-          ],
+                ),
+                SliverToBoxAdapter(
+                  child: CustomAuthAppBar(
+                    darkMode: cubit.darkMode,
+                    text: context.locale.languageCode == 'en'
+                        ? AppTexts.english.tr()
+                        : AppTexts.arabic.tr(),
+                    onPressed: () => cubit.changeAppLocale(context),
+                  ),
+                ),
+                const SliverToBoxAdapter(
+                  child: SizedBox(
+                    height: 24,
+                  ),
+                ),
+                SliverToBoxAdapter(
+                  child: AuthTitleAndSubtitle(
+                    darkMode: cubit.darkMode,
+                    title: AppTexts.authlogin.tr(),
+                    subTitle: AppTexts.loginSubTitle.tr(),
+                    buttonText: AppTexts.loginTextButton.tr(),
+                    onPressed: () {
+                      GoRouter.of(context).go(AppRoutes.kRegisterView);
+                    },
+                  ),
+                ),
+                const SliverToBoxAdapter(
+                  child: SizedBox(
+                    height: 32,
+                  ),
+                ),
+                const SliverToBoxAdapter(
+                  child: LoginFormField(),
+                ),
+                SliverFillRemaining(
+                  hasScrollBody: false,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      CustomTermsWidget(
+                        darkMode: cubit.darkMode,
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            );
+          },
         ),
       ),
     );

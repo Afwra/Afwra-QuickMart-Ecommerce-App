@@ -32,43 +32,51 @@ class RegisterViewBody extends StatelessWidget {
             showFlutterToast(msg: state.message);
           }
         },
-        child: CustomScrollView(
-          slivers: [
-            const SliverToBoxAdapter(
-              child: SizedBox(
-                height: 10,
-              ),
-            ),
-            SliverToBoxAdapter(
-              child: CustomAuthAppBar(
-                darkMode: cubit.darkMode,
-              ),
-            ),
-            const SliverToBoxAdapter(
-              child: SizedBox(
-                height: 24,
-              ),
-            ),
-            SliverToBoxAdapter(
-              child: AuthTitleAndSubtitle(
-                darkMode: cubit.darkMode,
-                title: AppTexts.register.tr(),
-                subTitle: AppTexts.registerSubTitle.tr(),
-                buttonText: AppTexts.registerTextButton.tr(),
-                onPressed: () {
-                  GoRouter.of(context).go(AppRoutes.kLoginView);
-                },
-              ),
-            ),
-            const SliverToBoxAdapter(
-              child: SizedBox(
-                height: 32,
-              ),
-            ),
-            const SliverToBoxAdapter(
-              child: RegisterFormField(),
-            ),
-          ],
+        child: BlocBuilder<RegisterCubit, RegisterState>(
+          builder: (context, state) {
+            return CustomScrollView(
+              slivers: [
+                const SliverToBoxAdapter(
+                  child: SizedBox(
+                    height: 10,
+                  ),
+                ),
+                SliverToBoxAdapter(
+                  child: CustomAuthAppBar(
+                    darkMode: cubit.darkMode,
+                    text: context.locale.languageCode == 'en'
+                        ? AppTexts.english.tr()
+                        : AppTexts.arabic.tr(),
+                    onPressed: () => cubit.changeAppLocale(context),
+                  ),
+                ),
+                const SliverToBoxAdapter(
+                  child: SizedBox(
+                    height: 24,
+                  ),
+                ),
+                SliverToBoxAdapter(
+                  child: AuthTitleAndSubtitle(
+                    darkMode: cubit.darkMode,
+                    title: AppTexts.register.tr(),
+                    subTitle: AppTexts.registerSubTitle.tr(),
+                    buttonText: AppTexts.registerTextButton.tr(),
+                    onPressed: () {
+                      GoRouter.of(context).go(AppRoutes.kLoginView);
+                    },
+                  ),
+                ),
+                const SliverToBoxAdapter(
+                  child: SizedBox(
+                    height: 32,
+                  ),
+                ),
+                const SliverToBoxAdapter(
+                  child: RegisterFormField(),
+                ),
+              ],
+            );
+          },
         ),
       ),
     );

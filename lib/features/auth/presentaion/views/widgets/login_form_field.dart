@@ -18,29 +18,29 @@ class LoginFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     LoginCubit cubit = BlocProvider.of<LoginCubit>(context);
-    return Form(
-      key: cubit.formKey,
-      child: Column(
-        children: [
-          CustomTextFormField(
-            darkMode: cubit.darkMode,
-            controller: cubit.emailController,
-            hintText: AppTexts.enterEmail.tr(),
-            titleText: AppTexts.email.tr(),
-            keyboardType: TextInputType.emailAddress,
-            validator: (string) {
-              if (string!.isEmpty) {
-                return AppTexts.enterEmail.tr();
-              }
-              return null;
-            },
-          ),
-          const SizedBox(
-            height: 16,
-          ),
-          BlocBuilder<LoginCubit, LoginState>(
-            builder: (context, state) {
-              return CustomTextFormField(
+    return BlocBuilder<LoginCubit, LoginState>(
+      builder: (context, state) {
+        return Form(
+          key: cubit.formKey,
+          child: Column(
+            children: [
+              CustomTextFormField(
+                darkMode: cubit.darkMode,
+                controller: cubit.emailController,
+                hintText: AppTexts.enterEmail.tr(),
+                titleText: AppTexts.email.tr(),
+                keyboardType: TextInputType.emailAddress,
+                validator: (string) {
+                  if (string!.isEmpty) {
+                    return AppTexts.enterEmail.tr();
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              CustomTextFormField(
                 darkMode: cubit.darkMode,
                 controller: cubit.passwordController,
                 hintText: AppTexts.enterPassword.tr(),
@@ -68,38 +68,39 @@ class LoginFormField extends StatelessWidget {
                   }
                   return null;
                 },
-              );
-            },
-          ),
-          const SizedBox(
-            height: 24,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              CustomTextButton(
-                  buttonText: AppTexts.forgotPassword.tr(),
-                  onPressed: () {
-                    GoRouter.of(context).push(AppRoutes.kForgotPasswordView);
-                  }),
+              ),
+              const SizedBox(
+                height: 24,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  CustomTextButton(
+                      buttonText: AppTexts.forgotPassword.tr(),
+                      onPressed: () {
+                        GoRouter.of(context)
+                            .push(AppRoutes.kForgotPasswordView);
+                      }),
+                ],
+              ),
+              const SizedBox(
+                height: 24,
+              ),
+              BlocBuilder<LoginCubit, LoginState>(
+                builder: (context, state) {
+                  if (state is LoginLoading) {
+                    return const Center(
+                        child: CircularProgressIndicator(
+                      color: AppColors.kBrandColorCyan,
+                    ));
+                  }
+                  return const LoginButtonsBody();
+                },
+              ),
             ],
           ),
-          const SizedBox(
-            height: 24,
-          ),
-          BlocBuilder<LoginCubit, LoginState>(
-            builder: (context, state) {
-              if (state is LoginLoading) {
-                return const Center(
-                    child: CircularProgressIndicator(
-                  color: AppColors.kBrandColorCyan,
-                ));
-              }
-              return const LoginButtonsBody();
-            },
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 }

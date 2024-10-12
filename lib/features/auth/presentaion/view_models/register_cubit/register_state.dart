@@ -4,6 +4,8 @@ final class RegisterInitial extends RegisterState {}
 
 final class ChangePasswordVisibility extends RegisterState {}
 
+final class ChangeAppLocale extends RegisterState {}
+
 final class RegisterSuccess extends RegisterState {
   final String token;
   RegisterSuccess(this.token);

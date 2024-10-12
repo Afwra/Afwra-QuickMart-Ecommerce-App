@@ -1,4 +1,6 @@
 {
+    "arabic":"Arabic",
+    "english":"English",
     "OnBoarding":{
         "txt_button": "Skip For Now",
         "title_1":"Explore a wide range of products",
@@ -23,6 +25,8 @@
         "register_txt_btn":"Login",
         "name":"Full Name",
         "email":"Email",
+        "phone_number":"Phone Number",
+        "enter_phone_number":"Enter Your Phone Number",
         "password":"Password",
         "enter_password":"Enter Your Password",
         "enter_Name":"Enter Your Name",

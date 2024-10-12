@@ -1,4 +1,7 @@
 class AppTexts {
+  static const String arabic = 'arabic';
+  static const String english = 'english';
+
   // Onboarding Texts
   static const String txtButton = 'OnBoarding.txt_button';
   static const String title1 = 'OnBoarding.title_1';
@@ -24,7 +27,9 @@ class AppTexts {
   static const String name = 'Auth.name';
   static const String email = 'Auth.email';
   static const String password = 'Auth.password';
+  static const String phoneNumber = 'Auth.phone_number';
   static const String enterPassword = 'Auth.enter_password';
+  static const String enterPhoneNumber = 'Auth.enter_phone_number';
   static const String enterName = 'Auth.enter_Name';
   static const String enterEmail = 'Auth.enter_email';
   static const String terms1 = 'Auth.terms_1';

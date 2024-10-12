@@ -15,3 +15,5 @@ final class LoginFail extends LoginState {
 }
 
 final class LoginLoading extends LoginState {}
+
+final class ChangeAppLocale extends LoginState {}

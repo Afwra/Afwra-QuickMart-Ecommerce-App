@@ -16,38 +16,39 @@ class RegisterFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     RegisterCubit cubit = BlocProvider.of<RegisterCubit>(context);
-    return Form(
-      key: cubit.formKey,
-      child: Column(
-        children: [
-          CustomTextFormField(
-            darkMode: cubit.darkMode,
-            controller: cubit.nameController,
-            validator: (value) {
-              return cubit.validateTextField(value, AppTexts.enterName.tr());
-            },
-            hintText: AppTexts.enterName.tr(),
-            titleText: AppTexts.name.tr(),
-            keyboardType: TextInputType.emailAddress,
-          ),
-          const SizedBox(
-            height: 16,
-          ),
-          CustomTextFormField(
-            darkMode: cubit.darkMode,
-            controller: cubit.emailController,
-            validator: (value) =>
-                cubit.validateTextField(value, AppTexts.enterEmail.tr()),
-            hintText: AppTexts.enterEmail.tr(),
-            titleText: AppTexts.email.tr(),
-            keyboardType: TextInputType.emailAddress,
-          ),
-          const SizedBox(
-            height: 16,
-          ),
-          BlocBuilder<RegisterCubit, RegisterState>(
-            builder: (context, state) {
-              return CustomTextFormField(
+    return BlocBuilder<RegisterCubit, RegisterState>(
+      builder: (context, state) {
+        return Form(
+          key: cubit.formKey,
+          child: Column(
+            children: [
+              CustomTextFormField(
+                darkMode: cubit.darkMode,
+                controller: cubit.nameController,
+                validator: (value) {
+                  return cubit.validateTextField(
+                      value, AppTexts.enterName.tr());
+                },
+                hintText: AppTexts.enterName.tr(),
+                titleText: AppTexts.name.tr(),
+                keyboardType: TextInputType.emailAddress,
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              CustomTextFormField(
+                darkMode: cubit.darkMode,
+                controller: cubit.emailController,
+                validator: (value) =>
+                    cubit.validateTextField(value, AppTexts.enterEmail.tr()),
+                hintText: AppTexts.enterEmail.tr(),
+                titleText: AppTexts.email.tr(),
+                keyboardType: TextInputType.emailAddress,
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              CustomTextFormField(
                 darkMode: cubit.darkMode,
                 hintText: AppTexts.enterPassword.tr(),
                 controller: cubit.passwordController,
@@ -71,26 +72,36 @@ class RegisterFormField extends StatelessWidget {
                   ),
                 ),
                 keyboardType: TextInputType.visiblePassword,
-              );
-            },
+              ),
+              const SizedBox(height: 16),
+              CustomTextFormField(
+                darkMode: cubit.darkMode,
+                controller: cubit.phoneNumberController,
+                validator: (value) => cubit.validateTextField(
+                    value, AppTexts.enterPhoneNumber.tr()),
+                hintText: AppTexts.enterPhoneNumber.tr(),
+                titleText: AppTexts.phoneNumber.tr(),
+                keyboardType: TextInputType.number,
+              ),
+              const SizedBox(
+                height: 24,
+              ),
+              BlocBuilder<RegisterCubit, RegisterState>(
+                builder: (context, state) {
+                  if (state is RegisterLoading) {
+                    return const Center(
+                      child: CircularProgressIndicator(
+                        color: AppColors.kBrandColorCyan,
+                      ),
+                    );
+                  }
+                  return const RegisterButtonBody();
+                },
+              ),
+            ],
           ),
-          const SizedBox(
-            height: 24,
-          ),
-          BlocBuilder<RegisterCubit, RegisterState>(
-            builder: (context, state) {
-              if (state is RegisterLoading) {
-                return const Center(
-                  child: CircularProgressIndicator(
-                    color: AppColors.kBrandColorCyan,
-                  ),
-                );
-              }
-              return const RegisterButtonBody();
-            },
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 }

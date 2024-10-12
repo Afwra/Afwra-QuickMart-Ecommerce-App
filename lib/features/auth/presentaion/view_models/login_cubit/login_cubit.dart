@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quick_mart/core/functions/hive_functions.dart';
@@ -46,6 +47,13 @@ class LoginCubit extends Cubit<LoginState> {
   late bool darkMode;
   void setupDarkMode() {
     darkMode = getDarkMode();
+  }
+
+  void changeAppLocale(BuildContext context) {
+    context.locale.languageCode == 'en'
+        ? context.setLocale(const Locale('ar'))
+        : context.setLocale(const Locale('en'));
+    emit(ChangeAppLocale());
   }
 
   bool isVisible = true;
