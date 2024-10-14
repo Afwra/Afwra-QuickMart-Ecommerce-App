@@ -11,6 +11,12 @@ class BannerCubit extends Cubit<BannerState> {
   HomeRepo homeRepo;
   PageController pageController = PageController();
   List<BannerModel> banners = [];
+  int pageIndex = 0;
+
+  void updatePageIndex(int index) {
+    pageIndex = index;
+  }
+
   void getBanner() async {
     emit(BannerLoading());
     final data = await homeRepo.getBanners();
@@ -24,17 +30,19 @@ class BannerCubit extends Cubit<BannerState> {
   late Timer timer;
   void autoScroll() {
     timer = Timer.periodic(const Duration(seconds: 12), (Timer timer) {
-      if (pageController.page == banners.length - 1) {
-        pageController.animateToPage(
-          0,
-          duration: const Duration(milliseconds: 300),
-          curve: Curves.easeInOut,
-        );
-      } else {
-        pageController.nextPage(
-          duration: const Duration(milliseconds: 300),
-          curve: Curves.easeInOut,
-        );
+      if (pageController.positions.isNotEmpty) {
+        if (pageIndex == banners.length - 1) {
+          pageController.animateToPage(
+            0,
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.bounceOut,
+          );
+        } else {
+          pageController.nextPage(
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.bounceIn,
+          );
+        }
       }
     });
   }

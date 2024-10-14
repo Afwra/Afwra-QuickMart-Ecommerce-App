@@ -30,6 +30,8 @@ class CustomBannerPageView extends StatelessWidget {
                   banner: state.banners[index],
                 );
               },
+              onPageChanged: (page) =>
+                  BlocProvider.of<BannerCubit>(context).updatePageIndex(page),
             ),
           );
         } else {

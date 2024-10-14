@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quick_mart/core/utils/app_assets.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
@@ -28,6 +29,8 @@ class OnBoardingRowItem extends StatelessWidget {
                     darkMode
                         ? AppAssets.quickMartLogoDarkMode
                         : AppAssets.quickMartLogo,
+                    height: 32.h,
+                    width: 104.w,
                   )
                 : GestureDetector(
                     child: SvgPicture.asset(

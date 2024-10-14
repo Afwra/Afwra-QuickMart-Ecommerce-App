@@ -11,14 +11,16 @@ class OnBoardingPageItem extends StatelessWidget {
   final OnBoardingItemModel item;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        OnBoardingContainer(item: item),
-        const SizedBox(
-          height: 20,
-        ),
-        OnBoardingTitleAndSubtitle(item: item),
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          OnBoardingContainer(item: item),
+          const SizedBox(
+            height: 20,
+          ),
+          OnBoardingTitleAndSubtitle(item: item),
+        ],
+      ),
     );
   }
 }

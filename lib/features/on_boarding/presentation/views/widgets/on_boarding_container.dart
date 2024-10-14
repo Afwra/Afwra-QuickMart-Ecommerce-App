@@ -23,17 +23,17 @@ class OnBoardingContainer extends StatelessWidget {
       child: Column(
         children: [
           const OnBoardingRowItem(),
-          const SizedBox(
-            height: 46,
+          SizedBox(
+            height: 46.h,
           ),
           Image.asset(
             height: 240.h,
             width: 240.w,
             item.image,
-            fit: BoxFit.cover,
+            fit: BoxFit.scaleDown,
           ),
-          const SizedBox(
-            height: 70,
+          SizedBox(
+            height: 70.h,
           ),
         ],
       ),
