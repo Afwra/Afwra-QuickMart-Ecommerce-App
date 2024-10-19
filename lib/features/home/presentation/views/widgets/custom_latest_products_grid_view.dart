@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:quick_mart/core/widgets/custom_grid_loading_widget.dart';
+import 'package:quick_mart/core/widgets/custom_sliver_grid_loading_widget.dart';
 import 'package:quick_mart/features/home/presentation/view_model/latest_products_cubit/latest_products_cubit.dart';
 import 'package:quick_mart/features/home/presentation/view_model/latest_products_cubit/latest_products_state.dart';
 import 'package:quick_mart/features/home/presentation/views/widgets/custom_products_item.dart';
@@ -36,7 +36,7 @@ class CustomLatestProductsGridView extends StatelessWidget {
             itemCount: state.products.length,
           );
         } else {
-          return const CustomGridLoadingWidget();
+          return const CustomSliverGridLoadingWidget();
         }
       },
     );

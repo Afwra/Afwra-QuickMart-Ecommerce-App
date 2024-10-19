@@ -3,14 +3,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
-class CustomGridLoadingWidget extends StatelessWidget {
-  const CustomGridLoadingWidget({super.key});
+class CustomSliverGridLoadingWidget extends StatelessWidget {
+  const CustomSliverGridLoadingWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Skeletonizer(
+    return Skeletonizer.sliver(
       enabled: true,
-      child: GridView.builder(
+      child: SliverGrid.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           crossAxisSpacing: 8.w,
@@ -25,7 +25,7 @@ class CustomGridLoadingWidget extends StatelessWidget {
             color: AppColors.kGrey50,
           ),
         ),
-        itemCount: 8,
+        itemCount: 4,
       ),
     );
   }

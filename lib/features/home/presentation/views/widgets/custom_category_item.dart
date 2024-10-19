@@ -14,10 +14,14 @@ class CustomCategoryItem extends StatelessWidget {
     required this.imageHeight,
     required this.imageWidth,
     this.isDarkMode = false,
+    this.textStyle,
+    this.boxFit,
   });
   final String title, imageUrl;
   final double containerHeight, containerWidth, imageHeight, imageWidth;
   final bool isDarkMode;
+  final TextStyle? textStyle;
+  final BoxFit? boxFit;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -38,6 +42,7 @@ class CustomCategoryItem extends StatelessWidget {
             imageUrl: imageUrl,
             height: imageHeight,
             width: imageWidth,
+            boxFit: boxFit,
           ),
           const SizedBox(
             height: 2,
@@ -46,9 +51,10 @@ class CustomCategoryItem extends StatelessWidget {
             title,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: AppTextStyles.overlineSemiBold.copyWith(
-              color: isDarkMode ? Colors.white : AppColors.kBrandColorBlack,
-            ),
+            style: textStyle ??
+                AppTextStyles.overlineSemiBold.copyWith(
+                  color: isDarkMode ? Colors.white : AppColors.kBrandColorBlack,
+                ),
           ),
         ],
       ),
