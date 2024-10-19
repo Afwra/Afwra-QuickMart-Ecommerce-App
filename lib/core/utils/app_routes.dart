@@ -5,9 +5,10 @@ import 'package:quick_mart/features/auth/presentaion/views/forgot_password_view.
 import 'package:quick_mart/features/auth/presentaion/views/login_view.dart';
 import 'package:quick_mart/features/auth/presentaion/views/password_created_success_view.dart';
 import 'package:quick_mart/features/auth/presentaion/views/register_view.dart';
+import 'package:quick_mart/features/home/data/models/category_model.dart';
 import 'package:quick_mart/features/home/presentation/view_model/home_cubit/home_cubit.dart';
 import 'package:quick_mart/features/home/presentation/views/home_layout.dart';
-import 'package:quick_mart/features/home/presentation/views/home_view.dart';
+import 'package:quick_mart/features/home/presentation/views/product_listing_view.dart';
 import 'package:quick_mart/features/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:quick_mart/features/splash_screen/presentation/views/splash_screen_view.dart';
 
@@ -21,6 +22,7 @@ abstract class AppRoutes {
   static const kHomeView = '/HomeView';
   static const kDetailsView = '/detailsView';
   static const kSearchView = '/searchView';
+  static const kProductsListingView = '/ProductsListingView';
   static final router = GoRouter(
     routes: [
       GoRoute(
@@ -61,9 +63,11 @@ abstract class AppRoutes {
               child: const HomeLayout(),
             )),
       ),
+
       GoRoute(
-        path: kHomeView,
-        builder: (context, state) => const HomeView(),
+        path: kProductsListingView,
+        builder: (context, state) =>
+            ProductListingView(category: state.extra as CategoryModel),
       ),
       // GoRoute(
       //   path: kDetailsView,

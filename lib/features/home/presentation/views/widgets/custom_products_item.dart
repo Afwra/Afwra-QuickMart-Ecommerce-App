@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:quick_mart/core/functions/hive_functions.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
 import 'package:quick_mart/core/widgets/custom_image_widget.dart';
 import 'package:quick_mart/features/home/data/models/product_model.dart';
-import 'package:quick_mart/features/home/presentation/view_model/home_cubit/home_cubit.dart';
 
 class CustomProductsItem extends StatelessWidget {
   const CustomProductsItem({
@@ -17,6 +16,7 @@ class CustomProductsItem extends StatelessWidget {
   final ProductModel product;
   @override
   Widget build(BuildContext context) {
+    var langCode = getLanguageCode();
     return SizedBox(
       width: 160.w,
       child: Column(
@@ -35,12 +35,8 @@ class CustomProductsItem extends StatelessWidget {
               ),
               Positioned(
                 top: 6.h,
-                right: BlocProvider.of<HomeCubit>(context).lang == 'ar'
-                    ? null
-                    : 6.w,
-                left: BlocProvider.of<HomeCubit>(context).lang == 'ar'
-                    ? 6.w
-                    : null,
+                right: langCode == 'ar' ? null : 6.w,
+                left: langCode == 'ar' ? 6.w : null,
                 child: CircleAvatar(
                   backgroundColor: Colors.black,
                   child: Icon(
@@ -65,24 +61,16 @@ class CustomProductsItem extends StatelessWidget {
                     backgroundColor: Colors.red,
                   ),
                   Positioned(
-                    left: BlocProvider.of<HomeCubit>(context).lang == 'ar'
-                        ? null
-                        : 20,
-                    right: BlocProvider.of<HomeCubit>(context).lang == 'ar'
-                        ? 20
-                        : null,
+                    left: langCode == 'ar' ? null : 20,
+                    right: langCode == 'ar' ? 20 : null,
                     child: CircleAvatar(
                       radius: 12.r,
                       backgroundColor: Colors.blue,
                     ),
                   ),
                   Positioned(
-                    left: BlocProvider.of<HomeCubit>(context).lang == 'ar'
-                        ? null
-                        : 40,
-                    right: BlocProvider.of<HomeCubit>(context).lang == 'ar'
-                        ? 40
-                        : null,
+                    left: langCode == 'ar' ? null : 40,
+                    right: langCode == 'ar' ? 40 : null,
                     child: CircleAvatar(
                       radius: 12.r,
                       backgroundColor: Colors.green,
