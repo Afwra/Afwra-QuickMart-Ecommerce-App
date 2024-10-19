@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quick_mart/core/utils/app_assets.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
+import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
 import 'package:quick_mart/core/utils/app_texts.dart';
 import 'package:quick_mart/features/auth/presentaion/view_models/forgot_password_cubit/forgot_password_cubit.dart';
@@ -30,7 +31,7 @@ class CustomForgotPasswordAppBar extends StatelessWidget {
             height: 32.h,
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
-              cubit.darkMode ? Colors.white : AppColors.kBrandColorBlack,
+              AppSettings.darkMode ? Colors.white : AppColors.kBrandColorBlack,
               BlendMode.srcIn,
             ),
           ),
@@ -42,7 +43,9 @@ class CustomForgotPasswordAppBar extends StatelessWidget {
         Text(
           AppTexts.forgotPassword.tr(),
           style: AppTextStyles.body2Medium.copyWith(
-            color: cubit.darkMode ? Colors.white : AppColors.kBrandColorBlack,
+            color: AppSettings.darkMode
+                ? Colors.white
+                : AppColors.kBrandColorBlack,
           ),
         ),
         const Spacer(),
@@ -51,8 +54,9 @@ class CustomForgotPasswordAppBar extends StatelessWidget {
             return Text(
               '0${cubit.pageIndex + 1}/',
               style: AppTextStyles.body2Medium.copyWith(
-                color:
-                    cubit.darkMode ? Colors.white : AppColors.kBrandColorBlack,
+                color: AppSettings.darkMode
+                    ? Colors.white
+                    : AppColors.kBrandColorBlack,
               ),
             );
           },

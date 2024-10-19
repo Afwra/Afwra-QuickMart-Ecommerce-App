@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:quick_mart/core/utils/app_assets.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/core/utils/app_routes.dart';
+import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/core/utils/app_texts.dart';
 import 'package:quick_mart/features/auth/presentaion/view_models/login_cubit/login_cubit.dart';
 import 'package:quick_mart/features/auth/presentaion/view_models/login_cubit/login_state.dart';
@@ -25,7 +26,7 @@ class LoginFormField extends StatelessWidget {
           child: Column(
             children: [
               CustomTextFormField(
-                darkMode: cubit.darkMode,
+                darkMode: AppSettings.darkMode,
                 controller: cubit.emailController,
                 hintText: AppTexts.enterEmail.tr(),
                 titleText: AppTexts.email.tr(),
@@ -41,7 +42,7 @@ class LoginFormField extends StatelessWidget {
                 height: 16,
               ),
               CustomTextFormField(
-                darkMode: cubit.darkMode,
+                darkMode: AppSettings.darkMode,
                 controller: cubit.passwordController,
                 hintText: AppTexts.enterPassword.tr(),
                 titleText: AppTexts.password.tr(),
@@ -52,7 +53,7 @@ class LoginFormField extends StatelessWidget {
                     child: SvgPicture.asset(
                       AppAssets.passwordVisible,
                       colorFilter: ColorFilter.mode(
-                        cubit.darkMode
+                        AppSettings.darkMode
                             ? Colors.white
                             : AppColors.kBrandColorBlack,
                         BlendMode.srcIn,

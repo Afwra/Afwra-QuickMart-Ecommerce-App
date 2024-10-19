@@ -13,8 +13,7 @@ class LoginView extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
           child: BlocProvider(
-        create: (context) =>
-            LoginCubit(getIt.get<AuthRepoImpl>())..setupDarkMode(),
+        create: (context) => LoginCubit(getIt.get<AuthRepoImpl>()),
         child: const LoginViewBody(),
       )),
     );

@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:quick_mart/core/functions/flutter_toast.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/core/utils/app_routes.dart';
+import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/core/utils/app_texts.dart';
 import 'package:quick_mart/features/auth/presentaion/view_models/register_cubit/register_cubit.dart';
 import 'package:quick_mart/features/auth/presentaion/view_models/register_cubit/register_state.dart';
@@ -43,7 +44,7 @@ class RegisterViewBody extends StatelessWidget {
                 ),
                 SliverToBoxAdapter(
                   child: CustomAuthAppBar(
-                    darkMode: cubit.darkMode,
+                    darkMode: AppSettings.darkMode,
                     text: context.locale.languageCode == 'en'
                         ? AppTexts.english.tr()
                         : AppTexts.arabic.tr(),
@@ -57,7 +58,7 @@ class RegisterViewBody extends StatelessWidget {
                 ),
                 SliverToBoxAdapter(
                   child: AuthTitleAndSubtitle(
-                    darkMode: cubit.darkMode,
+                    darkMode: AppSettings.darkMode,
                     title: AppTexts.register.tr(),
                     subTitle: AppTexts.registerSubTitle.tr(),
                     buttonText: AppTexts.registerTextButton.tr(),

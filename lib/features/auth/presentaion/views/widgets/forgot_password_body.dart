@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
+import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
 import 'package:quick_mart/core/widgets/custom_button.dart';
 import 'package:quick_mart/features/auth/data/models/forget_password_view_model.dart';
@@ -35,8 +36,9 @@ class ForgotPasswordBody extends StatelessWidget {
             return Text(
               forgetPasswordList[cubit.pageIndex].title,
               style: AppTextStyles.heading2Bold.copyWith(
-                color:
-                    cubit.darkMode ? Colors.white : AppColors.kBrandColorBlack,
+                color: AppSettings.darkMode
+                    ? Colors.white
+                    : AppColors.kBrandColorBlack,
               ),
             );
           },
@@ -73,7 +75,7 @@ class ForgotPasswordBody extends StatelessWidget {
               children: [
                 Expanded(
                     child: CustomButton(
-                  color: cubit.darkMode
+                  color: AppSettings.darkMode
                       ? AppColors.kBrandColorCyan
                       : AppColors.kBrandColorBlack,
                   text: forgetPasswordList[cubit.pageIndex].buttonText,

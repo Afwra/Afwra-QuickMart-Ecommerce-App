@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
+import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/core/utils/app_texts.dart';
 import 'package:quick_mart/core/widgets/custom_button.dart';
 import 'package:quick_mart/features/auth/presentaion/view_models/register_cubit/register_cubit.dart';
@@ -25,7 +26,7 @@ class RegisterButtonBody extends StatelessWidget {
                 Expanded(
                   child: CustomButton(
                     text: AppTexts.register.tr(),
-                    color: cubit.darkMode
+                    color: AppSettings.darkMode
                         ? AppColors.kBrandColorCyan
                         : AppColors.kBrandColorBlack,
                     onPressed: cubit.validateForm,
@@ -41,7 +42,7 @@ class RegisterButtonBody extends StatelessWidget {
                 Expanded(
                   child: CustomGoogleButton(
                     text: AppTexts.signupWithGoogle.tr(),
-                    darkMode: cubit.darkMode,
+                    darkMode: AppSettings.darkMode,
                     onPressed: cubit.loginViaGoogle,
                   ),
                 ),

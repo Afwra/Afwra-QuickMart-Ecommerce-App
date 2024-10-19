@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quick_mart/core/utils/app_assets.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
+import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/core/utils/app_texts.dart';
 import 'package:quick_mart/features/auth/presentaion/view_models/register_cubit/register_cubit.dart';
 import 'package:quick_mart/features/auth/presentaion/view_models/register_cubit/register_state.dart';
@@ -23,7 +24,7 @@ class RegisterFormField extends StatelessWidget {
           child: Column(
             children: [
               CustomTextFormField(
-                darkMode: cubit.darkMode,
+                darkMode: AppSettings.darkMode,
                 controller: cubit.nameController,
                 validator: (value) {
                   return cubit.validateTextField(
@@ -37,7 +38,7 @@ class RegisterFormField extends StatelessWidget {
                 height: 16,
               ),
               CustomTextFormField(
-                darkMode: cubit.darkMode,
+                darkMode: AppSettings.darkMode,
                 controller: cubit.emailController,
                 validator: (value) =>
                     cubit.validateTextField(value, AppTexts.enterEmail.tr()),
@@ -49,7 +50,7 @@ class RegisterFormField extends StatelessWidget {
                 height: 16,
               ),
               CustomTextFormField(
-                darkMode: cubit.darkMode,
+                darkMode: AppSettings.darkMode,
                 hintText: AppTexts.enterPassword.tr(),
                 controller: cubit.passwordController,
                 validator: (value) =>
@@ -63,7 +64,7 @@ class RegisterFormField extends StatelessWidget {
                     child: SvgPicture.asset(
                       AppAssets.passwordVisible,
                       colorFilter: ColorFilter.mode(
-                        cubit.darkMode
+                        AppSettings.darkMode
                             ? Colors.white
                             : AppColors.kBrandColorBlack,
                         BlendMode.srcIn,
@@ -75,7 +76,7 @@ class RegisterFormField extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               CustomTextFormField(
-                darkMode: cubit.darkMode,
+                darkMode: AppSettings.darkMode,
                 controller: cubit.phoneNumberController,
                 validator: (value) => cubit.validateTextField(
                     value, AppTexts.enterPhoneNumber.tr()),

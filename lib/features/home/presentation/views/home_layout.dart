@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/features/home/presentation/view_model/home_cubit/home_cubit.dart';
 import 'package:quick_mart/features/home/presentation/view_model/home_cubit/home_state.dart';
 import 'package:quick_mart/features/home/presentation/views/categories_view.dart';
@@ -32,7 +33,7 @@ class HomeLayout extends StatelessWidget {
           )),
           bottomNavigationBar: CustomBottomNavigationBar(
             currPage: cubit.currPage,
-            isDarkMode: cubit.isDarkMode,
+            isDarkMode: AppSettings.darkMode,
             onTapped: (p) => cubit.changeNavigationBarIndex(p),
           ),
         );

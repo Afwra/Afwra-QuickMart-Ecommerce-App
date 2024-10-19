@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quick_mart/core/functions/hive_functions.dart';
+import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/features/auth/data/repos/auth_repo.dart';
 import 'package:quick_mart/features/auth/presentaion/view_models/login_cubit/login_state.dart';
 
@@ -45,16 +46,13 @@ class LoginCubit extends Cubit<LoginState> {
   final formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  late bool darkMode;
-  void setupDarkMode() {
-    darkMode = getDarkMode();
-  }
 
   void changeAppLocale(BuildContext context) {
     context.locale.languageCode == 'en'
         ? context.setLocale(const Locale('ar'))
         : context.setLocale(const Locale('en'));
     saveLanguageCode(context.locale.languageCode);
+    AppSettings.langCode = context.locale.languageCode;
     emit(ChangeAppLocale());
   }
 

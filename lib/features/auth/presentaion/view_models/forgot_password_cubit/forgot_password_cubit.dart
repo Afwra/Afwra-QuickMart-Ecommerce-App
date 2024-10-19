@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:quick_mart/core/functions/hive_functions.dart';
 import 'package:quick_mart/core/utils/app_routes.dart';
 import 'package:quick_mart/features/auth/presentaion/view_models/forgot_password_cubit/forgot_password_state.dart';
 
@@ -18,10 +17,6 @@ class ForgotPasswordCubit extends Cubit<ForgotPasswordState> {
   TextEditingController confirmPasswordController = TextEditingController();
   var pageController = PageController();
   int pageIndex = 0;
-  late bool darkMode;
-  void setupDarkMode() {
-    darkMode = getDarkMode();
-  }
 
   void buttonLogic(BuildContext context) {
     if (pageIndex == 0) {

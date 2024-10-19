@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quick_mart/core/functions/hive_functions.dart';
+import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/features/auth/data/repos/auth_repo.dart';
 import 'package:quick_mart/features/auth/presentaion/view_models/register_cubit/register_state.dart';
 
@@ -49,16 +50,13 @@ class RegisterCubit extends Cubit<RegisterState> {
   final passwordController = TextEditingController();
   final phoneNumberController = TextEditingController();
   bool isVisible = true;
-  late bool darkMode;
-  void setupDarkMode() {
-    darkMode = getDarkMode();
-  }
 
   void changeAppLocale(BuildContext context) {
     context.locale.languageCode == 'en'
         ? context.setLocale(const Locale('ar'))
         : context.setLocale(const Locale('en'));
     saveLanguageCode(context.locale.languageCode);
+    AppSettings.langCode = context.locale.languageCode;
 
     emit(ChangeAppLocale());
   }

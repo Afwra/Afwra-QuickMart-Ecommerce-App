@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:quick_mart/core/functions/hive_functions.dart';
 import 'package:quick_mart/core/utils/app_constants.dart';
+import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/core/utils/bloc_observer.dart';
 import 'package:quick_mart/core/utils/app_routes.dart';
 import 'package:quick_mart/core/utils/app_themes.dart';
@@ -28,6 +29,8 @@ void main() async {
         ? AppThemes.darkModeStatusBarTheme
         : AppThemes.lightModeStatusBarTheme,
   );
+  AppSettings.darkMode = getDarkMode();
+  AppSettings.langCode = getLanguageCode();
   runApp(
     EasyLocalization(
       supportedLocales: const [Locale('en'), Locale('ar')],

@@ -14,7 +14,7 @@ class OnBoardingBody extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16.w),
       child: BlocProvider(
-        create: (context) => OnBoardingCubit()..setupDarkMode(),
+        create: (context) => OnBoardingCubit(),
         child: const Column(
           children: [
             SizedBox(

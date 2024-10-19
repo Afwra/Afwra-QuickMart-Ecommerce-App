@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
+import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/core/utils/app_texts.dart';
 import 'package:quick_mart/core/widgets/custom_button.dart';
 import 'package:quick_mart/features/auth/presentaion/view_models/login_cubit/login_cubit.dart';
@@ -25,7 +26,7 @@ class LoginButtonsBody extends StatelessWidget {
                 Expanded(
                   child: CustomButton(
                     text: AppTexts.login.tr(),
-                    color: cubit.darkMode
+                    color: AppSettings.darkMode
                         ? AppColors.kBrandColorCyan
                         : AppColors.kBrandColorBlack,
                     onPressed: () {
@@ -46,7 +47,7 @@ class LoginButtonsBody extends StatelessWidget {
                 Expanded(
                   child: CustomGoogleButton(
                     text: AppTexts.loginWithGoogle.tr(),
-                    darkMode: cubit.darkMode,
+                    darkMode: AppSettings.darkMode,
                     onPressed: cubit.loginViaGoogle,
                   ),
                 ),

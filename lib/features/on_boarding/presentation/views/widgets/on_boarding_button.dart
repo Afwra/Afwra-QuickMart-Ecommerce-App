@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:quick_mart/core/utils/app_assets.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/core/utils/app_routes.dart';
+import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/core/utils/app_texts.dart';
 import 'package:quick_mart/core/widgets/custom_button.dart';
 import 'package:quick_mart/core/widgets/custom_button_with_icon.dart';
@@ -17,7 +18,7 @@ class OnBoardingButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     OnBoardingCubit cubit = BlocProvider.of<OnBoardingCubit>(context);
-    bool darkMode = cubit.darkMode;
+    bool darkMode = AppSettings.darkMode;
     return BlocBuilder<OnBoardingCubit, OnBoardingState>(
       builder: (context, state) {
         if (cubit.index < cubit.onBoardingItems.length - 1) {

@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
-import 'package:quick_mart/core/functions/hive_functions.dart';
 import 'package:quick_mart/core/utils/app_assets.dart';
 import 'package:quick_mart/core/utils/app_constants.dart';
 import 'package:quick_mart/core/utils/app_texts.dart';
@@ -16,10 +15,6 @@ class OnBoardingCubit extends Cubit<OnBoardingState> {
   final PageController pageController = PageController(
     initialPage: 0,
   );
-  late bool darkMode;
-  void setupDarkMode() {
-    darkMode = getDarkMode();
-  }
 
   final List<OnBoardingItemModel> onBoardingItems = [
     OnBoardingItemModel(

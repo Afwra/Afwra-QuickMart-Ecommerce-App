@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:quick_mart/core/utils/app_assets.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/core/utils/app_routes.dart';
+import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
 import 'package:quick_mart/core/utils/app_texts.dart';
 import 'package:quick_mart/features/on_boarding/presentation/view_models/on_boarding_cubit/on_boarding_cubit.dart';
@@ -18,7 +19,7 @@ class OnBoardingRowItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     OnBoardingCubit cubit = BlocProvider.of<OnBoardingCubit>(context);
-    bool darkMode = cubit.darkMode;
+    bool darkMode = AppSettings.darkMode;
     return BlocBuilder<OnBoardingCubit, OnBoardingState>(
       builder: (context, state) {
         return Row(

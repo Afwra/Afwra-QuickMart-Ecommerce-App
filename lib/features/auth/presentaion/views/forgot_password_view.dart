@@ -14,7 +14,7 @@ class ForgotPasswordView extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
           child: BlocProvider(
-            create: (context) => ForgotPasswordCubit()..setupDarkMode(),
+            create: (context) => ForgotPasswordCubit(),
             child: const ForgotPasswordBody(),
           ),
         ),
