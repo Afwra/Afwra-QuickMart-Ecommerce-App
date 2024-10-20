@@ -12,6 +12,7 @@ class AppConstants {
   static const String latestProductsEndpoint = 'home';
   static const String bannersEndpoint = 'banners';
   static const String categoriesEndpoint = 'categories';
+  static const String categoriesProductsEndpoint = 'categories/';
 
   //others
   static const String profilePictureLink = 'https://t.ly/3msp8';

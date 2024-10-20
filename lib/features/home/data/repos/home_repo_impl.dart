@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:quick_mart/core/errors/failures.dart';
 import 'package:quick_mart/core/utils/api_service.dart';
 import 'package:quick_mart/core/utils/app_constants.dart';
+import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/features/home/data/models/banner_model.dart';
 import 'package:quick_mart/features/home/data/models/category_model.dart';
 import 'package:quick_mart/features/home/data/models/product_model.dart';
@@ -81,6 +82,35 @@ class HomeRepoImpl implements HomeRepo {
           banners.add(BannerModel.fromJson(item));
         }
         return right(banners);
+      } else {
+        return Left(ServerFailure(data['message']));
+      }
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.dioError(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
+  }
+
+  @override
+  Future<Either<Failures, List<ProductModel>>> getCategoryProducts(
+      {required int id}) async {
+    try {
+      var data = await apiService.get(
+        endpoint: '${AppConstants.categoriesProductsEndpoint}$id',
+        headers: {
+          'Authorization': AppSettings.userToken,
+          'lang': AppSettings.langCode,
+        },
+      );
+      if (data['status'] == true) {
+        List<ProductModel> products = [];
+        for (var item in data['data']['data']) {
+          products.add(ProductModel.fromJson(item));
+        }
+        return right(products);
       } else {
         return Left(ServerFailure(data['message']));
       }

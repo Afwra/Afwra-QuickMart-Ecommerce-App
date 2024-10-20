@@ -31,6 +31,7 @@ void main() async {
   );
   AppSettings.darkMode = getDarkMode();
   AppSettings.langCode = getLanguageCode();
+  AppSettings.userToken = getLoginToken();
   runApp(
     EasyLocalization(
       supportedLocales: const [Locale('en'), Locale('ar')],

@@ -9,4 +9,6 @@ abstract class HomeRepo {
       {required String userToken, String lang});
   Future<Either<Failures, List<CategoryModel>>> getCategories({String lang});
   Future<Either<Failures, List<BannerModel>>> getBanners();
+  Future<Either<Failures, List<ProductModel>>> getCategoryProducts(
+      {required int id});
 }

@@ -14,7 +14,7 @@ class CustomGridLoadingWidget extends StatelessWidget {
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           crossAxisSpacing: 8.w,
-          childAspectRatio: 0.6,
+          childAspectRatio: 0.65,
           mainAxisSpacing: 8.h,
         ),
         itemBuilder: (context, index) => ClipRRect(
