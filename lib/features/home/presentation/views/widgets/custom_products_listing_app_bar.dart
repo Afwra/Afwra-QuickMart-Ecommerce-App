@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:quick_mart/core/functions/show_bottom_model_sheet.dart';
 import 'package:quick_mart/core/utils/app_assets.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
 import 'package:svg_flutter/svg_flutter.dart';
@@ -32,10 +33,15 @@ class CustomProductListingAppBar extends StatelessWidget {
           style: AppTextStyles.body2Medium,
         ),
         const Spacer(),
-        SvgPicture.asset(
-          AppAssets.filterIcon,
-          height: 32.h,
-          width: 32.w,
+        GestureDetector(
+          onTap: () {
+            showCustomFilterBottomSheet(context);
+          },
+          child: SvgPicture.asset(
+            AppAssets.filterIcon,
+            height: 32.h,
+            width: 32.w,
+          ),
         ),
         const SizedBox(
           width: 12,
