@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quick_mart/features/home/presentation/view_model/banner_cubit/banner_cubit.dart';
 import 'package:quick_mart/features/home/presentation/view_model/banner_cubit/banner_state.dart';
-import 'package:quick_mart/features/home/presentation/views/widgets/custom_banner_item.dart';
+import 'package:quick_mart/features/home/presentation/views/widgets/home_view/custom_banner_item.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class CustomBannerPageView extends StatelessWidget {

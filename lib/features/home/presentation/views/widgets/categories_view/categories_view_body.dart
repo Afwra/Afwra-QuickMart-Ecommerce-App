@@ -6,7 +6,7 @@ import 'package:quick_mart/core/widgets/custom_grid_loading_widget.dart';
 import 'package:quick_mart/features/home/data/models/category_model.dart';
 import 'package:quick_mart/features/home/presentation/view_model/categories_cubit/categories_cubit.dart';
 import 'package:quick_mart/features/home/presentation/view_model/categories_cubit/categories_state.dart';
-import 'package:quick_mart/features/home/presentation/views/widgets/custom_categories_grid_view.dart';
+import 'package:quick_mart/features/home/presentation/views/widgets/categories_view/custom_categories_grid_view.dart';
 
 class CategoriesViewBody extends StatelessWidget {
   const CategoriesViewBody({super.key});

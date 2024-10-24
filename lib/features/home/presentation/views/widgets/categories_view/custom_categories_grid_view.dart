@@ -5,7 +5,7 @@ import 'package:quick_mart/core/utils/app_routes.dart';
 import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
 import 'package:quick_mart/features/home/data/models/category_model.dart';
-import 'package:quick_mart/features/home/presentation/views/widgets/custom_category_item.dart';
+import 'package:quick_mart/features/home/presentation/views/widgets/categories_view/custom_category_item.dart';
 
 class CustomCategoriesGridView extends StatelessWidget {
   const CustomCategoriesGridView({

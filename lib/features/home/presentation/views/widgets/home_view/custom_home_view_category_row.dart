@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quick_mart/core/widgets/custom_home_category_loading_widget.dart';
 import 'package:quick_mart/features/home/presentation/view_model/categories_cubit/categories_cubit.dart';
 import 'package:quick_mart/features/home/presentation/view_model/categories_cubit/categories_state.dart';
-import 'package:quick_mart/features/home/presentation/views/widgets/custom_category_item.dart';
+import 'package:quick_mart/features/home/presentation/views/widgets/categories_view/custom_category_item.dart';
 
 class CustomHomeViewCategoryRow extends StatelessWidget {
   const CustomHomeViewCategoryRow({super.key, this.darkMode = false});

@@ -5,7 +5,7 @@ import 'package:quick_mart/features/home/data/repos/home_repo_impl.dart';
 import 'package:quick_mart/features/home/presentation/view_model/banner_cubit/banner_cubit.dart';
 import 'package:quick_mart/features/home/presentation/view_model/categories_cubit/categories_cubit.dart';
 import 'package:quick_mart/features/home/presentation/view_model/latest_products_cubit/latest_products_cubit.dart';
-import 'package:quick_mart/features/home/presentation/views/widgets/home_view_body.dart';
+import 'package:quick_mart/features/home/presentation/views/widgets/home_view/home_view_body.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});

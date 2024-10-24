@@ -2,10 +2,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/core/utils/app_texts.dart';
-import 'package:quick_mart/features/home/presentation/views/widgets/custom_banner_page_view.dart';
-import 'package:quick_mart/features/home/presentation/views/widgets/custom_home_view_app_bar.dart';
-import 'package:quick_mart/features/home/presentation/views/widgets/custom_home_view_category_row.dart';
-import 'package:quick_mart/features/home/presentation/views/widgets/custom_home_view_title.dart';
+import 'package:quick_mart/features/home/presentation/views/widgets/home_view/custom_banner_page_view.dart';
+import 'package:quick_mart/features/home/presentation/views/widgets/home_view/custom_home_view_app_bar.dart';
+import 'package:quick_mart/features/home/presentation/views/widgets/home_view/custom_home_view_category_row.dart';
+import 'package:quick_mart/features/home/presentation/views/widgets/home_view/custom_home_view_title.dart';
 import 'package:quick_mart/features/home/presentation/views/widgets/custom_latest_products_grid_view.dart';
 
 class HomeViewBody extends StatelessWidget {
