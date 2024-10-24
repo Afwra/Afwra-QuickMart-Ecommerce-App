@@ -8,7 +8,7 @@ import 'package:quick_mart/features/auth/presentaion/views/register_view.dart';
 import 'package:quick_mart/features/home/data/models/category_model.dart';
 import 'package:quick_mart/features/home/presentation/view_model/home_cubit/home_cubit.dart';
 import 'package:quick_mart/features/home/presentation/views/home_layout.dart';
-import 'package:quick_mart/features/home/presentation/views/product_listing_view.dart';
+import 'package:quick_mart/features/home/presentation/views/category_product_listing_view.dart';
 import 'package:quick_mart/features/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:quick_mart/features/splash_screen/presentation/views/splash_screen_view.dart';
 
@@ -67,7 +67,7 @@ abstract class AppRoutes {
       GoRoute(
         path: kProductsListingView,
         builder: (context, state) =>
-            ProductListingView(category: state.extra as CategoryModel),
+            CategoryProductListingView(category: state.extra as CategoryModel),
       ),
       // GoRoute(
       //   path: kDetailsView,

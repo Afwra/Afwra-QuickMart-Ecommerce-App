@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:quick_mart/core/functions/show_custom_bottom_model_sheet.dart';
+import 'package:quick_mart/core/utils/app_constants.dart';
 import 'package:quick_mart/core/widgets/custom_grid_loading_widget.dart';
 import 'package:quick_mart/features/home/presentation/view_model/category_products_cubit/category_products_cubit.dart';
 import 'package:quick_mart/features/home/presentation/view_model/category_products_cubit/category_products_state.dart';
 import 'package:quick_mart/features/home/presentation/views/widgets/custom_products_listing_app_bar.dart';
 import 'package:quick_mart/features/home/presentation/views/widgets/custom_products_success_grid_view.dart';
 
-class ProductListingViewBody extends StatelessWidget {
-  const ProductListingViewBody({super.key, required this.categoryName});
+class CategoryProductListingViewBody extends StatelessWidget {
+  const CategoryProductListingViewBody({super.key, required this.categoryName});
   final String categoryName;
   @override
   Widget build(BuildContext context) {
@@ -18,6 +20,13 @@ class ProductListingViewBody extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: 16.w, horizontal: 12.h),
           child: CustomProductListingAppBar(
             title: categoryName,
+            onTap: () {
+              showCustomFilterBottomSheet(
+                context,
+                onPressed: () => BlocProvider.of<CategoryProductsCubit>(context)
+                    .filterProducts(context, AppConstants.filterList),
+              );
+            },
           ),
         ),
         const SizedBox(

@@ -1,3 +1,5 @@
+import 'package:quick_mart/features/home/presentation/views/widgets/custom_filter_bottom_sheet.dart';
+
 class AppConstants {
   //hive
   static const String settingsBox = 'settings';
@@ -17,4 +19,25 @@ class AppConstants {
   //others
   static const String profilePictureLink = 'https://t.ly/3msp8';
   static const String exclusivePictureLink = 'https://t.ly/K4Urj';
+
+  static final List<FilterModel> filterList = [
+    FilterModel(
+        title: 'Price (Low to High)',
+        value: true,
+        filterType: FilterTypes.lowToHigh),
+    FilterModel(
+        title: 'Price (High to Low)',
+        value: false,
+        filterType: FilterTypes.highToLow),
+    FilterModel(
+      title: 'A - Z',
+      value: false,
+      filterType: FilterTypes.aToZ,
+    ),
+    FilterModel(
+      title: 'Z - A',
+      value: false,
+      filterType: FilterTypes.zToA,
+    ),
+  ];
 }

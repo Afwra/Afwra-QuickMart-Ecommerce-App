@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:quick_mart/core/utils/app_constants.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
 import 'package:quick_mart/core/widgets/custom_button.dart';
 import 'package:quick_mart/features/home/presentation/views/widgets/custom_filter_list_tile.dart';
@@ -7,27 +8,26 @@ import 'package:quick_mart/features/home/presentation/views/widgets/custom_filte
 class CustomFilterBottomSheet extends StatefulWidget {
   const CustomFilterBottomSheet({
     super.key,
+    this.onPressed,
   });
+  final void Function()? onPressed;
 
   @override
   State<CustomFilterBottomSheet> createState() =>
       _CustomFilterBottomSheetState();
 }
 
-class FitlerModel {
+enum FilterTypes { lowToHigh, highToLow, aToZ, zToA }
+
+class FilterModel {
   final String title;
   bool value;
-
-  FitlerModel({required this.title, required this.value});
+  final FilterTypes filterType;
+  FilterModel(
+      {required this.title, required this.value, required this.filterType});
 }
 
 class _CustomFilterBottomSheetState extends State<CustomFilterBottomSheet> {
-  List<FitlerModel> filterList = [
-    FitlerModel(title: 'Price (Low to High)', value: true),
-    FitlerModel(title: 'Price (High to Low)', value: false),
-    FitlerModel(title: 'A - Z', value: false),
-    FitlerModel(title: 'Z - A', value: false),
-  ];
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -46,21 +46,21 @@ class _CustomFilterBottomSheetState extends State<CustomFilterBottomSheet> {
             child: ListView.builder(
               itemBuilder: (context, index) {
                 return CustomFitlerListTile(
-                  isPressed: filterList[index].value,
-                  title: filterList[index].title,
+                  isPressed: AppConstants.filterList[index].value,
+                  title: AppConstants.filterList[index].title,
                   onChange: (value) {
-                    for (var i = 0; i < filterList.length; i++) {
+                    for (var i = 0; i < AppConstants.filterList.length; i++) {
                       if (i == index) {
-                        filterList[i].value = value!;
+                        AppConstants.filterList[i].value = value!;
                       } else {
-                        filterList[i].value = false;
+                        AppConstants.filterList[i].value = false;
                       }
                     }
                     setState(() {});
                   },
                 );
               },
-              itemCount: filterList.length,
+              itemCount: AppConstants.filterList.length,
             ),
           ),
           const SizedBox(
@@ -71,7 +71,7 @@ class _CustomFilterBottomSheetState extends State<CustomFilterBottomSheet> {
             child: CustomButton(
               text: 'Apply',
               elevation: 0,
-              onPressed: () {},
+              onPressed: widget.onPressed,
             ),
           )
         ],
