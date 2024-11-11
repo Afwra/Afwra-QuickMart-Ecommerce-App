@@ -7,8 +7,10 @@ class SearchListViewItem extends StatelessWidget {
   const SearchListViewItem({
     super.key,
     required this.query,
+    this.onTap,
   });
   final String query;
+  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -16,18 +18,21 @@ class SearchListViewItem extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                query,
-                style: AppTextStyles.body2Medium,
-              ),
-              const Icon(
-                Icons.arrow_upward_outlined,
-                color: AppColors.kGrey100,
-              ),
-            ],
+          GestureDetector(
+            onTap: onTap,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  query,
+                  style: AppTextStyles.body2Medium,
+                ),
+                const Icon(
+                  Icons.arrow_upward_outlined,
+                  color: AppColors.kGrey100,
+                ),
+              ],
+            ),
           ),
           const SizedBox(
             height: 4,
