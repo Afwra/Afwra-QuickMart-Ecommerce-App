@@ -9,6 +9,7 @@ import 'package:quick_mart/features/home/data/models/category_model.dart';
 import 'package:quick_mart/features/home/presentation/view_model/home_cubit/home_cubit.dart';
 import 'package:quick_mart/features/home/presentation/views/home_layout.dart';
 import 'package:quick_mart/features/home/presentation/views/widgets/categories_view/category_product_listing_view.dart';
+import 'package:quick_mart/features/home/presentation/views/widgets/search_view/search_result_view.dart';
 import 'package:quick_mart/features/home/presentation/views/widgets/search_view/search_view.dart';
 import 'package:quick_mart/features/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:quick_mart/features/splash_screen/presentation/views/splash_screen_view.dart';
@@ -23,6 +24,7 @@ abstract class AppRoutes {
   static const kHomeView = '/HomeView';
   static const kDetailsView = '/detailsView';
   static const kSearchView = '/SearchView';
+  static const kSearchResultsView = '/SearchResultsView';
   static const kProductsListingView = '/ProductsListingView';
   static final router = GoRouter(
     routes: [
@@ -59,6 +61,11 @@ abstract class AppRoutes {
         path: kSearchView,
         pageBuilder: (context, state) =>
             AppAnimations.customSlideUpTransition(state, const SearchView()),
+      ),
+      GoRoute(
+        path: kSearchResultsView,
+        pageBuilder: (context, state) => AppAnimations.customGrowTransition(
+            state, SearchResultView(title: state.extra as String)),
       ),
       GoRoute(
         path: kHomeLayout,

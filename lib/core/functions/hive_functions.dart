@@ -40,3 +40,18 @@ void saveLanguageCode(String code) {
   var settingBox = Hive.box(AppConstants.settingsBox);
   settingBox.put(AppConstants.languageCode, code);
 }
+
+void saveSearchHistory(String term) {
+  var historyBox = Hive.box<List<String>>(AppConstants.historyBox);
+  List<String> history =
+      historyBox.get(AppConstants.searchHistory, defaultValue: [])!;
+  if (!history.contains(term)) {
+    history.add(term);
+    historyBox.put(AppConstants.searchHistory, history);
+  }
+}
+
+List<String> getSearchHistory() {
+  var historyBox = Hive.box<List<String>>(AppConstants.historyBox);
+  return historyBox.get(AppConstants.searchHistory, defaultValue: [])!;
+}

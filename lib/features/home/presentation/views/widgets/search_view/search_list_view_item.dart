@@ -6,8 +6,9 @@ import 'package:quick_mart/core/utils/app_text_styles.dart';
 class SearchListViewItem extends StatelessWidget {
   const SearchListViewItem({
     super.key,
+    required this.query,
   });
-
+  final String query;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -19,7 +20,7 @@ class SearchListViewItem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Smart Watch',
+                query,
                 style: AppTextStyles.body2Medium,
               ),
               const Icon(

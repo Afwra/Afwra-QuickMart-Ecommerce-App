@@ -1,19 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quick_mart/core/utils/app_assets.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
+import 'package:quick_mart/features/home/presentation/view_model/search_cubit/search_cubit.dart';
 import 'package:svg_flutter/svg_flutter.dart';
 
 class CustomSearchTextField extends StatelessWidget {
   const CustomSearchTextField({
     super.key,
     required this.darkMode,
+    this.onSubmitted,
   });
   final bool darkMode;
+  final void Function(String)? onSubmitted;
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: BlocProvider.of<SearchCubit>(context).searchController,
+      onSubmitted: onSubmitted,
       decoration: InputDecoration(
         hintText: 'Search',
         suffixIcon: Padding(

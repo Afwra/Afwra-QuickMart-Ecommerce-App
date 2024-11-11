@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:quick_mart/core/errors/failures.dart';
 import 'package:quick_mart/core/utils/api_service.dart';
 import 'package:quick_mart/core/utils/app_constants.dart';
@@ -107,6 +108,38 @@ class HomeRepoImpl implements HomeRepo {
       );
       if (data['status'] == true) {
         List<ProductModel> products = [];
+        for (var item in data['data']['data']) {
+          products.add(ProductModel.fromJson(item));
+        }
+        return right(products);
+      } else {
+        return Left(ServerFailure(data['message']));
+      }
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.dioError(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
+  }
+
+  @override
+  Future<Either<Failures, List<ProductModel>>> getSearchProducts(
+      {required String query,
+      required String userToken,
+      String lang = 'en'}) async {
+    try {
+      var data = await apiService
+          .post(endpoint: AppConstants.searchEndpoint, headers: {
+        'Authorization': AppSettings.userToken,
+        'lang': AppSettings.langCode,
+      }, data: {
+        'text': query,
+      });
+      if (data['status'] == true) {
+        List<ProductModel> products = [];
+        debugPrint(data['data']['data'].toString());
         for (var item in data['data']['data']) {
           products.add(ProductModel.fromJson(item));
         }
