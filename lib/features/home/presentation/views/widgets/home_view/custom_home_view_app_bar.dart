@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:quick_mart/core/utils/app_assets.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/core/utils/app_constants.dart';
+import 'package:quick_mart/core/utils/app_routes.dart';
 import 'package:quick_mart/core/widgets/custom_image_widget.dart';
 import 'package:svg_flutter/svg_flutter.dart';
 
@@ -19,15 +21,18 @@ class CustomHomeViewAppBar extends StatelessWidget {
           fit: BoxFit.cover,
         ),
         const Spacer(),
-        SvgPicture.asset(
-          AppAssets.searchIcon,
-          colorFilter: ColorFilter.mode(
-            darkMode ? Colors.white : AppColors.kBrandColorBlack,
-            BlendMode.srcIn,
+        GestureDetector(
+          onTap: () => GoRouter.of(context).push(AppRoutes.kSearchView),
+          child: SvgPicture.asset(
+            AppAssets.searchIcon,
+            colorFilter: ColorFilter.mode(
+              darkMode ? Colors.white : AppColors.kBrandColorBlack,
+              BlendMode.srcIn,
+            ),
+            height: 32.h,
+            width: 32.w,
+            fit: BoxFit.cover,
           ),
-          height: 32.h,
-          width: 32.w,
-          fit: BoxFit.cover,
         ),
         const SizedBox(
           width: 12,
