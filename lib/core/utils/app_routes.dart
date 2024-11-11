@@ -1,11 +1,13 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quick_mart/core/utils/app_animations.dart';
+import 'package:quick_mart/core/utils/service_locator.dart';
 import 'package:quick_mart/features/auth/presentaion/views/forgot_password_view.dart';
 import 'package:quick_mart/features/auth/presentaion/views/login_view.dart';
 import 'package:quick_mart/features/auth/presentaion/views/password_created_success_view.dart';
 import 'package:quick_mart/features/auth/presentaion/views/register_view.dart';
 import 'package:quick_mart/features/home/data/models/category_model.dart';
+import 'package:quick_mart/features/home/data/repos/home_repo_impl.dart';
 import 'package:quick_mart/features/home/presentation/view_model/home_cubit/home_cubit.dart';
 import 'package:quick_mart/features/home/presentation/views/home_layout.dart';
 import 'package:quick_mart/features/home/presentation/views/widgets/categories_view/category_product_listing_view.dart';
@@ -72,7 +74,7 @@ abstract class AppRoutes {
         pageBuilder: (context, state) => AppAnimations.customGrowTransition(
             state,
             BlocProvider(
-              create: (context) => HomeCubit(),
+              create: (context) => HomeCubit(getIt.get<HomeRepoImpl>()),
               child: const HomeLayout(),
             )),
       ),

@@ -1,12 +1,12 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:quick_mart/core/errors/failures.dart';
 import 'package:quick_mart/core/utils/api_service.dart';
 import 'package:quick_mart/core/utils/app_constants.dart';
 import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/features/home/data/models/banner_model.dart';
 import 'package:quick_mart/features/home/data/models/category_model.dart';
+import 'package:quick_mart/features/home/data/models/favorites_model.dart';
 import 'package:quick_mart/features/home/data/models/product_model.dart';
 import 'package:quick_mart/features/home/data/repos/home_repo.dart';
 
@@ -139,10 +139,38 @@ class HomeRepoImpl implements HomeRepo {
       });
       if (data['status'] == true) {
         List<ProductModel> products = [];
-        debugPrint(data['data']['data'].toString());
         for (var item in data['data']['data']) {
           products.add(ProductModel.fromJson(item));
         }
+        return right(products);
+      } else {
+        return Left(ServerFailure(data['message']));
+      }
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.dioError(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
+  }
+
+  @override
+  Future<Either<Failures, FavoritesModel>> addToFavorites(
+      {required int productId,
+      required String userToken,
+      String lang = 'en'}) async {
+    try {
+      var data = await apiService
+          .post(endpoint: AppConstants.favoritesEndpoint, headers: {
+        'Authorization': AppSettings.userToken,
+        'lang': AppSettings.langCode,
+      }, data: {
+        'product_id': productId,
+      });
+      if (data['status'] == true) {
+        FavoritesModel products =
+            FavoritesModel.fromJson(data['data']['product']);
         return right(products);
       } else {
         return Left(ServerFailure(data['message']));

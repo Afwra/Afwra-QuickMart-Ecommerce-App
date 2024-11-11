@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quick_mart/core/functions/hive_functions.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
 import 'package:quick_mart/core/widgets/custom_image_widget.dart';
 import 'package:quick_mart/features/home/data/models/product_model.dart';
+import 'package:quick_mart/features/home/presentation/view_model/home_cubit/home_cubit.dart';
+import 'package:quick_mart/features/home/presentation/view_model/home_cubit/home_state.dart';
 
 class CustomProductsItem extends StatelessWidget {
   const CustomProductsItem({
@@ -39,9 +42,18 @@ class CustomProductsItem extends StatelessWidget {
                 left: langCode == 'ar' ? 6.w : null,
                 child: CircleAvatar(
                   backgroundColor: Colors.black,
-                  child: Icon(
-                    Icons.favorite_border_outlined,
-                    color: product.inFavorites ? Colors.red : Colors.white,
+                  child: BlocBuilder<HomeCubit, HomeState>(
+                    builder: (context, state) {
+                      return IconButton(
+                        onPressed: () {
+                          BlocProvider.of<HomeCubit>(context)
+                              .addToFavourites(product.id);
+                          product.inFavorites = !product.inFavorites;
+                        },
+                        icon: const Icon(Icons.favorite_border_outlined),
+                        color: product.inFavorites ? Colors.red : Colors.white,
+                      );
+                    },
                   ),
                 ),
               )
