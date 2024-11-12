@@ -7,6 +7,7 @@ import 'package:quick_mart/features/auth/presentaion/views/login_view.dart';
 import 'package:quick_mart/features/auth/presentaion/views/password_created_success_view.dart';
 import 'package:quick_mart/features/auth/presentaion/views/register_view.dart';
 import 'package:quick_mart/features/home/data/models/category_model.dart';
+import 'package:quick_mart/features/home/data/models/product_model.dart';
 import 'package:quick_mart/features/home/data/repos/home_repo_impl.dart';
 import 'package:quick_mart/features/home/presentation/view_model/home_cubit/home_cubit.dart';
 import 'package:quick_mart/features/home/presentation/views/home_layout.dart';
@@ -14,6 +15,7 @@ import 'package:quick_mart/features/home/presentation/views/widgets/categories_v
 import 'package:quick_mart/features/home/presentation/views/widgets/search_view/search_result_view.dart';
 import 'package:quick_mart/features/home/presentation/views/widgets/search_view/search_view.dart';
 import 'package:quick_mart/features/on_boarding/presentation/views/on_boarding_view.dart';
+import 'package:quick_mart/features/product_details/presentation/views/product_detail_view.dart';
 import 'package:quick_mart/features/splash_screen/presentation/views/splash_screen_view.dart';
 
 abstract class AppRoutes {
@@ -28,6 +30,7 @@ abstract class AppRoutes {
   static const kSearchView = '/SearchView';
   static const kSearchResultsView = '/SearchResultsView';
   static const kProductsListingView = '/ProductsListingView';
+  static const kProductsDetailsView = '/ProductsDetailsView';
   static final router = GoRouter(
     routes: [
       GoRoute(
@@ -68,6 +71,11 @@ abstract class AppRoutes {
         path: kSearchResultsView,
         pageBuilder: (context, state) => AppAnimations.customGrowTransition(
             state, SearchResultView(title: state.extra as String)),
+      ),
+      GoRoute(
+        path: kProductsDetailsView,
+        pageBuilder: (context, state) => AppAnimations.customGrowTransition(
+            state, ProductDetailView(product: state.extra as ProductModel)),
       ),
       GoRoute(
         path: kHomeLayout,
