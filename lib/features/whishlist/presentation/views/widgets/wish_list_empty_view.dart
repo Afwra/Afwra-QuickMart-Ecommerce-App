@@ -7,8 +7,8 @@ import 'package:quick_mart/core/utils/app_text_styles.dart';
 import 'package:quick_mart/core/widgets/custom_button.dart';
 import 'package:quick_mart/features/home/presentation/view_model/home_cubit/home_cubit.dart';
 
-class CustomEmptyCartWidget extends StatelessWidget {
-  const CustomEmptyCartWidget({
+class WishListEmptyView extends StatelessWidget {
+  const WishListEmptyView({
     super.key,
   });
 
@@ -18,7 +18,7 @@ class CustomEmptyCartWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Image.asset(
-          AppAssets.emptyCart,
+          AppAssets.emptyWishlist,
           height: 240.h,
           width: 240.w,
           fit: BoxFit.cover,
@@ -27,7 +27,7 @@ class CustomEmptyCartWidget extends StatelessWidget {
           height: 16,
         ),
         Text(
-          'Your cart is empty',
+          'Your wishlist is empty',
           style: AppTextStyles.heading2Bold,
           textAlign: TextAlign.center,
         ),
@@ -35,7 +35,7 @@ class CustomEmptyCartWidget extends StatelessWidget {
           height: 16,
         ),
         Text(
-          'Looks like you have not added anything in your cart. Go ahead and explore top categories.',
+          'Tap heart button to start saving your favorite items.',
           style: AppTextStyles.body2Regular,
           textAlign: TextAlign.center,
         ),

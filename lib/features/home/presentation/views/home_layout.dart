@@ -8,7 +8,7 @@ import 'package:quick_mart/features/home/presentation/views/widgets/categories_v
 import 'package:quick_mart/features/home/presentation/views/widgets/home_view/home_view.dart';
 import 'package:quick_mart/features/cart/presentation/views/my_cart_view.dart';
 import 'package:quick_mart/features/home/presentation/views/widgets/profile_view/profile_view.dart';
-import 'package:quick_mart/features/home/presentation/views/widgets/whish_list_view/whish_list_view.dart';
+import 'package:quick_mart/features/whishlist/presentation/views/wish_list_view.dart';
 import 'package:quick_mart/features/home/presentation/views/widgets/custom_bottom_navigation_bar.dart';
 
 class HomeLayout extends StatelessWidget {
@@ -17,7 +17,7 @@ class HomeLayout extends StatelessWidget {
     HomeView(),
     CategoriesView(),
     MyCartView(),
-    WhishListView(),
+    WishListView(),
     ProfileView(),
   ];
   @override
