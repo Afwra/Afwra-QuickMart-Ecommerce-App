@@ -39,7 +39,9 @@ class ProductDetailViewBody extends StatelessWidget {
               ),
               Align(
                 alignment: Alignment.bottomCenter,
-                child: CustomProductDetailBottomContainer(),
+                child: CustomProductDetailBottomContainer(
+                  product: product,
+                ),
               ),
             ],
           ),
