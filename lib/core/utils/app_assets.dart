@@ -23,4 +23,5 @@ class AppAssets {
   static const String filterIcon = 'assets/images/filter_icon.svg';
   static const String emptyCart = 'assets/images/cart_empty.png';
   static const String emptyWishlist = 'assets/images/wishlist_empty.png';
+  static const String trashIcon = 'assets/images/trash_icon.svg';
 }
