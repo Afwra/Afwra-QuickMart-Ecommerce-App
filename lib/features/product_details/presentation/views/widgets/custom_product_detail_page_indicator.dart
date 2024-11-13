@@ -19,11 +19,11 @@ class CustomProductDetailPageIndicator extends StatelessWidget {
       count: product.images.length,
       effect: JumpingDotEffect(
         activeDotColor: AppColors.kBrandColorCyan,
-        dotHeight: 12.h,
-        dotWidth: 12.w,
+        dotHeight: 8.h,
+        dotWidth: 8.w,
         dotColor: AppColors.kGrey100,
       ),
-      size: Size(16.w, 16.h),
+      size: Size(8.w, 8.h),
     );
   }
 }
