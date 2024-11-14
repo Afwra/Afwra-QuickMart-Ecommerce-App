@@ -82,7 +82,8 @@ abstract class AppRoutes {
         pageBuilder: (context, state) => AppAnimations.customGrowTransition(
             state,
             BlocProvider(
-              create: (context) => HomeCubit(getIt.get<HomeRepoImpl>()),
+              create: (context) =>
+                  HomeCubit(getIt.get<HomeRepoImpl>())..getUserProfilePicture(),
               child: const HomeLayout(),
             )),
       ),

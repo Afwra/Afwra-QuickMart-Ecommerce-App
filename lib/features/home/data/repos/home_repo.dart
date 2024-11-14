@@ -17,4 +17,6 @@ abstract class HomeRepo {
 
   Future<Either<Failures, FavoritesModel>> addToFavorites(
       {required int productId, required String userToken, String lang});
+
+  Future<Either<Failures, String>> getUserProfilePicture();
 }

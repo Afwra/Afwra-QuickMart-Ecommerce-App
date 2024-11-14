@@ -21,4 +21,13 @@ class HomeCubit extends Cubit<HomeState> {
         (favorites) => log('success -- favorites'));
     emit(AddOrRemoveFavoriteState());
   }
+
+  String userProfileImage = '';
+  void getUserProfilePicture() async {
+    var result = await homeRepo.getUserProfilePicture();
+    result.fold((fail) => log('fail -- ${fail.errMsg}'), (profilePicture) {
+      userProfileImage = profilePicture;
+      emit(UserProfileImageLoaded());
+    });
+  }
 }

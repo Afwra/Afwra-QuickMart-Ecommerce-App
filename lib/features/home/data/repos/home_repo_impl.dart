@@ -183,4 +183,28 @@ class HomeRepoImpl implements HomeRepo {
       }
     }
   }
+
+  @override
+  Future<Either<Failures, String>> getUserProfilePicture() async {
+    try {
+      var data = await apiService.get(
+        endpoint: AppConstants.userProfileEndpoint,
+        headers: {
+          'Authorization': AppSettings.userToken,
+          'lang': AppSettings.langCode,
+        },
+      );
+      if (data['status'] == true) {
+        return right(data['data']['image']);
+      } else {
+        return Left(ServerFailure(data['message']));
+      }
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.dioError(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
+  }
 }

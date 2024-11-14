@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/core/utils/app_texts.dart';
+import 'package:quick_mart/features/home/presentation/view_model/home_cubit/home_cubit.dart';
 import 'package:quick_mart/features/home/presentation/views/widgets/home_view/custom_banner_page_view.dart';
 import 'package:quick_mart/features/home/presentation/views/widgets/home_view/custom_home_view_app_bar.dart';
 import 'package:quick_mart/features/home/presentation/views/widgets/home_view/custom_home_view_category_row.dart';
@@ -34,7 +36,9 @@ class HomeViewBody extends StatelessWidget {
           child: CustomHomeViewTitle(
             title: AppTexts.categories.tr(),
             darkMode: AppSettings.darkMode,
-            onPressed: () {},
+            onPressed: () {
+              BlocProvider.of<HomeCubit>(context).changeNavigationBarIndex(1);
+            },
           ),
         ),
         const SliverToBoxAdapter(

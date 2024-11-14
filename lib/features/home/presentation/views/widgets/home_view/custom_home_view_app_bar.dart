@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quick_mart/core/utils/app_assets.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
-import 'package:quick_mart/core/utils/app_constants.dart';
 import 'package:quick_mart/core/utils/app_routes.dart';
 import 'package:quick_mart/core/widgets/custom_image_widget.dart';
+import 'package:quick_mart/features/home/presentation/view_model/home_cubit/home_cubit.dart';
+import 'package:quick_mart/features/home/presentation/view_model/home_cubit/home_state.dart';
 import 'package:svg_flutter/svg_flutter.dart';
 
 class CustomHomeViewAppBar extends StatelessWidget {
@@ -37,13 +39,17 @@ class CustomHomeViewAppBar extends StatelessWidget {
         const SizedBox(
           width: 12,
         ),
-        ClipRRect(
-          borderRadius: BorderRadius.circular(8.r),
-          child: CustomImageWidget(
-            imageUrl: AppConstants.profilePictureLink,
-            height: 32.h,
-            width: 32.w,
-          ),
+        BlocBuilder<HomeCubit, HomeState>(
+          builder: (context, state) {
+            return ClipRRect(
+              borderRadius: BorderRadius.circular(8.r),
+              child: CustomImageWidget(
+                imageUrl: BlocProvider.of<HomeCubit>(context).userProfileImage,
+                height: 32.h,
+                width: 32.w,
+              ),
+            );
+          },
         ),
       ],
     );

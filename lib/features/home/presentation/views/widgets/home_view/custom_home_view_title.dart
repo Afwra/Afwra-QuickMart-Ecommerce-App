@@ -27,7 +27,7 @@ class CustomHomeViewTitle extends StatelessWidget {
         ),
         CustomTextButton(
           buttonText: AppTexts.seeAll.tr(),
-          onPressed: () {},
+          onPressed: onPressed,
         )
       ],
     );

@@ -20,6 +20,7 @@ class AppConstants {
   static const String searchEndpoint = 'products/search';
   static const String favoritesEndpoint = 'favorites';
   static const String cartsEndpoint = 'carts';
+  static const String userProfileEndpoint = 'profile';
 
   //others
   static const String profilePictureLink = 'https://t.ly/3msp8';
