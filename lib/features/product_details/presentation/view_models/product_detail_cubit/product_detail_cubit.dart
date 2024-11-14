@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quick_mart/core/functions/flutter_toast.dart';
@@ -43,8 +44,24 @@ class ProductDetailCubit extends Cubit<ProductDetailState> {
   //image page view logic section
   var pageController = PageController(initialPage: 0);
   int currentPage = 0;
-  void changePage(int index) {
-    currentPage = index;
-    emit(ProductDetailImagePageViewChanged());
+
+  late Timer timer;
+  void autoScroll(int arrayLength) {
+    timer = Timer.periodic(const Duration(seconds: 4), (Timer timer) {
+      if (pageController.positions.isNotEmpty) {
+        if (currentPage == arrayLength - 1) {
+          pageController.animateToPage(
+            0,
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.easeInCirc,
+          );
+        } else {
+          pageController.nextPage(
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.easeIn,
+          );
+        }
+      }
+    });
   }
 }

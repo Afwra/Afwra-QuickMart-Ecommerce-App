@@ -1,7 +1,9 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/features/home/data/models/product_model.dart';
+import 'package:quick_mart/features/product_details/presentation/view_models/product_detail_cubit/product_detail_cubit.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class CustomProductDetailsPageIndicator extends StatelessWidget {
@@ -24,7 +26,8 @@ class CustomProductDetailsPageIndicator extends StatelessWidget {
           ),
           padding: const EdgeInsets.all(5),
           child: SmoothPageIndicator(
-            controller: PageController(),
+            controller:
+                BlocProvider.of<ProductDetailCubit>(context).pageController,
             count: product.images.length,
             effect: JumpingDotEffect(
               dotColor: AppColors.kGrey100,

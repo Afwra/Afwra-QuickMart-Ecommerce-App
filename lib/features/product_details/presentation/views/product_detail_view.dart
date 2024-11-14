@@ -13,7 +13,8 @@ class ProductDetailView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          ProductDetailCubit(getIt.get<ProductDetailRepoImpl>()),
+          ProductDetailCubit(getIt.get<ProductDetailRepoImpl>())
+            ..autoScroll(product.images.length),
       child: Scaffold(
         body: SafeArea(
           child: ProductDetailViewBody(product: product),
