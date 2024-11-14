@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quick_mart/core/functions/flutter_toast.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
+import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/features/product_details/data/repos/product_detail_repo.dart';
 import 'package:quick_mart/features/product_details/presentation/view_models/product_detail_cubit/product_detail_state.dart';
 
@@ -21,6 +22,8 @@ class ProductDetailCubit extends Cubit<ProductDetailState> {
     final result = await productDetailRepo.addToFavorites(productId: productId);
     result.fold(
       (error) {
+        debugPrint(AppSettings.userToken);
+
         showFlutterToast(
           msg: 'Could not add/remove favorites due to ${error.errMsg}',
         );

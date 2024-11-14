@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:quick_mart/core/utils/app_constants.dart';
+import 'package:quick_mart/core/utils/app_settings.dart';
 
 void saveOnBoardingCompleted(bool completed) {
   var settingBox = Hive.box(AppConstants.settingsBox);
@@ -14,6 +15,7 @@ bool getOnBoardingCompleted() {
 void saveLoginToken(String token) {
   var settingBox = Hive.box(AppConstants.settingsBox);
   settingBox.put(AppConstants.loginToken, token);
+  AppSettings.userToken = token;
 }
 
 String? getLoginToken() {

@@ -19,49 +19,51 @@ class NewPasswordView extends StatelessWidget {
       key: cubit.confirmPasswordFormKey,
       child: BlocBuilder<ForgotPasswordCubit, ForgotPasswordState>(
         builder: (context, state) {
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CustomTextFormField(
-                darkMode: AppSettings.darkMode,
-                hintText: AppTexts.enterPassword.tr(),
-                titleText: AppTexts.password.tr(),
-                obscureText: cubit.field1Visible,
-                controller: cubit.passwordController,
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return AppTexts.enterPassword.tr();
-                  }
-                  return null;
-                },
-                suffix: GestureDetector(
-                    onTap: cubit.changeField1Visible,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: SvgPicture.asset(AppAssets.passwordVisible),
-                    )),
-              ),
-              CustomTextFormField(
-                darkMode: AppSettings.darkMode,
-                hintText: AppTexts.enterPassword.tr(),
-                titleText: AppTexts.password.tr(),
-                obscureText: cubit.field2Visible,
-                controller: cubit.confirmPasswordController,
-                validator: (value) {
-                  if (value!.isEmpty ||
-                      value != cubit.passwordController.text) {
-                    return AppTexts.confirmPasswordMessage.tr();
-                  }
-                  return null;
-                },
-                suffix: GestureDetector(
-                    onTap: cubit.changeField2Visible,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: SvgPicture.asset(AppAssets.passwordVisible),
-                    )),
-              ),
-            ],
+          return SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CustomTextFormField(
+                  darkMode: AppSettings.darkMode,
+                  hintText: AppTexts.enterPassword.tr(),
+                  titleText: AppTexts.password.tr(),
+                  obscureText: cubit.field1Visible,
+                  controller: cubit.passwordController,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return AppTexts.enterPassword.tr();
+                    }
+                    return null;
+                  },
+                  suffix: GestureDetector(
+                      onTap: cubit.changeField1Visible,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: SvgPicture.asset(AppAssets.passwordVisible),
+                      )),
+                ),
+                CustomTextFormField(
+                  darkMode: AppSettings.darkMode,
+                  hintText: AppTexts.enterPassword.tr(),
+                  titleText: AppTexts.password.tr(),
+                  obscureText: cubit.field2Visible,
+                  controller: cubit.confirmPasswordController,
+                  validator: (value) {
+                    if (value!.isEmpty ||
+                        value != cubit.passwordController.text) {
+                      return AppTexts.confirmPasswordMessage.tr();
+                    }
+                    return null;
+                  },
+                  suffix: GestureDetector(
+                      onTap: cubit.changeField2Visible,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: SvgPicture.asset(AppAssets.passwordVisible),
+                      )),
+                ),
+              ],
+            ),
           );
         },
       ),
