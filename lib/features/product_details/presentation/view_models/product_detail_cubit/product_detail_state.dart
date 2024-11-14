@@ -12,3 +12,13 @@ final class ProductDetailAddedOrRemovedToFavoritesFailed
     extends ProductDetailState {}
 
 final class ProductDetailImagePageViewChanged extends ProductDetailState {}
+
+final class ProductDetailQuantityIncremented extends ProductDetailState {}
+
+final class ProductDetailQuantityDecremented extends ProductDetailState {}
+
+final class ProductDetailAddedToCartLoading extends ProductDetailState {}
+
+final class ProductDetailAddedToCartFailed extends ProductDetailState {}
+
+final class ProductDetailAddedToCartSuccess extends ProductDetailState {}

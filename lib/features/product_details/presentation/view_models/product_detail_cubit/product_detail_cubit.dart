@@ -10,8 +10,9 @@ class ProductDetailCubit extends Cubit<ProductDetailState> {
   ProductDetailCubit(this.productDetailRepo) : super(ProductDetailInitial());
 
   final ProductDetailRepo productDetailRepo;
-
-  //favorites logic section
+  //-------------------------------------------------
+  // favorites logic section
+  //-------------------------------------------------
   bool addToFavoritesLoading = false;
   bool addToFavoritesFail = false;
   void addOrRemoveFavorites(int productId) async {
@@ -41,7 +42,10 @@ class ProductDetailCubit extends Cubit<ProductDetailState> {
     );
   }
 
-  //image page view logic section
+//-------------------------------------------------
+//  image page view logic section
+//-------------------------------------------------
+
   var pageController = PageController(initialPage: 0);
   int currentPage = 0;
 
@@ -63,5 +67,51 @@ class ProductDetailCubit extends Cubit<ProductDetailState> {
         }
       }
     });
+  }
+
+//-------------------------------------------------
+//  Quantity Section
+//-------------------------------------------------
+  int quantity = 1;
+  void incrementQuantity() {
+    quantity++;
+    emit(ProductDetailQuantityIncremented());
+  }
+
+  void decrementQuantity() {
+    if (quantity > 1) {
+      quantity--;
+      emit(ProductDetailQuantityDecremented());
+    }
+  }
+
+//-------------------------------------------------
+//  Add To Cart Section
+//-------------------------------------------------
+  bool addToCartLoading = false;
+  void addToCart(int productId) async {
+    addToCartLoading = true;
+    emit(ProductDetailAddedToCartLoading());
+    final result = await productDetailRepo.addToCart(
+        productId: productId, quantity: quantity);
+    result.fold(
+      (error) {
+        showFlutterToast(
+          msg: 'Could not add to cart due to ${error.errMsg}',
+        );
+        addToCartLoading = false;
+
+        emit(ProductDetailAddedToCartFailed());
+      },
+      (success) {
+        showFlutterToast(
+          msg: success,
+          backGroundColor: AppColors.kBrandColorCyan,
+        );
+        addToCartLoading = false;
+
+        emit(ProductDetailAddedToCartSuccess());
+      },
+    );
   }
 }

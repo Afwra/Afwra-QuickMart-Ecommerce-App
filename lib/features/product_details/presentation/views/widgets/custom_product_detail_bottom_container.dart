@@ -69,7 +69,9 @@ class CustomProductDetailBottomContainer extends StatelessWidget {
                 const SizedBox(
                   height: 48,
                 ),
-                const ProductDetailsButtonSection(),
+                ProductDetailsButtonSection(
+                  product: product,
+                ),
                 const SizedBox(
                   height: 13,
                 ),

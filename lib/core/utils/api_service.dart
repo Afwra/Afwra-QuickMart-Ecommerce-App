@@ -36,11 +36,13 @@ class ApiService {
   Future<Map<String, dynamic>> put(
       {required String endpoint,
       Map<String, dynamic>? data,
-      Map<String, dynamic>? queryParameters}) async {
+      Map<String, dynamic>? queryParameters,
+      Map<String, dynamic>? headers}) async {
     var response = await _dio.put(
       '$_baseUrl$endpoint',
       data: data,
       queryParameters: queryParameters,
+      options: Options(headers: headers),
     );
     return response.data;
   }
