@@ -1,12 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
+import 'package:quick_mart/features/cart/data/models/cart_item_model/cart_item.dart';
+import 'package:quick_mart/features/cart/presentation/view_models/cubit/my_cart_cubit.dart';
 
-class CustomMyCartListViewItemCounter extends StatelessWidget {
+class CustomMyCartListViewItemCounter extends StatefulWidget {
   const CustomMyCartListViewItemCounter({
     super.key,
+    required this.item,
   });
+
+  final CartItem item;
+  @override
+  State<CustomMyCartListViewItemCounter> createState() =>
+      _CustomMyCartListViewItemCounterState();
+}
+
+class _CustomMyCartListViewItemCounterState
+    extends State<CustomMyCartListViewItemCounter> {
+  late int count;
+  @override
+  void initState() {
+    count = widget.item.quantity;
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,23 +40,41 @@ class CustomMyCartListViewItemCounter extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Icon(
-            Icons.remove,
-            size: 20,
+          GestureDetector(
+            onTap: () {
+              if (count > 1) {
+                count--;
+                setState(() {});
+                BlocProvider.of<MyCartCubit>(context)
+                    .updateCartItem(cartId: widget.item.id, quantity: count);
+              }
+            },
+            child: const Icon(
+              Icons.remove,
+              size: 20,
+            ),
           ),
           const SizedBox(
             width: 20,
           ),
           Text(
-            '1',
+            count.toString(),
             style: AppTextStyles.body1Medium,
           ),
           const SizedBox(
             width: 20,
           ),
-          const Icon(
-            Icons.add,
-            size: 20,
+          GestureDetector(
+            onTap: () {
+              count++;
+              setState(() {});
+              BlocProvider.of<MyCartCubit>(context)
+                  .updateCartItem(cartId: widget.item.id, quantity: count);
+            },
+            child: const Icon(
+              Icons.add,
+              size: 20,
+            ),
           ),
         ],
       ),

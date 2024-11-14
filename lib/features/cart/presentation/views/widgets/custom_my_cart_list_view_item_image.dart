@@ -6,17 +6,22 @@ class CustomMyCartListViewItemImage extends StatelessWidget {
   const CustomMyCartListViewItemImage({
     super.key,
     required this.imageUrl,
+    this.onTap,
   });
   final String imageUrl;
+  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(12.r),
-      child: CustomImageWidget(
-        imageUrl: imageUrl,
-        boxFit: BoxFit.scaleDown,
-        height: 140.h,
-        width: 120.w,
+      child: GestureDetector(
+        onTap: onTap,
+        child: CustomImageWidget(
+          imageUrl: imageUrl,
+          boxFit: BoxFit.scaleDown,
+          height: 140.h,
+          width: 120.w,
+        ),
       ),
     );
   }

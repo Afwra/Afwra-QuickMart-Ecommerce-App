@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:quick_mart/core/utils/app_assets.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
+import 'package:quick_mart/core/utils/app_routes.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
 import 'package:quick_mart/features/cart/data/models/cart_item_model/cart_item.dart';
+import 'package:quick_mart/features/cart/presentation/view_models/cubit/my_cart_cubit.dart';
 import 'package:quick_mart/features/cart/presentation/views/widgets/custom_my_cart_list_view_item_counter.dart';
 import 'package:quick_mart/features/cart/presentation/views/widgets/custom_my_cart_list_view_item_image.dart';
 import 'package:svg_flutter/svg.dart';
@@ -22,6 +26,8 @@ class CustomMyCartListViewItem extends StatelessWidget {
         children: [
           CustomMyCartListViewItemImage(
             imageUrl: item.product.image.toString(),
+            onTap: () => GoRouter.of(context)
+                .push(AppRoutes.kProductsDetailsView, extra: item.product),
           ),
           const SizedBox(
             width: 8,
@@ -58,11 +64,17 @@ class CustomMyCartListViewItem extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const CustomMyCartListViewItemCounter(),
-                    SvgPicture.asset(
-                      AppAssets.trashIcon,
-                      height: 24.h,
-                      width: 24.w,
+                    CustomMyCartListViewItemCounter(
+                      item: item,
+                    ),
+                    GestureDetector(
+                      onTap: () => BlocProvider.of<MyCartCubit>(context)
+                          .deleteCartItem(item.id),
+                      child: SvgPicture.asset(
+                        AppAssets.trashIcon,
+                        height: 24.h,
+                        width: 24.w,
+                      ),
                     ),
                   ],
                 )

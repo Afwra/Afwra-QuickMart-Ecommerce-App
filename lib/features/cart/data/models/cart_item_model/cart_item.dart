@@ -1,11 +1,10 @@
 import 'package:equatable/equatable.dart';
-
-import 'product.dart';
+import 'package:quick_mart/features/home/data/models/product_model.dart';
 
 class CartItem extends Equatable {
   final int id;
   final int quantity;
-  final Product product;
+  final ProductModel product;
 
   const CartItem(
       {required this.id, required this.quantity, required this.product});
@@ -13,7 +12,7 @@ class CartItem extends Equatable {
   factory CartItem.fromJson(Map<String, dynamic> json) => CartItem(
         id: json['id'] as int,
         quantity: json['quantity'] as int,
-        product: Product.fromJson(json['product'] as Map<String, dynamic>),
+        product: ProductModel.fromJson(json['product'] as Map<String, dynamic>),
       );
 
   Map<String, dynamic> toJson() => {
