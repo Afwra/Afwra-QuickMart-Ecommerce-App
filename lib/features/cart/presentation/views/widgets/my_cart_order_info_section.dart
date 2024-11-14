@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
+import 'package:quick_mart/features/cart/data/models/cart_item_model/cart_item_model.dart';
 import 'package:quick_mart/features/cart/presentation/views/widgets/custom_checkout_button.dart';
 import 'package:quick_mart/features/cart/presentation/views/widgets/custom_order_info_row.dart';
 
 class MyCartOrderInfoSection extends StatelessWidget {
   const MyCartOrderInfoSection({
     super.key,
+    required this.cartItemModel,
   });
-
+  final CartItemModel cartItemModel;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -20,9 +22,9 @@ class MyCartOrderInfoSection extends StatelessWidget {
         const SizedBox(
           height: 20,
         ),
-        const CustomOrderInfoRow(
+        CustomOrderInfoRow(
           title: 'Subtotal',
-          price: '27.25',
+          price: cartItemModel.subTotal.toString(),
         ),
         const SizedBox(
           height: 20,
@@ -39,7 +41,7 @@ class MyCartOrderInfoSection extends StatelessWidget {
               style: AppTextStyles.body1Medium,
             ),
             Text(
-              '\$27.25',
+              '\$${cartItemModel.total}',
               style: AppTextStyles.body1Medium,
             ),
           ],

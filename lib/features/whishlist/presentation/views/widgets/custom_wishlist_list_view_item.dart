@@ -17,7 +17,9 @@ class CustomWishlistListViewItem extends StatelessWidget {
       height: 140.h,
       child: Row(
         children: [
-          const CustomMyCartListViewItemImage(),
+          const CustomMyCartListViewItemImage(
+            imageUrl: '',
+          ),
           const SizedBox(
             width: 8,
           ),
