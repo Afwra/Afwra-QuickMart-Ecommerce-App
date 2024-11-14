@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quick_mart/features/home/data/models/product_model.dart';
+import 'package:quick_mart/features/product_details/presentation/views/widgets/custom_product_detail_page_indicator.dart';
 import 'package:quick_mart/features/product_details/presentation/views/widgets/custom_product_detail_page_view.dart';
 
 class CustomProductDetailAppBar extends StatelessWidget {
@@ -34,16 +35,7 @@ class CustomProductDetailAppBar extends StatelessWidget {
       ],
       flexibleSpace: FlexibleSpaceBar(
         background: CustomProductDetailPageView(product: product),
-        title: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: List.generate(
-            product.images.length,
-            (index) => CircleAvatar(
-              backgroundColor: Colors.red,
-              radius: 8.r,
-            ),
-          ),
-        ),
+        title: CustomProductDetailsPageIndicator(product: product),
         centerTitle: true,
       ),
       stretch: true,
