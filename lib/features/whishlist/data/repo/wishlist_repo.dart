@@ -5,4 +5,5 @@ import 'package:quick_mart/features/whishlist/data/models/wishlist_model/wishlis
 abstract class WishlistRepo {
   Future<Either<Failures, List<WishlistModel>>> getWishList(
       {required int page});
+  Future<Either<Failures, String>> deleteWishList({required int wishlistId});
 }

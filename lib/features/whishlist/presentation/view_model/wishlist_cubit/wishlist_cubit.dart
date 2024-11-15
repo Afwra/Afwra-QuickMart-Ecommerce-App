@@ -3,6 +3,8 @@ import 'dart:developer';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quick_mart/core/functions/flutter_toast.dart';
+import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/features/whishlist/data/models/wishlist_model/wishlist_model.dart';
 import 'package:quick_mart/features/whishlist/data/repo/wishlist_repo.dart';
 
@@ -18,6 +20,7 @@ class WishlistCubit extends Cubit<WishlistState> {
   int currPage = 1;
   late List<WishlistModel> wishList;
   void getWishList() async {
+    currPage = 1;
     whishlistLoading = true;
     initScrollController();
     emit(WishlistLoading());
@@ -62,6 +65,16 @@ class WishlistCubit extends Cubit<WishlistState> {
           listViewScrollController.position.maxScrollExtent) {
         getMoreWishList();
       }
+    });
+  }
+
+  void deleteWishList({required int wishlistId}) async {
+    final result = await wishlistRepo.deleteWishList(wishlistId: wishlistId);
+    result.fold((error) {
+      showFlutterToast(msg: error.errMsg);
+    }, (result) {
+      showFlutterToast(msg: result, backGroundColor: AppColors.kBrandColorCyan);
+      getWishList();
     });
   }
 

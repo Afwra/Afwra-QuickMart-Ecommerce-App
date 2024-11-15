@@ -23,11 +23,40 @@ class WishlistRepoImpl implements WishlistRepo {
           'lang': AppSettings.langCode
         },
       );
-      List<WishlistModel> wishlist = [];
-      for (var element in data['data']['data']) {
-        wishlist.add(WishlistModel.fromJson(element));
+      if (data['status'] == true) {
+        List<WishlistModel> wishlist = [];
+        for (var element in data['data']['data']) {
+          wishlist.add(WishlistModel.fromJson(element));
+        }
+        return Right(wishlist);
+      } else {
+        return Left(ServerFailure(data['message']));
       }
-      return Right(wishlist);
+    } on Exception catch (e) {
+      if (Exception is DioException) {
+        return Left(ServerFailure.dioError(e as DioException));
+      } else {
+        return Left(ServerFailure(e.toString()));
+      }
+    }
+  }
+
+  @override
+  Future<Either<Failures, String>> deleteWishList(
+      {required int wishlistId}) async {
+    try {
+      final data = await apiService.delete(
+        endpoint: '${AppConstants.favoritesEndpoint}/$wishlistId',
+        headers: {
+          'Authorization': AppSettings.userToken,
+          'lang': AppSettings.langCode
+        },
+      );
+      if (data['status'] == true) {
+        return Right(data['message']);
+      } else {
+        return Left(ServerFailure(data['message']));
+      }
     } on Exception catch (e) {
       if (Exception is DioException) {
         return Left(ServerFailure.dioError(e as DioException));

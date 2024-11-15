@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quick_mart/core/utils/app_assets.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
 import 'package:quick_mart/features/cart/presentation/views/widgets/custom_my_cart_list_view_item_image.dart';
 import 'package:quick_mart/features/whishlist/data/models/wishlist_model/wishlist_model.dart';
+import 'package:quick_mart/features/whishlist/presentation/view_model/wishlist_cubit/wishlist_cubit.dart';
 import 'package:svg_flutter/svg.dart';
 
 class CustomWishlistListViewItem extends StatelessWidget {
@@ -56,10 +58,16 @@ class CustomWishlistListViewItem extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    SvgPicture.asset(
-                      AppAssets.trashIcon,
-                      height: 24.h,
-                      width: 24.w,
+                    InkWell(
+                      onTap: () {
+                        BlocProvider.of<WishlistCubit>(context)
+                            .deleteWishList(wishlistId: item.id);
+                      },
+                      child: SvgPicture.asset(
+                        AppAssets.trashIcon,
+                        height: 24.h,
+                        width: 24.w,
+                      ),
                     ),
                   ],
                 )
