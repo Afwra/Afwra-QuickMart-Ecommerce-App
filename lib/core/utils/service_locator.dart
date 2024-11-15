@@ -5,6 +5,8 @@ import 'package:quick_mart/features/auth/data/repos/auth_repo_impl.dart';
 import 'package:quick_mart/features/cart/data/repos/cart_repo_impl.dart';
 import 'package:quick_mart/features/home/data/repos/home_repo_impl.dart';
 import 'package:quick_mart/features/product_details/data/repos/product_detail_repo_impl.dart';
+import 'package:quick_mart/features/whishlist/data/repo/wishlist_repo.dart';
+import 'package:quick_mart/features/whishlist/data/repo/wishlist_repo_impl.dart';
 
 final getIt = GetIt.instance;
 
@@ -18,4 +20,6 @@ void setupServiceLocator() {
       ProductDetailRepoImpl(apiService: getIt.get<ApiService>()));
   getIt.registerSingleton<CartReopImpl>(
       CartReopImpl(apiService: getIt.get<ApiService>()));
+  getIt.registerSingleton<WishlistRepo>(
+      WishlistRepoImpl(apiService: getIt.get<ApiService>()));
 }
