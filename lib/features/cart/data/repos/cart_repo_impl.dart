@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:quick_mart/core/errors/failures.dart';
 import 'package:quick_mart/core/utils/api_service.dart';
 import 'package:quick_mart/core/utils/app_constants.dart';
@@ -26,6 +27,9 @@ class CartReopImpl implements CartRepo {
         return left(ServerFailure(data['message']));
       }
     } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.dioError(e));
+      }
       return left(ServerFailure(e.toString()));
     }
   }

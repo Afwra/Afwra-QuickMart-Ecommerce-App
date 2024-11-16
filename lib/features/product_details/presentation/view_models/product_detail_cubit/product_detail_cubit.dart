@@ -117,4 +117,11 @@ class ProductDetailCubit extends Cubit<ProductDetailState> {
       },
     );
   }
+
+  @override
+  Future<void> close() {
+    timer.cancel();
+    pageController.dispose();
+    return super.close();
+  }
 }

@@ -31,7 +31,7 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   bool userLoaded = false;
-  late UserModel userModel;
+  UserModel? userModel;
   void getUserProfilePicture() async {
     userLoaded = false;
     var result = await homeRepo.getUserProfilePicture();

@@ -32,7 +32,7 @@ class CustomProfileAppBar extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(8.r),
                 child: CustomImageWidget(
-                  imageUrl: cubit.userModel.image,
+                  imageUrl: cubit.userModel?.image ?? '',
                   height: 40.h,
                   width: 40.w,
                   boxFit: BoxFit.cover,
@@ -46,12 +46,12 @@ class CustomProfileAppBar extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    cubit.userModel.name,
+                    cubit.userModel?.name ?? 'Loading',
                     style: AppTextStyles.button1
                         .copyWith(color: AppColors.kBrandColorWhite),
                   ),
                   Text(
-                    cubit.userModel.email,
+                    cubit.userModel?.email ?? 'Loading',
                     style: AppTextStyles.button2
                         .copyWith(color: AppColors.kBrandColorWhite),
                   ),

@@ -45,7 +45,7 @@ class CustomHomeViewAppBar extends StatelessWidget {
               borderRadius: BorderRadius.circular(8.r),
               child: CustomImageWidget(
                 imageUrl: BlocProvider.of<HomeCubit>(context).userLoaded
-                    ? BlocProvider.of<HomeCubit>(context).userModel.image
+                    ? BlocProvider.of<HomeCubit>(context).userModel!.image
                     : '',
                 height: 32.h,
                 width: 32.w,

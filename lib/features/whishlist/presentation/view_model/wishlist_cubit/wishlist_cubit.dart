@@ -18,7 +18,7 @@ class WishlistCubit extends Cubit<WishlistState> {
   bool moreDataLoading = false;
   bool wishListHasData = true;
   int currPage = 1;
-  late List<WishlistModel> wishList;
+  List<WishlistModel> wishList = [];
   void getWishList() async {
     currPage = 1;
     whishlistLoading = true;

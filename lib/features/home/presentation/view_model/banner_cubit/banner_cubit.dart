@@ -27,7 +27,10 @@ class BannerCubit extends Cubit<BannerState> {
     });
   }
 
-  late Timer timer;
+  Timer timer = Timer(
+    Duration.zero,
+    () {},
+  );
   void autoScroll() {
     timer = Timer.periodic(const Duration(seconds: 12), (Timer timer) {
       if (pageController.positions.isNotEmpty) {
@@ -45,5 +48,12 @@ class BannerCubit extends Cubit<BannerState> {
         }
       }
     });
+  }
+
+  @override
+  Future<void> close() {
+    timer.cancel();
+    pageController.dispose();
+    return super.close();
   }
 }
