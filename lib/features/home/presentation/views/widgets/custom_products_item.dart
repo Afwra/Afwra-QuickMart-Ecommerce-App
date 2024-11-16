@@ -38,7 +38,7 @@ class CustomProductsItem extends StatelessWidget {
                   borderRadius: BorderRadius.circular(24.r),
                   child: CustomImageWidget(
                     imageUrl: product.image.toString(),
-                    boxFit: BoxFit.scaleDown,
+                    boxFit: BoxFit.cover,
                     height: 138.h,
                     width: 160.w,
                   ),

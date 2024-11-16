@@ -38,7 +38,10 @@ class SearchViewBody extends StatelessWidget {
         ),
         Text(
           'Recent Search',
-          style: AppTextStyles.captionSemiBold,
+          style: AppTextStyles.captionSemiBold.copyWith(
+              color: AppSettings.darkMode
+                  ? Colors.white
+                  : AppColors.kBrandColorBlack),
         ),
         const SizedBox(
           height: 4,

@@ -16,6 +16,7 @@ class ProductDetailView extends StatelessWidget {
           ProductDetailCubit(getIt.get<ProductDetailRepoImpl>())
             ..autoScroll(product.images.length),
       child: Scaffold(
+        backgroundColor: Colors.white,
         body: SafeArea(
           child: ProductDetailViewBody(product: product),
         ),

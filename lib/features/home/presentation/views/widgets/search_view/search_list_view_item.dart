@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
+import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
 
 class SearchListViewItem extends StatelessWidget {
@@ -25,7 +26,10 @@ class SearchListViewItem extends StatelessWidget {
               children: [
                 Text(
                   query,
-                  style: AppTextStyles.body2Medium,
+                  style: AppTextStyles.body2Medium.copyWith(
+                      color: AppSettings.darkMode
+                          ? Colors.white
+                          : AppColors.kBrandColorBlack),
                 ),
                 const Icon(
                   Icons.arrow_upward_outlined,

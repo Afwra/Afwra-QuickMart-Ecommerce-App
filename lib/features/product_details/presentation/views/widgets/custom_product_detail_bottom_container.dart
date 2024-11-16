@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
+import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
 import 'package:quick_mart/features/home/data/models/product_model.dart';
 import 'package:quick_mart/features/product_details/presentation/views/widgets/custom_expandable_text.dart';
@@ -26,7 +27,10 @@ class CustomProductDetailBottomContainer extends StatelessWidget {
             topLeft: Radius.circular(32.r),
             topRight: Radius.circular(32.r),
           ),
-          border: Border.all(color: AppColors.kGrey50),
+          border: const Border(top: BorderSide(color: AppColors.kGrey50)),
+          color: AppSettings.darkMode
+              ? AppColors.kBrandColorBlack
+              : AppColors.kBrandColorWhite,
         ),
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 24.h),
         child: Column(
@@ -60,7 +64,11 @@ class CustomProductDetailBottomContainer extends StatelessWidget {
               children: [
                 Text(
                   'Quantity',
-                  style: AppTextStyles.heading3SemiBold,
+                  style: AppTextStyles.heading3SemiBold.copyWith(
+                    color: AppSettings.darkMode
+                        ? AppColors.kBrandColorWhite
+                        : AppColors.kBrandColorBlack,
+                  ),
                 ),
                 const SizedBox(
                   height: 8,

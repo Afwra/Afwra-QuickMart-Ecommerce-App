@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quick_mart/core/utils/app_assets.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
+import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/core/widgets/custom_button.dart';
 import 'package:quick_mart/core/widgets/custom_button_with_icon.dart';
 import 'package:quick_mart/features/home/data/models/product_model.dart';
@@ -22,8 +23,12 @@ class ProductDetailsButtonSection extends StatelessWidget {
         Expanded(
             child: CustomButton(
           text: 'Buy Now',
-          textColor: AppColors.kBrandColorBlack,
-          color: AppColors.kBrandColorWhite,
+          textColor: AppSettings.darkMode
+              ? AppColors.kBrandColorCyan
+              : AppColors.kBrandColorBlack,
+          color: AppSettings.darkMode
+              ? AppColors.kBrandColorBlack
+              : AppColors.kBrandColorWhite,
           onPressed: () {},
         )),
         const SizedBox(
@@ -39,7 +44,9 @@ class ProductDetailsButtonSection extends StatelessWidget {
                 : CustomButtonWithIcon(
                     text: 'Add To Cart',
                     iconPath: AppAssets.cartIcon,
-                    color: AppColors.kBrandColorBlack,
+                    color: AppSettings.darkMode
+                        ? AppColors.kBrandColorCyan
+                        : AppColors.kBrandColorBlack,
                     onPressed: () {
                       cubit.addToCart(product.id);
                     },
