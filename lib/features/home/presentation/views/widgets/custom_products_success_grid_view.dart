@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/features/home/data/models/product_model.dart';
 import 'package:quick_mart/features/home/presentation/views/widgets/custom_products_item.dart';
 
@@ -17,8 +18,10 @@ class CustomProductsListingSuccessGridView extends StatelessWidget {
         crossAxisSpacing: 8.w,
         childAspectRatio: 0.65,
       ),
-      itemBuilder: (context, index) =>
-          CustomProductsItem(product: products[index]),
+      itemBuilder: (context, index) => CustomProductsItem(
+        product: products[index],
+        darkMode: AppSettings.darkMode,
+      ),
       itemCount: products.length,
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
+import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
 import 'package:quick_mart/core/widgets/custom_grid_loading_widget.dart';
 import 'package:quick_mart/features/home/data/models/category_model.dart';
@@ -42,14 +43,20 @@ class CategoriesViewSuccessView extends StatelessWidget {
       children: [
         Text(
           'Categories',
-          style: AppTextStyles.body2Medium,
+          style: AppTextStyles.body2Medium.copyWith(
+            color: AppSettings.darkMode
+                ? Colors.white
+                : AppColors.kBrandColorBlack,
+          ),
         ),
         const SizedBox(
           height: 17.5,
         ),
-        const Divider(
+        Divider(
           thickness: 2,
-          color: AppColors.kGrey50,
+          color: AppSettings.darkMode
+              ? AppColors.kGrey50DarkMode
+              : AppColors.kGrey50,
         ),
         const SizedBox(
           height: 12,

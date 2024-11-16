@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:quick_mart/core/utils/app_colors.dart';
+import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
 
 class CustomFitlerListTile extends StatelessWidget {
@@ -21,14 +23,22 @@ class CustomFitlerListTile extends StatelessWidget {
         child: Checkbox(
           value: isPressed,
           onChanged: onChange,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.r)),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(4.r),
+              side: BorderSide(
+                  color: AppSettings.darkMode
+                      ? Colors.white
+                      : AppColors.kBrandColorBlack,
+                  width: 1)),
           activeColor: Colors.blue,
         ),
       ),
       title: Text(
         title,
-        style: AppTextStyles.body2Medium,
+        style: AppTextStyles.body2Medium.copyWith(
+            color: AppSettings.darkMode
+                ? Colors.white
+                : AppColors.kBrandColorBlack),
       ),
     );
   }

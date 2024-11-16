@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
+import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
 import 'package:quick_mart/core/widgets/custom_image_widget.dart';
 
@@ -31,7 +32,7 @@ class CustomCategoryItem extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12.r),
         border: Border.all(
-          color: AppColors.kGrey50,
+          color: isDarkMode ? AppColors.kGrey50DarkMode : AppColors.kGrey50,
           width: 1,
         ),
       ),
@@ -53,7 +54,9 @@ class CustomCategoryItem extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
             style: textStyle ??
                 AppTextStyles.overlineSemiBold.copyWith(
-                  color: isDarkMode ? Colors.white : AppColors.kBrandColorBlack,
+                  color: AppSettings.darkMode
+                      ? Colors.white
+                      : AppColors.kBrandColorBlack,
                 ),
           ),
         ],

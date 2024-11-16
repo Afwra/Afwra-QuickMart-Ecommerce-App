@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/core/utils/app_constants.dart';
+import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
 import 'package:quick_mart/core/widgets/custom_button.dart';
 import 'package:quick_mart/features/home/presentation/views/widgets/custom_filter_list_tile.dart';
@@ -37,7 +39,10 @@ class _CustomFilterBottomSheetState extends State<CustomFilterBottomSheet> {
         children: [
           Text(
             'Filter',
-            style: AppTextStyles.body1Medium,
+            style: AppTextStyles.body1Medium.copyWith(
+                color: AppSettings.darkMode
+                    ? Colors.white
+                    : AppColors.kBrandColorBlack),
           ),
           const SizedBox(
             height: 16,
@@ -70,6 +75,9 @@ class _CustomFilterBottomSheetState extends State<CustomFilterBottomSheet> {
             width: double.infinity,
             child: CustomButton(
               text: 'Apply',
+              color: AppSettings.darkMode
+                  ? AppColors.kBrandColorCyan
+                  : AppColors.kBrandColorBlack,
               elevation: 0,
               onPressed: widget.onPressed,
             ),

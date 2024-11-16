@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/core/utils/app_routes.dart';
 import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
@@ -28,8 +29,12 @@ class CustomCategoriesGridView extends StatelessWidget {
               .push(AppRoutes.kProductsListingView, extra: category[index]);
         },
         child: CustomCategoryItem(
-          title: category[index].name,
-          textStyle: AppTextStyles.captionSemiBold,
+          title: category[index].name.toUpperCase(),
+          textStyle: AppTextStyles.captionSemiBold.copyWith(
+            color: AppSettings.darkMode
+                ? Colors.white
+                : AppColors.kBrandColorBlack,
+          ),
           imageUrl: category[index].image,
           containerHeight: 100.h,
           containerWidth: 160.w,
