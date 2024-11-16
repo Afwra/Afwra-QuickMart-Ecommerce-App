@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:quick_mart/core/utils/app_assets.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
-import 'package:quick_mart/core/utils/app_text_styles.dart';
-import 'package:quick_mart/features/profile/presentation/views/widgets/custom_profile_view_list_tile.dart';
+import 'package:quick_mart/features/profile/presentation/views/widgets/account_management_section.dart';
+import 'package:quick_mart/features/profile/presentation/views/widgets/personal_information_section.dart';
+import 'package:quick_mart/features/profile/presentation/views/widgets/support_and_information_section.dart';
 
 class CustomProfileViewBottomSection extends StatelessWidget {
   const CustomProfileViewBottomSection({
@@ -24,69 +24,18 @@ class CustomProfileViewBottomSection extends StatelessWidget {
               topRight: Radius.circular(24.r),
             ),
           ),
-          child: Column(
+          child: const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Personal Information',
-                style: AppTextStyles.captionSemiBold,
-              ),
-              const SizedBox(
-                height: 12,
-              ),
-              const CustomProfileViewListTile(
-                title: 'Shipping Address',
-                leadingIcon: AppAssets.shippingAddressIcon,
-              ),
-              const CustomProfileViewListTile(
-                title: 'Payment Method',
-                leadingIcon: AppAssets.paymentMethodIcon,
-              ),
-              const CustomProfileViewListTile(
-                title: 'Order History',
-                leadingIcon: AppAssets.orderHistoryIcon,
-              ),
-              const SizedBox(
+              PersonalInformationSection(),
+              SizedBox(
                 height: 24,
               ),
-              Text(
-                'Support & Information',
-                style: AppTextStyles.captionSemiBold,
-              ),
-              const SizedBox(
-                height: 12,
-              ),
-              const CustomProfileViewListTile(
-                title: 'Privacy Policy',
-                leadingIcon: AppAssets.privacyPolicyIcon,
-              ),
-              const CustomProfileViewListTile(
-                title: 'Terms & Conditions',
-                leadingIcon: AppAssets.termsAndConditionsIcon,
-              ),
-              const CustomProfileViewListTile(
-                title: 'FAQs',
-                leadingIcon: AppAssets.faqsLogo,
-              ),
-              const SizedBox(
+              SupportAndInformationSection(),
+              SizedBox(
                 height: 24,
               ),
-              Text(
-                'Account Management',
-                style: AppTextStyles.captionSemiBold,
-              ),
-              const SizedBox(
-                height: 12,
-              ),
-              const CustomProfileViewListTile(
-                title: 'Change Password',
-                leadingIcon: AppAssets.changePasswordLogo,
-              ),
-              const CustomProfileViewListTile(
-                title: 'Dark Theme',
-                leadingIcon: AppAssets.themeLogo,
-                isDarkModeTile: true,
-              ),
+              AccountManagementSection()
             ],
           ),
         ),
