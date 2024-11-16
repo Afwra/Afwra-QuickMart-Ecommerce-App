@@ -59,6 +59,19 @@
         "my_wishlist":"WishList",
         "latest_products":"Latest Products",
         "see_all":"See All"
+    },
+    "Profile":{
+        "personal_info":"Personal information",
+        "shipping_address":"Shipping Address",
+        "payment_method":"Payment Method",
+        "order_history":"Order History",
+        "privacy_policy":"Privacy Policy",
+        "terms_and_conditions":"Terms & Conditions",
+        "faqs":"FAQs",
+        "account_managment":"Account Managment",
+        "change_password":"Change Password",
+        "dark_theme":"Dark Theme"
+
     }
 
   }

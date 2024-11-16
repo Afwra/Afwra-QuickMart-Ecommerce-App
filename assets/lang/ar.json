@@ -59,5 +59,17 @@
         "my_wishlist": "قائمة الرغبات",
         "latest_products": "أحدث المنتجات",
         "see_all": "عرض الكل"
-    }
+    },
+    "Profile": {
+    "personal_info": "المعلومات الشخصية",
+    "shipping_address": "عنوان الشحن",
+    "payment_method": "طريقة الدفع",
+    "order_history": "سجل الطلبات",
+    "privacy_policy": "سياسة الخصوصية",
+    "terms_and_conditions": "الشروط والأحكام",
+    "faqs": "الأسئلة الشائعة",
+    "account_managment": "إدارة الحساب",
+    "change_password": "تغيير كلمة المرور",
+    "dark_theme": "الوضع الداكن"
+}
 }

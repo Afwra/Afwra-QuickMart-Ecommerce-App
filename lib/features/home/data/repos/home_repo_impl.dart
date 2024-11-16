@@ -4,6 +4,7 @@ import 'package:quick_mart/core/errors/failures.dart';
 import 'package:quick_mart/core/utils/api_service.dart';
 import 'package:quick_mart/core/utils/app_constants.dart';
 import 'package:quick_mart/core/utils/app_settings.dart';
+import 'package:quick_mart/features/auth/data/models/user_model.dart';
 import 'package:quick_mart/features/home/data/models/banner_model.dart';
 import 'package:quick_mart/features/home/data/models/category_model.dart';
 import 'package:quick_mart/features/home/data/models/favorites_model.dart';
@@ -185,7 +186,7 @@ class HomeRepoImpl implements HomeRepo {
   }
 
   @override
-  Future<Either<Failures, String>> getUserProfilePicture() async {
+  Future<Either<Failures, UserModel>> getUserProfilePicture() async {
     try {
       var data = await apiService.get(
         endpoint: AppConstants.userProfileEndpoint,
@@ -195,7 +196,7 @@ class HomeRepoImpl implements HomeRepo {
         },
       );
       if (data['status'] == true) {
-        return right(data['data']['image']);
+        return right(UserModel.fromJson(data['data']));
       } else {
         return Left(ServerFailure(data['message']));
       }

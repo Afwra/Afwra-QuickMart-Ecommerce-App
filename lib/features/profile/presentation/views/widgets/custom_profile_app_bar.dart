@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quick_mart/core/utils/app_assets.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
 import 'package:quick_mart/core/widgets/custom_image_widget.dart';
+import 'package:quick_mart/features/home/presentation/view_model/home_cubit/home_cubit.dart';
 import 'package:svg_flutter/svg.dart';
 
 class CustomProfileAppBar extends StatelessWidget {
@@ -13,6 +15,7 @@ class CustomProfileAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var cubit = BlocProvider.of<HomeCubit>(context);
     return SliverAppBar(
       expandedHeight: 135.h,
       backgroundColor: AppColors.kBrandColorCyan,
@@ -29,7 +32,7 @@ class CustomProfileAppBar extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(8.r),
                 child: CustomImageWidget(
-                  imageUrl: 'https://tinyurl.com/4cfnehaa',
+                  imageUrl: cubit.userModel.image,
                   height: 40.h,
                   width: 40.w,
                   boxFit: BoxFit.cover,
@@ -43,12 +46,12 @@ class CustomProfileAppBar extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Ahmed Raza',
+                    cubit.userModel.name,
                     style: AppTextStyles.button1
                         .copyWith(color: AppColors.kBrandColorWhite),
                   ),
                   Text(
-                    'ahmedraza@gmail.com',
+                    cubit.userModel.email,
                     style: AppTextStyles.button2
                         .copyWith(color: AppColors.kBrandColorWhite),
                   ),

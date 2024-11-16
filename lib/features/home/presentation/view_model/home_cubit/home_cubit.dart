@@ -1,7 +1,9 @@
 import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quick_mart/core/functions/hive_functions.dart';
 import 'package:quick_mart/core/utils/app_settings.dart';
+import 'package:quick_mart/features/auth/data/models/user_model.dart';
 import 'package:quick_mart/features/home/data/repos/home_repo.dart';
 import 'package:quick_mart/features/home/presentation/view_model/home_cubit/home_state.dart';
 
@@ -14,6 +16,12 @@ class HomeCubit extends Cubit<HomeState> {
     emit(BottomNavigationBarChangeIndex());
   }
 
+  void changeThemeMode() {
+    AppSettings.darkMode = !AppSettings.darkMode;
+    saveDarkMode(AppSettings.darkMode);
+    emit(ChangeThemeMode());
+  }
+
   void addToFavourites(int productId) async {
     var result = await homeRepo.addToFavorites(
         productId: productId, userToken: AppSettings.userToken!);
@@ -22,12 +30,15 @@ class HomeCubit extends Cubit<HomeState> {
     emit(AddOrRemoveFavoriteState());
   }
 
-  String userProfileImage = '';
+  bool userLoaded = false;
+  late UserModel userModel;
   void getUserProfilePicture() async {
+    userLoaded = false;
     var result = await homeRepo.getUserProfilePicture();
-    result.fold((fail) => log('fail -- ${fail.errMsg}'), (profilePicture) {
-      userProfileImage = profilePicture;
-      emit(UserProfileImageLoaded());
+    result.fold((fail) => log('fail -- ${fail.errMsg}'), (user) {
+      userModel = user;
+      userLoaded = true;
+      emit(UserLoaded());
     });
   }
 }
