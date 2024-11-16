@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
+import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
 import 'package:quick_mart/features/whishlist/presentation/view_model/wishlist_cubit/wishlist_cubit.dart';
 import 'package:quick_mart/features/whishlist/presentation/views/widgets/custom_wishlist_list_view_item.dart';
@@ -15,7 +16,11 @@ class WishListFilledView extends StatelessWidget {
       children: [
         Text(
           'Wishlist',
-          style: AppTextStyles.body2Medium,
+          style: AppTextStyles.body2Medium.copyWith(
+            color: AppSettings.darkMode
+                ? Colors.white
+                : AppColors.kBrandColorBlack,
+          ),
         ),
         const SizedBox(
           height: 30,

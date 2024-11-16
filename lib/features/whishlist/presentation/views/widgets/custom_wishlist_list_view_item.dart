@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quick_mart/core/utils/app_assets.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
+import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
 import 'package:quick_mart/features/cart/presentation/views/widgets/custom_my_cart_list_view_item_image.dart';
 import 'package:quick_mart/features/whishlist/data/models/wishlist_model/wishlist_model.dart';
@@ -33,7 +34,11 @@ class CustomWishlistListViewItem extends StatelessWidget {
               children: [
                 Text(
                   item.product.name,
-                  style: AppTextStyles.body2Medium,
+                  style: AppTextStyles.body2Medium.copyWith(
+                    color: AppSettings.darkMode
+                        ? Colors.white
+                        : AppColors.kBrandColorBlack,
+                  ),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -42,7 +47,11 @@ class CustomWishlistListViewItem extends StatelessWidget {
                 ),
                 Text(
                   '\$${item.product.price}',
-                  style: AppTextStyles.captionSemiBold,
+                  style: AppTextStyles.captionSemiBold.copyWith(
+                    color: AppSettings.darkMode
+                        ? Colors.white
+                        : AppColors.kBrandColorBlack,
+                  ),
                 ),
                 item.product.price == item.product.oldPrice
                     ? const SizedBox()
