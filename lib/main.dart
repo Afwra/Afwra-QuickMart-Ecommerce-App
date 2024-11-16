@@ -40,7 +40,7 @@ void main() async {
       fallbackLocale: const Locale('en'),
       path: 'assets/lang', // Path to the localization files
       child: BlocProvider(
-        create: (context) => ThemeCubit()..initTheme(),
+        create: (context) => ThemeCubit(),
         child: const QuickMartApp(),
       ),
     ),

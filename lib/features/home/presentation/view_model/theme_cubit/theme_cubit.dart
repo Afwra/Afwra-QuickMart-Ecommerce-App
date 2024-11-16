@@ -7,17 +7,20 @@ import 'package:quick_mart/features/home/presentation/view_model/theme_cubit/the
 
 class ThemeCubit extends Cubit<ThemeState> {
   ThemeCubit() : super(ThemeInitial());
-  void initTheme() {
+  bool isDarkMode = AppSettings.darkMode;
+  void changeTheme() {
+    AppSettings.darkMode = !AppSettings.darkMode;
+    isDarkMode = AppSettings.darkMode;
+    saveDarkMode(AppSettings.darkMode);
+    changeStatusBarColor();
+    emit(ChangeTheme());
+  }
+
+  void changeStatusBarColor() {
     SystemChrome.setSystemUIOverlayStyle(
-      getDarkMode()
+      AppSettings.darkMode
           ? AppThemes.darkModeStatusBarTheme
           : AppThemes.lightModeStatusBarTheme,
     );
-  }
-
-  void changeTheme() {
-    AppSettings.darkMode = !AppSettings.darkMode;
-    saveDarkMode(AppSettings.darkMode);
-    emit(ChangeTheme());
   }
 }
