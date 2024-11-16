@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
+import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
 import 'package:quick_mart/features/cart/data/models/cart_item_model/cart_item.dart';
 import 'package:quick_mart/features/cart/presentation/view_models/cubit/my_cart_cubit.dart';
@@ -49,8 +50,11 @@ class _CustomMyCartListViewItemCounterState
                     .updateCartItem(cartId: widget.item.id, quantity: count);
               }
             },
-            child: const Icon(
+            child: Icon(
               Icons.remove,
+              color: AppSettings.darkMode
+                  ? Colors.white
+                  : AppColors.kBrandColorBlack,
               size: 20,
             ),
           ),
@@ -59,7 +63,10 @@ class _CustomMyCartListViewItemCounterState
           ),
           Text(
             count.toString(),
-            style: AppTextStyles.body1Medium,
+            style: AppTextStyles.body1Medium.copyWith(
+                color: AppSettings.darkMode
+                    ? Colors.white
+                    : AppColors.kBrandColorBlack),
           ),
           const SizedBox(
             width: 20,
@@ -71,8 +78,11 @@ class _CustomMyCartListViewItemCounterState
               BlocProvider.of<MyCartCubit>(context)
                   .updateCartItem(cartId: widget.item.id, quantity: count);
             },
-            child: const Icon(
+            child: Icon(
               Icons.add,
+              color: AppSettings.darkMode
+                  ? Colors.white
+                  : AppColors.kBrandColorBlack,
               size: 20,
             ),
           ),

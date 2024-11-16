@@ -18,7 +18,7 @@ class CustomMyCartListViewItemImage extends StatelessWidget {
         onTap: onTap,
         child: CustomImageWidget(
           imageUrl: imageUrl,
-          boxFit: BoxFit.scaleDown,
+          boxFit: BoxFit.cover,
           height: 140.h,
           width: 120.w,
         ),

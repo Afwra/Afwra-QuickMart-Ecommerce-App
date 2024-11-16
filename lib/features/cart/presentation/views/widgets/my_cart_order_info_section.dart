@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:quick_mart/core/utils/app_colors.dart';
+import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
 import 'package:quick_mart/features/cart/data/models/cart_item_model/cart_item_model.dart';
 import 'package:quick_mart/features/cart/presentation/views/widgets/custom_checkout_button.dart';
@@ -17,7 +19,11 @@ class MyCartOrderInfoSection extends StatelessWidget {
       children: [
         Text(
           'Order Info',
-          style: AppTextStyles.body1Medium,
+          style: AppTextStyles.body1Medium.copyWith(
+            color: AppSettings.darkMode
+                ? Colors.white
+                : AppColors.kBrandColorBlack,
+          ),
         ),
         const SizedBox(
           height: 20,
@@ -38,11 +44,19 @@ class MyCartOrderInfoSection extends StatelessWidget {
           children: [
             Text(
               'Total',
-              style: AppTextStyles.body1Medium,
+              style: AppTextStyles.body1Medium.copyWith(
+                color: AppSettings.darkMode
+                    ? Colors.white
+                    : AppColors.kBrandColorBlack,
+              ),
             ),
             Text(
               '\$${cartItemModel.total}',
-              style: AppTextStyles.body1Medium,
+              style: AppTextStyles.body1Medium.copyWith(
+                color: AppSettings.darkMode
+                    ? Colors.white
+                    : AppColors.kBrandColorBlack,
+              ),
             ),
           ],
         ),

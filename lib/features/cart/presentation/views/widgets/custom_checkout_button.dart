@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
+import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/core/widgets/custom_button.dart';
 
 class CustomCheckoutButton extends StatelessWidget {
@@ -15,7 +16,9 @@ class CustomCheckoutButton extends StatelessWidget {
             child: CustomButton(
           text: 'Checkout',
           onPressed: () {},
-          color: AppColors.kBrandColorBlack,
+          color: AppSettings.darkMode
+              ? AppColors.kBrandColorCyan
+              : AppColors.kBrandColorBlack,
           textColor: AppColors.kBrandColorWhite,
         )),
       ],

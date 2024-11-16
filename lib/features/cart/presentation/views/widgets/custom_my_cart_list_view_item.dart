@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:quick_mart/core/utils/app_assets.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/core/utils/app_routes.dart';
+import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
 import 'package:quick_mart/features/cart/data/models/cart_item_model/cart_item.dart';
 import 'package:quick_mart/features/cart/presentation/view_models/cubit/my_cart_cubit.dart';
@@ -39,7 +40,11 @@ class CustomMyCartListViewItem extends StatelessWidget {
               children: [
                 Text(
                   item.product.name.toString(),
-                  style: AppTextStyles.body2Medium,
+                  style: AppTextStyles.body2Medium.copyWith(
+                    color: AppSettings.darkMode
+                        ? Colors.white
+                        : AppColors.kBrandColorBlack,
+                  ),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -48,7 +53,11 @@ class CustomMyCartListViewItem extends StatelessWidget {
                 ),
                 Text(
                   '\$${item.product.price}',
-                  style: AppTextStyles.captionSemiBold,
+                  style: AppTextStyles.captionSemiBold.copyWith(
+                    color: AppSettings.darkMode
+                        ? Colors.white
+                        : AppColors.kBrandColorBlack,
+                  ),
                 ),
                 item.product.discount != 0
                     ? Text(
