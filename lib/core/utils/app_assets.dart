@@ -24,4 +24,18 @@ class AppAssets {
   static const String emptyCart = 'assets/images/cart_empty.png';
   static const String emptyWishlist = 'assets/images/wishlist_empty.png';
   static const String trashIcon = 'assets/images/trash_icon.svg';
+  static const String logoutIcon = 'assets/images/logout_icon.svg';
+  static const String changePasswordLogo =
+      'assets/images/change_password_logo.svg';
+  static const String faqsLogo = 'assets/images/faqs_logo.svg';
+  static const String orderHistoryIcon = 'assets/images/order_history_icon.svg';
+  static const String paymentMethodIcon =
+      'assets/images/payment_method_icon.svg';
+  static const String privacyPolicyIcon =
+      'assets/images/privacy_policy_icon.svg';
+  static const String termsAndConditionsIcon =
+      'assets/images/terms_and_conditions_logo.svg';
+  static const String themeLogo = 'assets/images/theme_logo.svg';
+  static const String shippingAddressIcon =
+      'assets/images/shipping_address_icon.svg';
 }

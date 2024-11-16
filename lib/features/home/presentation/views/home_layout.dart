@@ -7,7 +7,7 @@ import 'package:quick_mart/features/home/presentation/view_model/home_cubit/home
 import 'package:quick_mart/features/home/presentation/views/widgets/categories_view/categories_view.dart';
 import 'package:quick_mart/features/home/presentation/views/widgets/home_view/home_view.dart';
 import 'package:quick_mart/features/cart/presentation/views/my_cart_view.dart';
-import 'package:quick_mart/features/home/presentation/views/widgets/profile_view/profile_view.dart';
+import 'package:quick_mart/features/profile/presentation/views/profile_view.dart';
 import 'package:quick_mart/features/whishlist/presentation/views/wish_list_view.dart';
 import 'package:quick_mart/features/home/presentation/views/widgets/custom_bottom_navigation_bar.dart';
 
@@ -28,7 +28,9 @@ class HomeLayout extends StatelessWidget {
         return Scaffold(
           body: SafeArea(
               child: Padding(
-            padding: EdgeInsets.only(top: 10.h, right: 16.w, left: 16.w),
+            padding: cubit.currPage != 4
+                ? EdgeInsets.only(top: 10.h, right: 16.w, left: 16.w)
+                : EdgeInsets.zero,
             child: pages[cubit.currPage],
           )),
           bottomNavigationBar: CustomBottomNavigationBar(
