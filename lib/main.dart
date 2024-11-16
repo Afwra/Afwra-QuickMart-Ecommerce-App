@@ -12,6 +12,8 @@ import 'package:quick_mart/core/utils/bloc_observer.dart';
 import 'package:quick_mart/core/utils/app_routes.dart';
 import 'package:quick_mart/core/utils/app_themes.dart';
 import 'package:quick_mart/core/utils/service_locator.dart';
+import 'package:quick_mart/features/home/presentation/view_model/theme_cubit/theme_cubit.dart';
+import 'package:quick_mart/features/home/presentation/view_model/theme_cubit/theme_state.dart';
 import 'package:quick_mart/firebase_options.dart';
 
 void main() async {
@@ -37,7 +39,10 @@ void main() async {
       supportedLocales: const [Locale('en'), Locale('ar')],
       fallbackLocale: const Locale('en'),
       path: 'assets/lang', // Path to the localization files
-      child: const QuickMartApp(),
+      child: BlocProvider(
+        create: (context) => ThemeCubit()..initTheme(),
+        child: const QuickMartApp(),
+      ),
     ),
   );
 }
@@ -47,18 +52,24 @@ class QuickMartApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(360, 800),
-      minTextAdapt: true, // Automatically adapts font sizes
-      splitScreenMode: true,
-      builder: (context, child) => MaterialApp.router(
-        routerConfig: AppRoutes.router,
-        theme: getDarkMode() ? AppThemes.darkTheme : AppThemes.lightTheme,
-        debugShowCheckedModeBanner: false,
-        localizationsDelegates: context.localizationDelegates,
-        supportedLocales: context.supportedLocales,
-        locale: context.locale,
-      ),
+    return BlocBuilder<ThemeCubit, ThemeState>(
+      builder: (context, state) {
+        return ScreenUtilInit(
+          designSize: const Size(360, 800),
+          minTextAdapt: true, // Automatically adapts font sizes
+          splitScreenMode: true,
+          builder: (context, child) => MaterialApp.router(
+            routerConfig: AppRoutes.router,
+            theme: AppSettings.darkMode
+                ? AppThemes.darkTheme
+                : AppThemes.lightTheme,
+            debugShowCheckedModeBanner: false,
+            localizationsDelegates: context.localizationDelegates,
+            supportedLocales: context.supportedLocales,
+            locale: context.locale,
+          ),
+        );
+      },
     );
   }
 }

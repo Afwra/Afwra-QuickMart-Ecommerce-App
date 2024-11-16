@@ -4,6 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/features/home/presentation/view_model/home_cubit/home_cubit.dart';
 import 'package:quick_mart/features/home/presentation/view_model/home_cubit/home_state.dart';
+import 'package:quick_mart/features/home/presentation/view_model/theme_cubit/theme_cubit.dart';
+import 'package:quick_mart/features/home/presentation/view_model/theme_cubit/theme_state.dart';
 import 'package:quick_mart/features/home/presentation/views/widgets/categories_view/categories_view.dart';
 import 'package:quick_mart/features/home/presentation/views/widgets/home_view/home_view.dart';
 import 'package:quick_mart/features/cart/presentation/views/my_cart_view.dart';
@@ -23,21 +25,25 @@ class HomeLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     HomeCubit cubit = BlocProvider.of<HomeCubit>(context);
-    return BlocBuilder<HomeCubit, HomeState>(
+    return BlocBuilder<ThemeCubit, ThemeState>(
       builder: (context, state) {
-        return Scaffold(
-          body: SafeArea(
-              child: Padding(
-            padding: cubit.currPage != 4
-                ? EdgeInsets.only(top: 10.h, right: 16.w, left: 16.w)
-                : EdgeInsets.zero,
-            child: pages[cubit.currPage],
-          )),
-          bottomNavigationBar: CustomBottomNavigationBar(
-            currPage: cubit.currPage,
-            isDarkMode: AppSettings.darkMode,
-            onTapped: (p) => cubit.changeNavigationBarIndex(p),
-          ),
+        return BlocBuilder<HomeCubit, HomeState>(
+          builder: (context, state) {
+            return Scaffold(
+              body: SafeArea(
+                  child: Padding(
+                padding: cubit.currPage != 4
+                    ? EdgeInsets.only(top: 10.h, right: 16.w, left: 16.w)
+                    : EdgeInsets.zero,
+                child: pages[cubit.currPage],
+              )),
+              bottomNavigationBar: CustomBottomNavigationBar(
+                currPage: cubit.currPage,
+                isDarkMode: AppSettings.darkMode,
+                onTapped: (p) => cubit.changeNavigationBarIndex(p),
+              ),
+            );
+          },
         );
       },
     );

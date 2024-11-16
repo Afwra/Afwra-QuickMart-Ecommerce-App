@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/core/utils/app_settings.dart';
-import 'package:quick_mart/features/home/presentation/view_model/home_cubit/home_cubit.dart';
+import 'package:quick_mart/features/home/presentation/view_model/theme_cubit/theme_cubit.dart';
 
 class CustomSwitchButton extends StatefulWidget {
   const CustomSwitchButton({super.key});
@@ -20,8 +20,8 @@ class _CustomSwitchButtonState extends State<CustomSwitchButton> {
       onChanged: (change) {
         setState(() {
           isSwitched = change;
-          BlocProvider.of<HomeCubit>(context).changeThemeMode();
         });
+        BlocProvider.of<ThemeCubit>(context).changeTheme();
       },
       activeColor: AppColors.kBrandColorCyan,
       inactiveTrackColor: AppColors.kGrey150,
