@@ -38,4 +38,5 @@ class AppAssets {
   static const String themeLogo = 'assets/images/theme_logo.svg';
   static const String shippingAddressIcon =
       'assets/images/shipping_address_icon.svg';
+  static const String langIcon = 'assets/images/lang_icon.svg';
 }
