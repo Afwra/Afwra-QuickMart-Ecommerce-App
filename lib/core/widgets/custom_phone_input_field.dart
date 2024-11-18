@@ -25,16 +25,18 @@ class CustomPhoneInputField extends StatelessWidget {
               color: darkMode ? Colors.white : AppColors.kBrandColorBlack),
         ),
         const SizedBox(
-          height: 8,
+          height: 6,
         ),
         SizedBox(
-          height: 120.h,
           child: IntlPhoneField(
             flagsButtonPadding:
                 EdgeInsets.symmetric(horizontal: 10.w, vertical: 18.h),
             textAlignVertical: TextAlignVertical.center,
             initialCountryCode: 'EG',
             decoration: InputDecoration(
+              contentPadding: EdgeInsets.symmetric(
+                vertical: 22.h,
+              ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12.r),
                 borderSide: BorderSide(
