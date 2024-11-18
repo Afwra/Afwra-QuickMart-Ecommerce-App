@@ -16,6 +16,7 @@ import 'package:quick_mart/features/home/presentation/views/widgets/search_view/
 import 'package:quick_mart/features/home/presentation/views/widgets/search_view/search_view.dart';
 import 'package:quick_mart/features/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:quick_mart/features/product_details/presentation/views/product_detail_view.dart';
+import 'package:quick_mart/features/profile/presentation/views/widgets/shipping_address_section/shipping_address_view.dart';
 import 'package:quick_mart/features/splash_screen/presentation/views/splash_screen_view.dart';
 
 abstract class AppRoutes {
@@ -31,6 +32,8 @@ abstract class AppRoutes {
   static const kSearchResultsView = '/SearchResultsView';
   static const kProductsListingView = '/ProductsListingView';
   static const kProductsDetailsView = '/ProductsDetailsView';
+  static const kShippingAddress = '/ShippingAddressView';
+
   static final router = GoRouter(
     routes: [
       GoRoute(
@@ -76,6 +79,12 @@ abstract class AppRoutes {
         path: kProductsDetailsView,
         pageBuilder: (context, state) => AppAnimations.customGrowTransition(
             state, ProductDetailView(product: state.extra as ProductModel)),
+      ),
+      GoRoute(
+        path: kShippingAddress,
+        pageBuilder: (context, state) =>
+            AppAnimations.customSlideLeftTransition(
+                state, const ShippingAddressView()),
       ),
       GoRoute(
         path: kHomeLayout,

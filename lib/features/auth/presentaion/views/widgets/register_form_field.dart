@@ -7,7 +7,7 @@ import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/core/utils/app_texts.dart';
 import 'package:quick_mart/features/auth/presentaion/view_models/register_cubit/register_cubit.dart';
 import 'package:quick_mart/features/auth/presentaion/view_models/register_cubit/register_state.dart';
-import 'package:quick_mart/features/auth/presentaion/views/widgets/custom_text_field.dart';
+import 'package:quick_mart/core/widgets/custom_text_field.dart';
 import 'package:quick_mart/features/auth/presentaion/views/widgets/register_button_body.dart';
 import 'package:svg_flutter/svg.dart';
 

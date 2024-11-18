@@ -12,34 +12,39 @@ class CustomProfileViewListTile extends StatelessWidget {
     required this.title,
     required this.leadingIcon,
     this.isDarkModeTile = false,
+    this.onPressed,
   });
   final String title, leadingIcon;
   final bool isDarkModeTile;
+  final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      contentPadding: EdgeInsets.zero,
-      leading: SvgPicture.asset(
-        leadingIcon,
-        height: 24.h,
-        width: 24.w,
-        colorFilter:
-            const ColorFilter.mode(AppColors.kGrey150, BlendMode.srcIn),
+    return InkWell(
+      onTap: onPressed,
+      child: ListTile(
+        contentPadding: EdgeInsets.zero,
+        leading: SvgPicture.asset(
+          leadingIcon,
+          height: 24.h,
+          width: 24.w,
+          colorFilter:
+              const ColorFilter.mode(AppColors.kGrey150, BlendMode.srcIn),
+        ),
+        title: Text(
+          title,
+          style: AppTextStyles.body2Medium.copyWith(color: AppColors.kGrey150),
+        ),
+        trailing: isDarkModeTile
+            ? SizedBox(
+                height: 32.h, width: 32.w, child: const CustomSwitchButton())
+            : SvgPicture.asset(
+                AppAssets.arrowRight,
+                height: 24.h,
+                width: 24.w,
+                colorFilter:
+                    const ColorFilter.mode(AppColors.kGrey150, BlendMode.srcIn),
+              ),
       ),
-      title: Text(
-        title,
-        style: AppTextStyles.body2Medium.copyWith(color: AppColors.kGrey150),
-      ),
-      trailing: isDarkModeTile
-          ? SizedBox(
-              height: 32.h, width: 32.w, child: const CustomSwitchButton())
-          : SvgPicture.asset(
-              AppAssets.arrowRight,
-              height: 24.h,
-              width: 24.w,
-              colorFilter:
-                  const ColorFilter.mode(AppColors.kGrey150, BlendMode.srcIn),
-            ),
     );
   }
 }
