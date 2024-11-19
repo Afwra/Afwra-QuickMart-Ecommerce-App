@@ -15,32 +15,46 @@ class CustomProfilePagesAppBar extends StatelessWidget {
   final String title;
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       children: [
-        InkWell(
-          onTap: () => GoRouter.of(context).pop(context),
-          child: SvgPicture.asset(
-            AppSettings.langCode == 'ar'
-                ? AppAssets.arrowRight
-                : AppAssets.arrowLeft,
-            height: 32.h,
-            width: 32.w,
-            colorFilter: ColorFilter.mode(
-              AppSettings.darkMode ? Colors.white : AppColors.kBrandColorBlack,
-              BlendMode.srcIn,
+        Row(
+          children: [
+            InkWell(
+              onTap: () => GoRouter.of(context).pop(context),
+              child: SvgPicture.asset(
+                AppSettings.langCode == 'ar'
+                    ? AppAssets.arrowRight
+                    : AppAssets.arrowLeft,
+                height: 32.h,
+                width: 32.w,
+                colorFilter: ColorFilter.mode(
+                  AppSettings.darkMode
+                      ? Colors.white
+                      : AppColors.kBrandColorBlack,
+                  BlendMode.srcIn,
+                ),
+              ),
             ),
-          ),
+            const SizedBox(
+              width: 6,
+            ),
+            Text(
+              title,
+              style: AppTextStyles.body2Medium.copyWith(
+                color: AppSettings.darkMode
+                    ? Colors.white
+                    : AppColors.kBrandColorBlack,
+              ),
+            ),
+          ],
         ),
         const SizedBox(
-          width: 6,
+          height: 12,
         ),
-        Text(
-          title,
-          style: AppTextStyles.body2Medium.copyWith(
-            color: AppSettings.darkMode
-                ? Colors.white
-                : AppColors.kBrandColorBlack,
-          ),
+        Divider(
+          color: AppSettings.darkMode
+              ? AppColors.kGrey50DarkMode
+              : AppColors.kGrey50,
         ),
       ],
     );

@@ -70,6 +70,9 @@ class AnimatedImageDialogState extends State<AnimatedImageDialog>
                 imageUrl: widget.url,
                 boxFit: BoxFit.scaleDown,
               ),
+              const SizedBox(
+                height: 10,
+              ),
               CustomTextButton(
                 buttonText: 'Close',
                 onPressed: () => Navigator.pop(context),

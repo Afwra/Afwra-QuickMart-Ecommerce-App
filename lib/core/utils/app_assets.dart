@@ -39,4 +39,6 @@ class AppAssets {
   static const String shippingAddressIcon =
       'assets/images/shipping_address_icon.svg';
   static const String langIcon = 'assets/images/lang_icon.svg';
+  static const String googlePayIcon = 'assets/images/google_pay_icon.svg';
+  static const String paypalIcon = 'assets/images/paypal_icon.svg';
 }

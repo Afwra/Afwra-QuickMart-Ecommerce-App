@@ -32,9 +32,10 @@ class PersonalInformationSection extends StatelessWidget {
           onPressed: () =>
               GoRouter.of(context).push(AppRoutes.kShippingAddress),
         ),
-        const CustomProfileViewListTile(
+        CustomProfileViewListTile(
           title: 'Payment Method',
           leadingIcon: AppAssets.paymentMethodIcon,
+          onPressed: () => GoRouter.of(context).push(AppRoutes.kPaymentMethod),
         ),
         const CustomProfileViewListTile(
           title: 'Order History',
