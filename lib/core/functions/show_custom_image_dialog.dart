@@ -9,28 +9,75 @@ void showImageDialog({required BuildContext context, required String url}) {
   showDialog(
     context: context,
     builder: (context) {
-      return Dialog(
-          backgroundColor: AppSettings.darkMode
-              ? AppColors.kBrandColorBlack
-              : AppColors.kBrandColorWhite,
-          alignment: Alignment.center,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.r)),
-          clipBehavior: Clip.antiAliasWithSaveLayer,
-          child: IntrinsicHeight(
-            child: Column(
-              children: [
-                CustomImageWidget(
-                  imageUrl: url,
-                  boxFit: BoxFit.scaleDown,
-                ),
-                CustomTextButton(
-                  buttonText: 'Close',
-                  onPressed: () => Navigator.pop(context),
-                ),
-              ],
-            ),
-          ));
+      return AnimatedImageDialog(url: url);
     },
   );
+}
+
+class AnimatedImageDialog extends StatefulWidget {
+  final String url;
+
+  const AnimatedImageDialog({super.key, required this.url});
+
+  @override
+  AnimatedImageDialogState createState() => AnimatedImageDialogState();
+}
+
+class AnimatedImageDialogState extends State<AnimatedImageDialog>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 300),
+      vsync: this,
+    );
+    _animation = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Curves.easeInOut,
+      ),
+    );
+    _controller.forward();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ScaleTransition(
+      scale: _animation,
+      child: Dialog(
+        backgroundColor: AppSettings.darkMode
+            ? AppColors.kBrandColorBlack
+            : AppColors.kBrandColorWhite,
+        alignment: Alignment.center,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.r),
+        ),
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        child: IntrinsicHeight(
+          child: Column(
+            children: [
+              CustomImageWidget(
+                imageUrl: widget.url,
+                boxFit: BoxFit.scaleDown,
+              ),
+              CustomTextButton(
+                buttonText: 'Close',
+                onPressed: () => Navigator.pop(context),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 }
