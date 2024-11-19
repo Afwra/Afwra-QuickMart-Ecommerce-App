@@ -2,7 +2,7 @@
   "project_info": {
     "project_number": "1074391323036",
     "project_id": "quick-mart-ecommerce-app",
-    "storage_bucket": "quick-mart-ecommerce-app.appspot.com"
+    "storage_bucket": "quick-mart-ecommerce-app.firebasestorage.app"
   },
   "client": [
     {
