@@ -31,9 +31,11 @@ class SupportAndInformationSection extends StatelessWidget {
           leadingIcon: AppAssets.privacyPolicyIcon,
           onPressed: () => GoRouter.of(context).push(AppRoutes.kPrivacyPolicy),
         ),
-        const CustomProfileViewListTile(
+        CustomProfileViewListTile(
           title: 'Terms & Conditions',
           leadingIcon: AppAssets.termsAndConditionsIcon,
+          onPressed: () =>
+              GoRouter.of(context).push(AppRoutes.kTermsAndConditions),
         ),
         const CustomProfileViewListTile(
           title: 'FAQs',

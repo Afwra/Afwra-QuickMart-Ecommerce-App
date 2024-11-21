@@ -21,6 +21,7 @@ import 'package:quick_mart/features/profile/presentation/views/widgets/orders_hi
 import 'package:quick_mart/features/profile/presentation/views/widgets/payment_method_section/payment_method_view.dart';
 import 'package:quick_mart/features/profile/presentation/views/widgets/privacy_policy_section/privacy_policy_view.dart';
 import 'package:quick_mart/features/profile/presentation/views/widgets/shipping_address_section/shipping_address_view.dart';
+import 'package:quick_mart/features/profile/presentation/views/widgets/terms_and_conditions_section/terms_and_conditions_view.dart';
 import 'package:quick_mart/features/splash_screen/presentation/views/splash_screen_view.dart';
 
 abstract class AppRoutes {
@@ -41,6 +42,7 @@ abstract class AppRoutes {
   static const kOrderHistory = '/OrderHistoryView';
   static const kChangePassword = '/ChangePasswordView';
   static const kPrivacyPolicy = '/PrivacyPolicyView';
+  static const kTermsAndConditions = '/TermsAndConditionsView';
 
   static final router = GoRouter(
     routes: [
@@ -117,6 +119,12 @@ abstract class AppRoutes {
         pageBuilder: (context, state) =>
             AppAnimations.customSlideLeftTransition(
                 state, const PrivacyPolicyView()),
+      ),
+      GoRoute(
+        path: kTermsAndConditions,
+        pageBuilder: (context, state) =>
+            AppAnimations.customSlideLeftTransition(
+                state, const TermsAndConditionsView()),
       ),
       GoRoute(
         path: kHomeLayout,
