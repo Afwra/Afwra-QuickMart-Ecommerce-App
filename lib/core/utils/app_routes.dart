@@ -16,6 +16,7 @@ import 'package:quick_mart/features/home/presentation/views/widgets/search_view/
 import 'package:quick_mart/features/home/presentation/views/widgets/search_view/search_view.dart';
 import 'package:quick_mart/features/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:quick_mart/features/product_details/presentation/views/product_detail_view.dart';
+import 'package:quick_mart/features/profile/presentation/views/widgets/change_password_section/change_password_view.dart';
 import 'package:quick_mart/features/profile/presentation/views/widgets/orders_history_section/orders_history_view.dart';
 import 'package:quick_mart/features/profile/presentation/views/widgets/payment_method_section/payment_method_view.dart';
 import 'package:quick_mart/features/profile/presentation/views/widgets/shipping_address_section/shipping_address_view.dart';
@@ -37,6 +38,7 @@ abstract class AppRoutes {
   static const kShippingAddress = '/ShippingAddressView';
   static const kPaymentMethod = '/PaymentMethodView';
   static const kOrderHistory = '/OrderHistoryView';
+  static const kChangePassword = '/ChangePasswordView';
 
   static final router = GoRouter(
     routes: [
@@ -101,6 +103,12 @@ abstract class AppRoutes {
         pageBuilder: (context, state) =>
             AppAnimations.customSlideLeftTransition(
                 state, const OrdersHistoryView()),
+      ),
+      GoRoute(
+        path: kChangePassword,
+        pageBuilder: (context, state) =>
+            AppAnimations.customSlideLeftTransition(
+                state, const ChangePasswordView()),
       ),
       GoRoute(
         path: kHomeLayout,

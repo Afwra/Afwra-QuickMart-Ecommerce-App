@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:quick_mart/core/utils/app_assets.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
+import 'package:quick_mart/core/utils/app_routes.dart';
 import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
 import 'package:quick_mart/core/widgets/custom_text_button.dart';
@@ -29,9 +31,10 @@ class AccountManagementSection extends StatelessWidget {
         const SizedBox(
           height: 12,
         ),
-        const CustomProfileViewListTile(
+        CustomProfileViewListTile(
           title: 'Change Password',
           leadingIcon: AppAssets.changePasswordLogo,
+          onPressed: () => GoRouter.of(context).push(AppRoutes.kChangePassword),
         ),
         const CustomProfileViewListTile(
           title: 'Dark Theme',
