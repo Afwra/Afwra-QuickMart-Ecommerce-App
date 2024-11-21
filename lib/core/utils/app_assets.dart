@@ -42,4 +42,6 @@ class AppAssets {
   static const String googlePayIcon = 'assets/images/google_pay_icon.svg';
   static const String paypalIcon = 'assets/images/paypal_icon.svg';
   static const String ordersEmpty = 'assets/images/orders_empty.png';
+  static const String reviewIcon = 'assets/images/review_icon.svg';
+  static const String paymentIcon = 'assets/images/payment_icon.svg';
 }

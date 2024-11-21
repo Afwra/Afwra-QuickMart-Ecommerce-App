@@ -6,6 +6,7 @@ import 'package:quick_mart/features/auth/presentaion/views/forgot_password_view.
 import 'package:quick_mart/features/auth/presentaion/views/login_view.dart';
 import 'package:quick_mart/features/auth/presentaion/views/password_created_success_view.dart';
 import 'package:quick_mart/features/auth/presentaion/views/register_view.dart';
+import 'package:quick_mart/features/checkout/presentation/views/checkout_view.dart';
 import 'package:quick_mart/features/home/data/models/category_model.dart';
 import 'package:quick_mart/features/home/data/models/product_model.dart';
 import 'package:quick_mart/features/home/data/repos/home_repo_impl.dart';
@@ -43,6 +44,7 @@ abstract class AppRoutes {
   static const kChangePassword = '/ChangePasswordView';
   static const kPrivacyPolicy = '/PrivacyPolicyView';
   static const kTermsAndConditions = '/TermsAndConditionsView';
+  static const kCheckoutView = '/CheckoutView';
 
   static final router = GoRouter(
     routes: [
@@ -125,6 +127,11 @@ abstract class AppRoutes {
         pageBuilder: (context, state) =>
             AppAnimations.customSlideLeftTransition(
                 state, const TermsAndConditionsView()),
+      ),
+      GoRoute(
+        path: kCheckoutView,
+        pageBuilder: (context, state) =>
+            AppAnimations.customSlideUpTransition(state, const CheckoutView()),
       ),
       GoRoute(
         path: kHomeLayout,
