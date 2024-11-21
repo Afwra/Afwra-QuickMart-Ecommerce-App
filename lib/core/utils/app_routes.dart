@@ -19,6 +19,7 @@ import 'package:quick_mart/features/product_details/presentation/views/product_d
 import 'package:quick_mart/features/profile/presentation/views/widgets/change_password_section/change_password_view.dart';
 import 'package:quick_mart/features/profile/presentation/views/widgets/orders_history_section/orders_history_view.dart';
 import 'package:quick_mart/features/profile/presentation/views/widgets/payment_method_section/payment_method_view.dart';
+import 'package:quick_mart/features/profile/presentation/views/widgets/privacy_policy_section/privacy_policy_view.dart';
 import 'package:quick_mart/features/profile/presentation/views/widgets/shipping_address_section/shipping_address_view.dart';
 import 'package:quick_mart/features/splash_screen/presentation/views/splash_screen_view.dart';
 
@@ -39,6 +40,7 @@ abstract class AppRoutes {
   static const kPaymentMethod = '/PaymentMethodView';
   static const kOrderHistory = '/OrderHistoryView';
   static const kChangePassword = '/ChangePasswordView';
+  static const kPrivacyPolicy = '/PrivacyPolicyView';
 
   static final router = GoRouter(
     routes: [
@@ -109,6 +111,12 @@ abstract class AppRoutes {
         pageBuilder: (context, state) =>
             AppAnimations.customSlideLeftTransition(
                 state, const ChangePasswordView()),
+      ),
+      GoRoute(
+        path: kPrivacyPolicy,
+        pageBuilder: (context, state) =>
+            AppAnimations.customSlideLeftTransition(
+                state, const PrivacyPolicyView()),
       ),
       GoRoute(
         path: kHomeLayout,
