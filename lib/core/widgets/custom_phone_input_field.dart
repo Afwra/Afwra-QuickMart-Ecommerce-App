@@ -1,7 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl_phone_field/country_picker_dialog.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:intl_phone_field/phone_number.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
@@ -11,9 +14,15 @@ class CustomPhoneInputField extends StatelessWidget {
     super.key,
     required this.titleText,
     this.darkMode = false,
+    this.controller,
+    this.autovalidateMode,
+    this.validator,
   });
   final String titleText;
   final bool darkMode;
+  final TextEditingController? controller;
+  final AutovalidateMode? autovalidateMode;
+  final FutureOr<String?> Function(PhoneNumber?)? validator;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -29,6 +38,9 @@ class CustomPhoneInputField extends StatelessWidget {
         ),
         SizedBox(
           child: IntlPhoneField(
+            validator: validator,
+            controller: controller,
+            autovalidateMode: autovalidateMode,
             flagsButtonPadding:
                 EdgeInsets.symmetric(horizontal: 10.w, vertical: 18.h),
             textAlignVertical: TextAlignVertical.center,

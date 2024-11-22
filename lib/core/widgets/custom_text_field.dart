@@ -14,6 +14,7 @@ class CustomTextFormField extends StatelessWidget {
   final FormFieldValidator<String>? validator;
   final Widget? suffix;
   final bool darkMode;
+  final AutovalidateMode? autovalidateMode;
 
   const CustomTextFormField({
     super.key,
@@ -27,6 +28,7 @@ class CustomTextFormField extends StatelessWidget {
     required this.titleText,
     this.suffix,
     this.darkMode = false,
+    this.autovalidateMode,
   });
 
   @override
@@ -43,6 +45,7 @@ class CustomTextFormField extends StatelessWidget {
           height: 8,
         ),
         TextFormField(
+          autovalidateMode: autovalidateMode,
           controller: controller,
           keyboardType: keyboardType,
           obscureText: obscureText,

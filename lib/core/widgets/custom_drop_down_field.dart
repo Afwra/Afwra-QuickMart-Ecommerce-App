@@ -7,20 +7,37 @@ import 'package:quick_mart/core/utils/app_text_styles.dart';
 class CustomDropDownField extends StatelessWidget {
   const CustomDropDownField({
     super.key,
+    this.value,
+    required this.title,
   });
-
+  final String? value;
+  final String title;
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField(
       padding: EdgeInsets.zero,
-      items: const [
-        DropdownMenuItem(
+      value: value,
+      items: [
+        value != null
+            ? DropdownMenuItem(
+                value: value,
+                child: Text(
+                  value.toString(),
+                ),
+              )
+            : DropdownMenuItem(
+                value: '',
+                child: Text(
+                  'Select $title',
+                ),
+              ),
+        const DropdownMenuItem(
           value: '1',
           child: Text(
             'Province 1',
           ),
         ),
-        DropdownMenuItem(
+        const DropdownMenuItem(
           value: '2',
           child: Text(
             'Province 2',

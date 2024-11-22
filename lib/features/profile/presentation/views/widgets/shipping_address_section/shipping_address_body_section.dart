@@ -31,11 +31,15 @@ class ShippingAddressBodySection extends StatelessWidget {
         const SizedBox(
           height: 12,
         ),
-        const CustomDropDownField(),
+        const CustomDropDownField(
+          title: 'Provice',
+        ),
         const SizedBox(
           height: 12,
         ),
-        const CustomDropDownField(),
+        const CustomDropDownField(
+          title: 'City',
+        ),
         const SizedBox(
           height: 12,
         ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quick_mart/features/checkout/presentation/views/widgets/checkout_shipping_section.dart';
+import 'package:quick_mart/features/checkout/presentation/views/widgets/shipping_section/checkout_shipping_section.dart';
 import 'package:quick_mart/features/checkout/presentation/views/widgets/payment_method_section.dart';
 import 'package:quick_mart/features/checkout/presentation/views/widgets/review_order_section/review_order_section.dart';
 
