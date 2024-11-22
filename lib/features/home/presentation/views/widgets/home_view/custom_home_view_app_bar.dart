@@ -41,14 +41,18 @@ class CustomHomeViewAppBar extends StatelessWidget {
         ),
         BlocBuilder<HomeCubit, HomeState>(
           builder: (context, state) {
-            return ClipRRect(
-              borderRadius: BorderRadius.circular(8.r),
-              child: CustomImageWidget(
-                imageUrl: BlocProvider.of<HomeCubit>(context).userLoaded
-                    ? BlocProvider.of<HomeCubit>(context).userModel!.image
-                    : '',
-                height: 32.h,
-                width: 32.w,
+            return GestureDetector(
+              onTap: () => BlocProvider.of<HomeCubit>(context)
+                  .changeNavigationBarIndex(4),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8.r),
+                child: CustomImageWidget(
+                  imageUrl: BlocProvider.of<HomeCubit>(context).userLoaded
+                      ? BlocProvider.of<HomeCubit>(context).userModel!.image
+                      : '',
+                  height: 32.h,
+                  width: 32.w,
+                ),
               ),
             );
           },

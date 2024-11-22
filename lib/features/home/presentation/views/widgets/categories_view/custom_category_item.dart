@@ -17,49 +17,54 @@ class CustomCategoryItem extends StatelessWidget {
     this.isDarkMode = false,
     this.textStyle,
     this.boxFit,
+    this.onTap,
   });
   final String title, imageUrl;
   final double containerHeight, containerWidth, imageHeight, imageWidth;
   final bool isDarkMode;
   final TextStyle? textStyle;
   final BoxFit? boxFit;
+  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: containerWidth,
-      height: containerHeight,
-      padding: const EdgeInsets.all(8),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12.r),
-        border: Border.all(
-          color: isDarkMode ? AppColors.kGrey50DarkMode : AppColors.kGrey50,
-          width: 1,
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        width: containerWidth,
+        height: containerHeight,
+        padding: const EdgeInsets.all(8),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12.r),
+          border: Border.all(
+            color: isDarkMode ? AppColors.kGrey50DarkMode : AppColors.kGrey50,
+            width: 1,
+          ),
         ),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          CustomImageWidget(
-            imageUrl: imageUrl,
-            height: imageHeight,
-            width: imageWidth,
-            boxFit: boxFit,
-          ),
-          const SizedBox(
-            height: 2,
-          ),
-          Text(
-            title,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: textStyle ??
-                AppTextStyles.overlineSemiBold.copyWith(
-                  color: AppSettings.darkMode
-                      ? Colors.white
-                      : AppColors.kBrandColorBlack,
-                ),
-          ),
-        ],
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CustomImageWidget(
+              imageUrl: imageUrl,
+              height: imageHeight,
+              width: imageWidth,
+              boxFit: boxFit,
+            ),
+            const SizedBox(
+              height: 2,
+            ),
+            Text(
+              title,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: textStyle ??
+                  AppTextStyles.overlineSemiBold.copyWith(
+                    color: AppSettings.darkMode
+                        ? Colors.white
+                        : AppColors.kBrandColorBlack,
+                  ),
+            ),
+          ],
+        ),
       ),
     );
   }

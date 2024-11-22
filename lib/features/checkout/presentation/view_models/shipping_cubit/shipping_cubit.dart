@@ -105,4 +105,16 @@ class ShippingCubit extends Cubit<ShippingState> {
       emit(ValidateFormFailState());
     }
   }
+
+  @override
+  Future<void> close() {
+    nameController.dispose();
+    phoneController.dispose();
+    provinceController.dispose();
+    cityController.dispose();
+    streetAddress.dispose();
+    postalCode.dispose();
+    mapController.dispose();
+    return super.close();
+  }
 }

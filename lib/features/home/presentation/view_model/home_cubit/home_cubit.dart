@@ -1,7 +1,9 @@
 import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quick_mart/core/functions/flutter_toast.dart';
 import 'package:quick_mart/core/functions/hive_functions.dart';
+import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/features/auth/data/models/user_model.dart';
 import 'package:quick_mart/features/home/data/repos/home_repo.dart';
@@ -25,8 +27,12 @@ class HomeCubit extends Cubit<HomeState> {
   void addToFavourites(int productId) async {
     var result = await homeRepo.addToFavorites(
         productId: productId, userToken: AppSettings.userToken!);
-    result.fold((fail) => log('fail -- ${fail.errMsg}'),
-        (favorites) => log('success -- favorites'));
+    result.fold((fail) => log('fail -- ${fail.errMsg}'), (favorites) {
+      log('success -- favorites');
+      showFlutterToast(
+          msg: 'Added/Removed favorites successfully',
+          backGroundColor: AppColors.kBrandColorCyan);
+    });
     emit(AddOrRemoveFavoriteState());
   }
 
