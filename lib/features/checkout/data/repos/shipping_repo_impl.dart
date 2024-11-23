@@ -72,19 +72,21 @@ class ShippingRepoImpl implements ShippingRepo {
   Future<Either<Failures, void>> updateShippingAddress(
       ShippingModel shippingModel) async {
     try {
-      final result = await apiService
-          .put(endpoint: AppConstants.addressEndpoint, headers: {
-        'Authorization': AppSettings.userToken,
-        'lang': AppSettings.langCode,
-      }, data: {
-        'name': shippingModel.name,
-        'city': shippingModel.city,
-        'region': shippingModel.region,
-        'details': shippingModel.details,
-        'notes': shippingModel.notes,
-        'latitude': shippingModel.lat,
-        'longitude': shippingModel.long,
-      });
+      final result = await apiService.put(
+          endpoint: '${AppConstants.addressEndpoint}/${shippingModel.id}',
+          headers: {
+            'Authorization': AppSettings.userToken,
+            'lang': AppSettings.langCode,
+          },
+          data: {
+            'name': shippingModel.name,
+            'city': shippingModel.city,
+            'region': shippingModel.region,
+            'details': shippingModel.details,
+            'notes': shippingModel.notes,
+            'latitude': shippingModel.lat,
+            'longitude': shippingModel.long,
+          });
       if (result['status'] == true) {
         return const Right(null);
       } else {

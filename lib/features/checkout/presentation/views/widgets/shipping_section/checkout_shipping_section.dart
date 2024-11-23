@@ -29,7 +29,11 @@ class CheckoutShippingSection extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              const ShippingFormSection(),
+              ShippingFormSection(
+                onPressed: () {
+                  BlocProvider.of<ShippingCubit>(context).validateForm();
+                },
+              ),
             ],
           ),
         );

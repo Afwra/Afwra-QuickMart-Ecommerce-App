@@ -21,3 +21,9 @@ final class GetAddressFromApiSuccess extends ShippingState {}
 final class GetAddressFromApiFail extends ShippingState {}
 
 final class GetAddressFromApiLoading extends ShippingState {}
+
+final class SaveAddressToApiSuccess extends ShippingState {}
+
+final class SaveAddressToApiFail extends ShippingState {}
+
+final class SaveAddressToApiLoading extends ShippingState {}

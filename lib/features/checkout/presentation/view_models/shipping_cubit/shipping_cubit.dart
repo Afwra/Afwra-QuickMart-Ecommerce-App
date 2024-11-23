@@ -7,6 +7,8 @@ import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:quick_mart/core/functions/flutter_toast.dart';
+import 'package:quick_mart/core/utils/app_colors.dart';
+import 'package:quick_mart/features/checkout/data/models/shipping_model.dart';
 import 'package:quick_mart/features/checkout/data/repos/shipping_repo.dart';
 import 'package:quick_mart/features/checkout/presentation/view_models/shipping_cubit/shipping_state.dart';
 
@@ -43,6 +45,7 @@ class ShippingCubit extends Cubit<ShippingState> {
       ));
       currentLocation = LatLng(position.latitude, position.longitude);
       isMapLoading = false;
+      mapController.move(currentLocation!, 15);
       getAddressFromLatLng(currentLocation!);
       emit(GetCurrentLocationSuccess());
     } catch (e) {
@@ -99,6 +102,7 @@ class ShippingCubit extends Cubit<ShippingState> {
     if (formKey.currentState!.validate() && phoneController.text.isNotEmpty) {
       formKey.currentState!.save();
       emit(ValidateFormSuccessState());
+      saveAddressToApi();
     } else {
       autovalidateMode = AutovalidateMode.always;
       showFlutterToast(
@@ -112,6 +116,8 @@ class ShippingCubit extends Cubit<ShippingState> {
 //-------------------------------------------------------
   final ShippingRepo shippingRepo;
   bool getAddressFromApiLoading = false;
+  bool addressExistsInApi = false;
+  int addressId = 0;
   void getAddressFromApi() async {
     getAddressFromApiLoading = true;
     emit(GetAddressFromApiLoading());
@@ -127,14 +133,64 @@ class ShippingCubit extends Cubit<ShippingState> {
         cityController.text = address.city!;
         streetAddress.text = address.details!;
         postalCode.text = address.notes!;
+        addressId = address.id!;
         currentLocation =
             LatLng(address.lat!.toDouble(), address.long!.toDouble());
+        addressExistsInApi = true;
         emit(GetAddressFromApiSuccess());
       } else {
         getCurrentLocation();
+        addressExistsInApi = false;
         emit(GetAddressFromApiSuccess());
       }
     });
+  }
+
+  void saveAddressToApi() async {
+    emit(SaveAddressToApiLoading());
+    if (addressExistsInApi) {
+      final result = await shippingRepo.updateShippingAddress(ShippingModel(
+        id: addressId,
+        name: nameController.text,
+        city: cityController.text,
+        region: provinceController.text,
+        details: streetAddress.text,
+        notes: postalCode.text,
+        lat: currentLocation!.latitude,
+        long: currentLocation!.longitude,
+      ));
+      result.fold((error) {
+        showFlutterToast(msg: error.errMsg);
+        emit(SaveAddressToApiFail());
+      }, (result) {
+        showFlutterToast(
+          msg: 'Address Saved Successfully',
+          backGroundColor: AppColors.kBrandColorCyan,
+        );
+        emit(SaveAddressToApiSuccess());
+      });
+    } else {
+      final result = await shippingRepo.addShippingAddress(ShippingModel(
+        id: addressId,
+        name: nameController.text,
+        city: cityController.text,
+        region: provinceController.text,
+        details: streetAddress.text,
+        notes: postalCode.text,
+        lat: currentLocation!.latitude,
+        long: currentLocation!.longitude,
+      ));
+      result.fold((error) {
+        showFlutterToast(msg: error.errMsg);
+        emit(SaveAddressToApiFail());
+      }, (result) {
+        showFlutterToast(
+          msg: 'Address Saved Successfully',
+          backGroundColor: AppColors.kBrandColorCyan,
+        );
+        emit(SaveAddressToApiSuccess());
+      });
+    }
   }
 
 //-------------------------------------------------------
