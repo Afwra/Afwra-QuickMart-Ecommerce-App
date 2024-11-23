@@ -7,6 +7,7 @@ import 'package:quick_mart/core/widgets/custom_drop_down_field.dart';
 import 'package:quick_mart/core/widgets/custom_phone_input_field.dart';
 import 'package:quick_mart/core/widgets/custom_text_field.dart';
 import 'package:quick_mart/features/checkout/presentation/view_models/shipping_cubit/shipping_cubit.dart';
+import 'package:quick_mart/features/checkout/presentation/view_models/shipping_cubit/shipping_state.dart';
 
 class ShippingFormSection extends StatelessWidget {
   const ShippingFormSection({
@@ -91,18 +92,30 @@ class ShippingFormSection extends StatelessWidget {
           const SizedBox(
             height: 24,
           ),
-          Row(
-            children: [
-              Expanded(
-                child: CustomButton(
-                  text: 'Save',
-                  color: AppSettings.darkMode
-                      ? AppColors.kBrandColorCyan
-                      : AppColors.kBrandColorBlack,
-                  onPressed: onPressed,
-                ),
-              ),
-            ],
+          BlocBuilder<ShippingCubit, ShippingState>(
+            builder: (context, state) {
+              return Row(
+                children: [
+                  cubit.saveAddressToApiLoading
+                      ? const Expanded(
+                          child: Center(
+                            child: CircularProgressIndicator(
+                              color: AppColors.kBrandColorCyan,
+                            ),
+                          ),
+                        )
+                      : Expanded(
+                          child: CustomButton(
+                            text: 'Save',
+                            color: AppSettings.darkMode
+                                ? AppColors.kBrandColorCyan
+                                : AppColors.kBrandColorBlack,
+                            onPressed: onPressed,
+                          ),
+                        ),
+                ],
+              );
+            },
           ),
         ],
       ),

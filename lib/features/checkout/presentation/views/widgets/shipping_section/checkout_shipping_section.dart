@@ -31,7 +31,7 @@ class CheckoutShippingSection extends StatelessWidget {
               ),
               ShippingFormSection(
                 onPressed: () {
-                  BlocProvider.of<ShippingCubit>(context).validateForm();
+                  BlocProvider.of<ShippingCubit>(context).validateForm(context);
                 },
               ),
             ],

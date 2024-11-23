@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quick_mart/features/checkout/presentation/view_models/checkout_cubit/checkout_cubit.dart';
 import 'package:quick_mart/features/checkout/presentation/views/widgets/shipping_section/checkout_shipping_section.dart';
 import 'package:quick_mart/features/checkout/presentation/views/widgets/payment_method_section.dart';
 import 'package:quick_mart/features/checkout/presentation/views/widgets/review_order_section/review_order_section.dart';
@@ -17,7 +19,8 @@ class CustomCheckoutBodyPageView extends StatelessWidget {
     return PageView.builder(
       itemBuilder: (context, index) => pages[index],
       itemCount: pages.length,
-      physics: const BouncingScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
+      controller: BlocProvider.of<CheckoutCubit>(context).pageController,
     );
   }
 }

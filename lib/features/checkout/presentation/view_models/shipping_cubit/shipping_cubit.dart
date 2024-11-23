@@ -10,6 +10,7 @@ import 'package:quick_mart/core/functions/flutter_toast.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/features/checkout/data/models/shipping_model.dart';
 import 'package:quick_mart/features/checkout/data/repos/shipping_repo.dart';
+import 'package:quick_mart/features/checkout/presentation/view_models/checkout_cubit/checkout_cubit.dart';
 import 'package:quick_mart/features/checkout/presentation/view_models/shipping_cubit/shipping_state.dart';
 
 class ShippingCubit extends Cubit<ShippingState> {
@@ -98,11 +99,14 @@ class ShippingCubit extends Cubit<ShippingState> {
   final cityController = TextEditingController();
   final streetAddress = TextEditingController();
   final postalCode = TextEditingController();
-  void validateForm() {
+  void validateForm(BuildContext context) async {
     if (formKey.currentState!.validate() && phoneController.text.isNotEmpty) {
       formKey.currentState!.save();
       emit(ValidateFormSuccessState());
-      saveAddressToApi();
+      await saveAddressToApi();
+      if (context.mounted) {
+        BlocProvider.of<CheckoutCubit>(context).nextPage();
+      }
     } else {
       autovalidateMode = AutovalidateMode.always;
       showFlutterToast(
@@ -146,7 +150,9 @@ class ShippingCubit extends Cubit<ShippingState> {
     });
   }
 
-  void saveAddressToApi() async {
+  bool saveAddressToApiLoading = false;
+  Future saveAddressToApi() async {
+    saveAddressToApiLoading = true;
     emit(SaveAddressToApiLoading());
     if (addressExistsInApi) {
       final result = await shippingRepo.updateShippingAddress(ShippingModel(
@@ -161,12 +167,16 @@ class ShippingCubit extends Cubit<ShippingState> {
       ));
       result.fold((error) {
         showFlutterToast(msg: error.errMsg);
+        saveAddressToApiLoading = false;
+
         emit(SaveAddressToApiFail());
       }, (result) {
         showFlutterToast(
           msg: 'Address Saved Successfully',
           backGroundColor: AppColors.kBrandColorCyan,
         );
+        saveAddressToApiLoading = false;
+
         emit(SaveAddressToApiSuccess());
       });
     } else {
@@ -182,12 +192,15 @@ class ShippingCubit extends Cubit<ShippingState> {
       ));
       result.fold((error) {
         showFlutterToast(msg: error.errMsg);
+        saveAddressToApiLoading = false;
+
         emit(SaveAddressToApiFail());
       }, (result) {
         showFlutterToast(
           msg: 'Address Saved Successfully',
           backGroundColor: AppColors.kBrandColorCyan,
         );
+        saveAddressToApiLoading = false;
         emit(SaveAddressToApiSuccess());
       });
     }

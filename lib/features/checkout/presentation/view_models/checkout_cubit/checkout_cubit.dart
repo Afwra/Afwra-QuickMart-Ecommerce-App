@@ -1,0 +1,16 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quick_mart/features/checkout/presentation/view_models/checkout_cubit/checkout_state.dart';
+
+class CheckoutCubit extends Cubit<CheckoutState> {
+  CheckoutCubit() : super(CheckoutInitial());
+
+  int currPage = 0;
+  var pageController = PageController(initialPage: 0);
+  void nextPage() {
+    currPage++;
+    pageController.nextPage(
+        duration: const Duration(seconds: 1), curve: Curves.easeInOut);
+    emit(CheckoutChangePageIndex());
+  }
+}
