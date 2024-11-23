@@ -21,6 +21,7 @@ class AppConstants {
   static const String favoritesEndpoint = 'favorites';
   static const String cartsEndpoint = 'carts';
   static const String userProfileEndpoint = 'profile';
+  static const String addressEndpoint = 'addresses';
 
   //others
   static const String profilePictureLink = 'https://t.ly/3msp8';

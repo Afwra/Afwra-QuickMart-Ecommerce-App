@@ -15,3 +15,9 @@ final class GetAddressFromLatLng extends ShippingState {}
 final class ValidateFormSuccessState extends ShippingState {}
 
 final class ValidateFormFailState extends ShippingState {}
+
+final class GetAddressFromApiSuccess extends ShippingState {}
+
+final class GetAddressFromApiFail extends ShippingState {}
+
+final class GetAddressFromApiLoading extends ShippingState {}

@@ -16,12 +16,7 @@ class CustomMapPickerSection extends StatelessWidget {
     var cubit = BlocProvider.of<ShippingCubit>(context);
     return BlocBuilder<ShippingCubit, ShippingState>(
       builder: (context, state) {
-        return cubit.isMapLoading
-            ? const Center(
-                child: CircularProgressIndicator(
-                color: AppColors.kBrandColorCyan,
-              ))
-            : CustomMap(cubit: cubit);
+        return CustomMap(cubit: cubit);
       },
     );
   }

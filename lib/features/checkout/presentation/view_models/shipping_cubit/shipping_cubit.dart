@@ -7,16 +7,17 @@ import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:quick_mart/core/functions/flutter_toast.dart';
+import 'package:quick_mart/features/checkout/data/repos/shipping_repo.dart';
 import 'package:quick_mart/features/checkout/presentation/view_models/shipping_cubit/shipping_state.dart';
 
 class ShippingCubit extends Cubit<ShippingState> {
-  ShippingCubit() : super(ShippingInitial());
+  ShippingCubit(this.shippingRepo) : super(ShippingInitial());
 
   //-------------------------------------------------------
   // Map Logic Section
   //-------------------------------------------------------
 
-  LatLng? currentLocation;
+  LatLng? currentLocation = const LatLng(30.0444, 31.2357);
   final MapController mapController = MapController();
   bool isMapLoading = true;
   void getCurrentLocation() async {
@@ -106,6 +107,39 @@ class ShippingCubit extends Cubit<ShippingState> {
     }
   }
 
+//-------------------------------------------------------
+// API Logic Section
+//-------------------------------------------------------
+  final ShippingRepo shippingRepo;
+  bool getAddressFromApiLoading = false;
+  void getAddressFromApi() async {
+    getAddressFromApiLoading = true;
+    emit(GetAddressFromApiLoading());
+    final result = await shippingRepo.getShippingAddress();
+    getAddressFromApiLoading = false;
+    result.fold((error) {
+      showFlutterToast(msg: error.errMsg);
+      emit(GetAddressFromApiFail());
+    }, (address) async {
+      if (address != null) {
+        nameController.text = address.name!;
+        provinceController.text = address.region!;
+        cityController.text = address.city!;
+        streetAddress.text = address.details!;
+        postalCode.text = address.notes!;
+        currentLocation =
+            LatLng(address.lat!.toDouble(), address.long!.toDouble());
+        emit(GetAddressFromApiSuccess());
+      } else {
+        getCurrentLocation();
+        emit(GetAddressFromApiSuccess());
+      }
+    });
+  }
+
+//-------------------------------------------------------
+// Cubit LifeCycle Section
+//-------------------------------------------------------
   @override
   Future<void> close() {
     nameController.dispose();
