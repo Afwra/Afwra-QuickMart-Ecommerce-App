@@ -6,6 +6,7 @@ import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
 import 'package:quick_mart/core/widgets/custom_image_widget.dart';
 import 'package:quick_mart/features/home/presentation/view_model/home_cubit/home_cubit.dart';
+import 'package:quick_mart/features/home/presentation/view_model/home_cubit/home_state.dart';
 import 'package:svg_flutter/svg.dart';
 
 class CustomProfileAppBar extends StatelessWidget {
@@ -29,14 +30,28 @@ class CustomProfileAppBar extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(8.r),
-                child: CustomImageWidget(
-                  imageUrl: cubit.userModel?.image ?? '',
-                  height: 40.h,
-                  width: 40.w,
-                  boxFit: BoxFit.cover,
-                ),
+              BlocBuilder<HomeCubit, HomeState>(
+                builder: (context, state) {
+                  return cubit.userLoaded
+                      ? InkWell(
+                          onTap: () {
+                            cubit.changeUserImage();
+                          },
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(8.r),
+                            child: CustomImageWidget(
+                              imageUrl: cubit.userModel?.image ?? '',
+                              height: 40.h,
+                              width: 40.w,
+                              boxFit: BoxFit.cover,
+                            ),
+                          ),
+                        )
+                      : const Center(
+                          child: CircularProgressIndicator(
+                          color: AppColors.kBrandColorWhite,
+                        ));
+                },
               ),
               const SizedBox(
                 width: 8,

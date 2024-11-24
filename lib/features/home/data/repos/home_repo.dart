@@ -20,4 +20,5 @@ abstract class HomeRepo {
       {required int productId, required String userToken, String lang});
 
   Future<Either<Failures, UserModel>> getUserProfilePicture();
+  Future<Either<Failures, UserModel>> updateUserProfile(UserModel userModel);
 }

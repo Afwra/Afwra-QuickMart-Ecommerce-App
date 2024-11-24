@@ -8,6 +8,10 @@ final class ChangeThemeMode extends HomeState {}
 
 final class AddOrRemoveFavoriteState extends HomeState {}
 
-final class UserLoaded extends HomeState {}
+final class UserLoadingSuccess extends HomeState {}
+
+final class UserLoading extends HomeState {}
+
+final class UserLoadingFail extends HomeState {}
 
 final class UserLoggedOut extends HomeState {}

@@ -23,6 +23,7 @@ class AppConstants {
   static const String userProfileEndpoint = 'profile';
   static const String addressEndpoint = 'addresses';
   static const String ordersEndpoint = 'orders';
+  static const String updateProfileEndpoint = 'update-profile';
 
   //others
   static const String profilePictureLink = 'https://t.ly/3msp8';

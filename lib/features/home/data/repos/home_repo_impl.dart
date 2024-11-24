@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:quick_mart/core/errors/failures.dart';
@@ -193,6 +195,38 @@ class HomeRepoImpl implements HomeRepo {
         headers: {
           'Authorization': AppSettings.userToken,
           'lang': AppSettings.langCode,
+        },
+      );
+      if (data['status'] == true) {
+        return right(UserModel.fromJson(data['data']));
+      } else {
+        return Left(ServerFailure(data['message']));
+      }
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.dioError(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
+  }
+
+  @override
+  Future<Either<Failures, UserModel>> updateUserProfile(
+      UserModel userModel) async {
+    log('image = ${userModel.image}');
+    try {
+      var data = await apiService.put(
+        endpoint: AppConstants.updateProfileEndpoint,
+        headers: {
+          'Authorization': AppSettings.userToken,
+          'lang': AppSettings.langCode,
+        },
+        data: {
+          'name': userModel.name,
+          'email': userModel.email,
+          'phone': userModel.phone,
+          'image': userModel.image
         },
       );
       if (data['status'] == true) {
