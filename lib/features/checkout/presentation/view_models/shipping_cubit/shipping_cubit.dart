@@ -125,6 +125,14 @@ class ShippingCubit extends Cubit<ShippingState> {
     }
   }
 
+  void validateProfileScreenForm(BuildContext context) async {
+    if (formKey.currentState!.validate() && phoneController.text.isNotEmpty) {
+      formKey.currentState!.save();
+      emit(ValidateFormSuccessState());
+      await saveAddressToApi();
+    }
+  }
+
 //-------------------------------------------------------
 // API Logic Section
 //-------------------------------------------------------

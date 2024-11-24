@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quick_mart/features/checkout/presentation/view_models/shipping_cubit/shipping_cubit.dart';
+import 'package:quick_mart/features/checkout/presentation/views/widgets/shipping_section/checkout_shipping_section.dart';
 import 'package:quick_mart/features/profile/presentation/views/widgets/custom_profile_pages_app_bar.dart';
-import 'package:quick_mart/features/profile/presentation/views/widgets/shipping_address_section/shipping_address_body_section.dart';
 
 class ShippingAddressViewBody extends StatelessWidget {
   const ShippingAddressViewBody({
@@ -9,11 +11,14 @@ class ShippingAddressViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
-        CustomProfilePagesAppBar(title: 'Shipping Address'),
+        const CustomProfilePagesAppBar(title: 'Shipping Address'),
         Expanded(
-          child: SingleChildScrollView(child: ShippingAddressBodySection()),
+          child: CheckoutShippingSection(
+            onPressed: () => BlocProvider.of<ShippingCubit>(context)
+                .validateProfileScreenForm(context),
+          ),
         ),
       ],
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/features/checkout/presentation/view_models/shipping_cubit/shipping_cubit.dart';
 import 'package:quick_mart/features/checkout/presentation/view_models/shipping_cubit/shipping_state.dart';
 import 'package:quick_mart/features/checkout/presentation/views/widgets/shipping_section/custom_map_picker_section.dart';
@@ -9,14 +10,18 @@ import 'package:quick_mart/features/checkout/presentation/views/widgets/shipping
 class CheckoutShippingSection extends StatelessWidget {
   const CheckoutShippingSection({
     super.key,
+    this.onPressed,
   });
-
+  final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ShippingCubit, ShippingState>(
       builder: (context, state) {
         if (BlocProvider.of<ShippingCubit>(context).getAddressFromApiLoading) {
-          return const Center(child: CircularProgressIndicator());
+          return const Center(
+              child: CircularProgressIndicator(
+            color: AppColors.kBrandColorCyan,
+          ));
         }
         return SingleChildScrollView(
           child: Column(
@@ -30,9 +35,9 @@ class CheckoutShippingSection extends StatelessWidget {
                 height: 20,
               ),
               ShippingFormSection(
-                onPressed: () {
-                  BlocProvider.of<ShippingCubit>(context).validateForm(context);
-                },
+                onPressed: onPressed ??
+                    () => BlocProvider.of<ShippingCubit>(context)
+                        .validateForm(context),
               ),
             ],
           ),
