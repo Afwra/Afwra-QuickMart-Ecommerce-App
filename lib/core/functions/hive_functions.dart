@@ -23,6 +23,12 @@ String? getLoginToken() {
   return settingBox.get(AppConstants.loginToken);
 }
 
+void deleteLoginToken() {
+  var settingBox = Hive.box(AppConstants.settingsBox);
+  settingBox.delete(AppConstants.loginToken);
+  AppSettings.userToken = null;
+}
+
 bool getDarkMode() {
   var settingBox = Hive.box(AppConstants.settingsBox);
   return settingBox.get(AppConstants.darkModeStatus, defaultValue: false);

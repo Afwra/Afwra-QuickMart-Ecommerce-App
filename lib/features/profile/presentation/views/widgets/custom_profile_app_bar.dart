@@ -58,10 +58,14 @@ class CustomProfileAppBar extends StatelessWidget {
                 ],
               ),
               const Spacer(),
-              SvgPicture.asset(
-                AppAssets.logoutIcon,
-                height: 32.h,
-                width: 32.w,
+              InkWell(
+                onTap: () =>
+                    BlocProvider.of<HomeCubit>(context).logout(context),
+                child: SvgPicture.asset(
+                  AppAssets.logoutIcon,
+                  height: 32.h,
+                  width: 32.w,
+                ),
               ),
             ],
           ),
