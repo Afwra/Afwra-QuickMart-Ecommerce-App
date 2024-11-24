@@ -14,7 +14,7 @@ class CustomOrderHistoryBottomSection extends StatelessWidget {
       child: Column(
         children: [
           CustomTabBar(),
-          const SizedBox(
+          SizedBox(
             height: 10,
           ),
           Expanded(

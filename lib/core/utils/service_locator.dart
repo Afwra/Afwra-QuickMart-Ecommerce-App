@@ -6,6 +6,7 @@ import 'package:quick_mart/features/cart/data/repos/cart_repo_impl.dart';
 import 'package:quick_mart/features/checkout/data/repos/shipping_repo_impl.dart';
 import 'package:quick_mart/features/home/data/repos/home_repo_impl.dart';
 import 'package:quick_mart/features/product_details/data/repos/product_detail_repo_impl.dart';
+import 'package:quick_mart/features/profile/data/repos/order_history_repo_impl.dart';
 import 'package:quick_mart/features/whishlist/data/repo/wishlist_repo.dart';
 import 'package:quick_mart/features/whishlist/data/repo/wishlist_repo_impl.dart';
 
@@ -25,4 +26,6 @@ void setupServiceLocator() {
       WishlistRepoImpl(apiService: getIt.get<ApiService>()));
   getIt.registerSingleton<ShippingRepoImpl>(
       ShippingRepoImpl(apiService: getIt.get<ApiService>()));
+  getIt.registerSingleton<OrderHistoryRepoImpl>(
+      OrderHistoryRepoImpl(apiService: getIt.get<ApiService>()));
 }
