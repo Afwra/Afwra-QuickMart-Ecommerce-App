@@ -1,8 +1,10 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:quick_mart/core/functions/flutter_toast.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
+import 'package:quick_mart/core/utils/app_routes.dart';
 import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/features/product_details/data/repos/product_detail_repo.dart';
 import 'package:quick_mart/features/product_details/presentation/view_models/product_detail_cubit/product_detail_state.dart';
@@ -92,7 +94,7 @@ class ProductDetailCubit extends Cubit<ProductDetailState> {
 //  Add To Cart Section
 //-------------------------------------------------
   bool addToCartLoading = false;
-  void addToCart(int productId) async {
+  Future addToCart(int productId) async {
     addToCartLoading = true;
     emit(ProductDetailAddedToCartLoading());
     final result = await productDetailRepo.addToCart(
@@ -116,6 +118,13 @@ class ProductDetailCubit extends Cubit<ProductDetailState> {
         emit(ProductDetailAddedToCartSuccess());
       },
     );
+  }
+
+  void buyNow(int productId, BuildContext context) async {
+    await addToCart(productId);
+    if (context.mounted) {
+      GoRouter.of(context).push(AppRoutes.kCheckoutView);
+    }
   }
 
   @override

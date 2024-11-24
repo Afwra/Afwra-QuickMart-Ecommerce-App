@@ -105,6 +105,16 @@ class ShippingCubit extends Cubit<ShippingState> {
       emit(ValidateFormSuccessState());
       await saveAddressToApi();
       if (context.mounted) {
+        BlocProvider.of<CheckoutCubit>(context).saveShippingAddressLocally(
+            ShippingModel(
+                id: addressId,
+                name: nameController.text,
+                city: cityController.text,
+                region: provinceController.text,
+                details: streetAddress.text,
+                notes: postalCode.text,
+                lat: currentLocation!.latitude,
+                long: currentLocation!.longitude));
         BlocProvider.of<CheckoutCubit>(context).nextPage();
       }
     } else {

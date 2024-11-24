@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
-import 'package:quick_mart/features/checkout/presentation/views/widgets/review_order_section/custom_info_section.dart';
+import 'package:quick_mart/features/cart/data/models/cart_item_model/cart_item_model.dart';
+import 'package:quick_mart/features/checkout/presentation/views/widgets/review_order_section/custom_info_widget.dart';
 
 class OrderInfoSection extends StatelessWidget {
   const OrderInfoSection({
     super.key,
+    required this.cartItemModel,
   });
-
+  final CartItemModel cartItemModel;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -24,16 +26,16 @@ class OrderInfoSection extends StatelessWidget {
         const SizedBox(
           height: 8.5,
         ),
-        const CustomInfoWidget(
+        CustomInfoWidget(
           title: 'Subtotal',
-          info: 'Shipping Cost',
+          info: '\$${cartItemModel.subTotal.toString()}',
         ),
         const SizedBox(
           height: 8.5,
         ),
         const CustomInfoWidget(
-          title: 'Mobile Number',
-          info: 'Ahmed Khan',
+          title: 'Shipping Total',
+          info: '\$0',
         ),
       ],
     );

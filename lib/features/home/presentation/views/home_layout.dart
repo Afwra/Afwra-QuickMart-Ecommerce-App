@@ -14,7 +14,8 @@ import 'package:quick_mart/features/whishlist/presentation/views/wish_list_view.
 import 'package:quick_mart/features/home/presentation/views/widgets/custom_bottom_navigation_bar.dart';
 
 class HomeLayout extends StatelessWidget {
-  const HomeLayout({super.key});
+  const HomeLayout({super.key, this.passedPageIndex});
+  final int? passedPageIndex;
   final List<Widget> pages = const [
     HomeView(),
     CategoriesView(),
@@ -25,6 +26,9 @@ class HomeLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     HomeCubit cubit = BlocProvider.of<HomeCubit>(context);
+    if (passedPageIndex != null) {
+      cubit.changeNavigationBarIndex(passedPageIndex!);
+    }
     return BlocBuilder<ThemeCubit, ThemeState>(
       builder: (context, state) {
         return BlocBuilder<HomeCubit, HomeState>(

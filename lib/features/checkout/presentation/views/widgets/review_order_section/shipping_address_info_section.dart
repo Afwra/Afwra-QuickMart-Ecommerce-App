@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
-import 'package:quick_mart/features/checkout/presentation/views/widgets/review_order_section/custom_info_section.dart';
+import 'package:quick_mart/features/checkout/data/models/shipping_model.dart';
+import 'package:quick_mart/features/checkout/presentation/views/widgets/review_order_section/custom_info_widget.dart';
 
 class ShippingAddressInfoSection extends StatelessWidget {
   const ShippingAddressInfoSection({
     super.key,
+    required this.shippingModel,
   });
-
+  final ShippingModel shippingModel;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -24,44 +26,44 @@ class ShippingAddressInfoSection extends StatelessWidget {
         const SizedBox(
           height: 20,
         ),
-        const CustomInfoWidget(
+        CustomInfoWidget(
           title: 'Full Name',
-          info: 'Ahmed Khan',
+          info: shippingModel.name.toString(),
         ),
         const SizedBox(
           height: 8.5,
         ),
         const CustomInfoWidget(
           title: 'Mobile Number',
-          info: 'Ahmed Khan',
+          info: '010987654321',
         ),
         const SizedBox(
           height: 8.5,
         ),
-        const CustomInfoWidget(
+        CustomInfoWidget(
           title: 'Province',
-          info: 'Ahmed Khan',
+          info: shippingModel.region.toString(),
         ),
         const SizedBox(
           height: 8.5,
         ),
-        const CustomInfoWidget(
+        CustomInfoWidget(
           title: 'City',
-          info: 'Ahmed Khan',
+          info: shippingModel.city.toString(),
         ),
         const SizedBox(
           height: 8.5,
         ),
-        const CustomInfoWidget(
+        CustomInfoWidget(
           title: 'Street Address',
-          info: 'Ahmed Khan',
+          info: shippingModel.details.toString(),
         ),
         const SizedBox(
           height: 8.5,
         ),
-        const CustomInfoWidget(
+        CustomInfoWidget(
           title: 'Postal Code',
-          info: 'Ahmed Khan',
+          info: shippingModel.notes.toString(),
         ),
       ],
     );

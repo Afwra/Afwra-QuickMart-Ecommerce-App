@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:quick_mart/core/utils/app_assets.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
-import 'package:quick_mart/core/utils/app_routes.dart';
 import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/core/widgets/custom_button.dart';
 import 'package:quick_mart/core/widgets/custom_button_with_icon.dart';
@@ -32,7 +30,7 @@ class ProductDetailsButtonSection extends StatelessWidget {
               ? AppColors.kBrandColorBlack
               : AppColors.kBrandColorWhite,
           onPressed: () {
-            GoRouter.of(context).push(AppRoutes.kCheckoutView);
+            cubit.buyNow(product.id, context);
           },
         )),
         const SizedBox(

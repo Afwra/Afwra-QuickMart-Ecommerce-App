@@ -140,7 +140,10 @@ abstract class AppRoutes {
             BlocProvider(
               create: (context) =>
                   HomeCubit(getIt.get<HomeRepoImpl>())..getUserProfilePicture(),
-              child: const HomeLayout(),
+              child: HomeLayout(
+                passedPageIndex:
+                    state.extra == null ? null : (state.extra as int),
+              ),
             )),
       ),
 

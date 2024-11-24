@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quick_mart/features/checkout/presentation/view_models/checkout_cubit/checkout_cubit.dart';
 import 'package:quick_mart/features/checkout/presentation/views/widgets/shipping_section/checkout_shipping_section.dart';
 import 'package:quick_mart/features/checkout/presentation/views/widgets/payment_method_section.dart';
-import 'package:quick_mart/features/checkout/presentation/views/widgets/review_order_section/review_order_section.dart';
+import 'package:quick_mart/features/checkout/presentation/views/widgets/review_order_section/review_order_view.dart';
 
 class CustomCheckoutBodyPageView extends StatelessWidget {
   const CustomCheckoutBodyPageView({

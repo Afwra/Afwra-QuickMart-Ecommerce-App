@@ -6,8 +6,9 @@ import 'package:quick_mart/core/utils/app_text_styles.dart';
 class OrderTotalSection extends StatelessWidget {
   const OrderTotalSection({
     super.key,
+    required this.total,
   });
-
+  final num total;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -21,7 +22,7 @@ class OrderTotalSection extends StatelessWidget {
                   : AppColors.kBrandColorBlack),
         ),
         Text(
-          'Total',
+          '\$${total.toString()}',
           style: AppTextStyles.body1Medium.copyWith(
               color: AppSettings.darkMode
                   ? Colors.white
