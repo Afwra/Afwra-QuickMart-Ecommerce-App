@@ -45,3 +45,4 @@ app.*.map.json
 
 # My Hidden Files
 lib/firebase_options.dart
+lib/core/utils/api_keys.dart

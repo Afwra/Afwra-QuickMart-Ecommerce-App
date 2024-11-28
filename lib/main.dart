@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:quick_mart/core/functions/hive_functions.dart';
+import 'package:quick_mart/core/utils/api_keys.dart';
 import 'package:quick_mart/core/utils/app_constants.dart';
 import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/core/utils/bloc_observer.dart';
@@ -34,6 +36,7 @@ void main() async {
   AppSettings.darkMode = getDarkMode();
   AppSettings.langCode = getLanguageCode();
   AppSettings.userToken = getLoginToken();
+  Stripe.publishableKey = ApiKeys.stripePublishApiKey;
   runApp(
     EasyLocalization(
       supportedLocales: const [Locale('en'), Locale('ar')],

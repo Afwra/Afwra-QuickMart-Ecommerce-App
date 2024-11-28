@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:quick_mart/core/utils/app_constants.dart';
 
@@ -25,8 +27,10 @@ class ApiService {
     Map<String, dynamic>? data,
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? headers,
+    String? inputUrl,
   }) async {
-    var response = await _dio.post('$_baseUrl$endpoint',
+    log('inputUrl -- $inputUrl');
+    var response = await _dio.post(inputUrl ?? '$_baseUrl$endpoint',
         data: data,
         queryParameters: queryParameters,
         options: Options(headers: headers));
