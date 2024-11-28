@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quick_mart/core/utils/app_assets.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/core/utils/app_routes.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
+import 'package:quick_mart/core/utils/app_texts.dart';
 import 'package:quick_mart/features/profile/presentation/views/widgets/custom_profile_view_list_tile.dart';
 
 class SupportAndInformationSection extends StatelessWidget {
@@ -18,7 +20,7 @@ class SupportAndInformationSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Support & Information',
+          AppTexts.profileSupportAndInformation.tr(),
           style: AppTextStyles.captionSemiBold.copyWith(
             color: darkMode ? Colors.white : AppColors.kBrandColorBlack,
           ),
@@ -27,18 +29,18 @@ class SupportAndInformationSection extends StatelessWidget {
           height: 12,
         ),
         CustomProfileViewListTile(
-          title: 'Privacy Policy',
+          title: AppTexts.profilePrivacyPolicy.tr(),
           leadingIcon: AppAssets.privacyPolicyIcon,
           onPressed: () => GoRouter.of(context).push(AppRoutes.kPrivacyPolicy),
         ),
         CustomProfileViewListTile(
-          title: 'Terms & Conditions',
+          title: AppTexts.profileTermsAndConditions.tr(),
           leadingIcon: AppAssets.termsAndConditionsIcon,
           onPressed: () =>
               GoRouter.of(context).push(AppRoutes.kTermsAndConditions),
         ),
-        const CustomProfileViewListTile(
-          title: 'FAQs',
+        CustomProfileViewListTile(
+          title: AppTexts.profileFaqs.tr(),
           leadingIcon: AppAssets.faqsLogo,
         ),
       ],

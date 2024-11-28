@@ -70,7 +70,9 @@
         "faqs":"FAQs",
         "account_managment":"Account Managment",
         "change_password":"Change Password",
-        "dark_theme":"Dark Theme"
+        "dark_theme":"Dark Theme",
+        "support_and_information":"Support & Information",
+        "language":"Language"
 
     }
 

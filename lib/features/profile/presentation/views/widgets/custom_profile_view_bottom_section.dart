@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/core/utils/app_settings.dart';
+import 'package:quick_mart/features/home/presentation/view_model/home_cubit/home_cubit.dart';
 import 'package:quick_mart/features/home/presentation/view_model/theme_cubit/theme_cubit.dart';
 import 'package:quick_mart/features/home/presentation/view_model/theme_cubit/theme_state.dart';
 import 'package:quick_mart/features/profile/presentation/views/widgets/account_management_section.dart';
@@ -51,6 +52,8 @@ class CustomProfileViewBottomSection extends StatelessWidget {
                     txtButtonOnPressed: () {
                       BlocProvider.of<ThemeCubit>(context)
                           .changeAppLocale(context);
+                      BlocProvider.of<HomeCubit>(context)
+                          .getUserProfilePicture();
                     },
                   ),
                 ],

@@ -64,4 +64,18 @@ class AppTexts {
   static const String myWishlist = 'Home.my_wishlist';
   static const String latestProducts = 'Home.latest_products';
   static const String seeAll = 'Home.see_all';
+
+  //profile section
+  static const profilePersonalInfo = 'Profile.personal_info';
+  static const profileShippingAddress = 'Profile.shipping_address';
+  static const profilePaymentMethod = 'Profile.payment_method';
+  static const profileOrderHistory = 'Profile.order_history';
+  static const profilePrivacyPolicy = 'Profile.privacy_policy';
+  static const profileTermsAndConditions = 'Profile.terms_and_conditions';
+  static const profileFaqs = 'Profile.faqs';
+  static const profileAccountManagement = 'Profile.account_managment';
+  static const profileChangePassword = 'Profile.change_password';
+  static const profileDarkTheme = 'Profile.dark_theme';
+  static const profileLanguage = 'Profile.language';
+  static const profileSupportAndInformation = 'Profile.support_and_information';
 }

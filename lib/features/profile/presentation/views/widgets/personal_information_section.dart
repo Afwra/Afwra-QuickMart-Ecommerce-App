@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quick_mart/core/utils/app_assets.dart';
 import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/core/utils/app_routes.dart';
 import 'package:quick_mart/core/utils/app_text_styles.dart';
+import 'package:quick_mart/core/utils/app_texts.dart';
 import 'package:quick_mart/features/profile/presentation/views/widgets/custom_profile_view_list_tile.dart';
 
 class PersonalInformationSection extends StatelessWidget {
@@ -18,7 +20,7 @@ class PersonalInformationSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Personal Information',
+          AppTexts.profilePersonalInfo.tr(),
           style: AppTextStyles.captionSemiBold.copyWith(
             color: darkMode ? Colors.white : AppColors.kBrandColorBlack,
           ),
@@ -27,18 +29,18 @@ class PersonalInformationSection extends StatelessWidget {
           height: 12,
         ),
         CustomProfileViewListTile(
-          title: 'Shipping Address',
+          title: AppTexts.profileShippingAddress.tr(),
           leadingIcon: AppAssets.shippingAddressIcon,
           onPressed: () =>
               GoRouter.of(context).push(AppRoutes.kShippingAddress),
         ),
         CustomProfileViewListTile(
-          title: 'Payment Method',
+          title: AppTexts.profilePaymentMethod.tr(),
           leadingIcon: AppAssets.paymentMethodIcon,
           onPressed: () => GoRouter.of(context).push(AppRoutes.kPaymentMethod),
         ),
         CustomProfileViewListTile(
-          title: 'Order History',
+          title: AppTexts.profileOrderHistory.tr(),
           leadingIcon: AppAssets.orderHistoryIcon,
           onPressed: () => GoRouter.of(context).push(AppRoutes.kOrderHistory),
         ),

@@ -70,6 +70,9 @@
     "faqs": "الأسئلة الشائعة",
     "account_managment": "إدارة الحساب",
     "change_password": "تغيير كلمة المرور",
-    "dark_theme": "الوضع الداكن"
+    "dark_theme": "الوضع الداكن",
+    "support_and_information":"الدعم و المعلومات",
+
+    "language": "اللغة"
 }
 }

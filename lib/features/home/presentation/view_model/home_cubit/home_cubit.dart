@@ -45,6 +45,8 @@ class HomeCubit extends Cubit<HomeState> {
   UserModel? userModel;
   void getUserProfilePicture() async {
     userLoaded = false;
+    userModel = null;
+    emit(UserLoading());
     var result = await homeRepo.getUserProfilePicture();
     result.fold((fail) => log('fail -- ${fail.errMsg}'), (user) {
       userModel = user;
