@@ -44,4 +44,5 @@ class AppAssets {
   static const String ordersEmpty = 'assets/images/orders_empty.png';
   static const String reviewIcon = 'assets/images/review_icon.svg';
   static const String paymentIcon = 'assets/images/payment_icon.svg';
+  static const String orderComplete = 'assets/images/order_complete.png';
 }

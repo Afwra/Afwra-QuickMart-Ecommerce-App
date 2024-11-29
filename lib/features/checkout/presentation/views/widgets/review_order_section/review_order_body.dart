@@ -43,11 +43,17 @@ class ReviewOrderBody extends StatelessWidget {
         Row(
           children: [
             Expanded(
-                child: CustomButton(
-                    text: 'Continue',
-                    onPressed: () {
-                      checkoutCubit.nextPage();
-                    })),
+              child: CustomButton(
+                text: 'Continue',
+                onPressed: () {
+                  checkoutCubit.nextPage();
+                  if (context.mounted) {
+                    BlocProvider.of<CheckoutCubit>(context).saveCartItemLocally(
+                        BlocProvider.of<ReviewOrderCubit>(context).cart);
+                  }
+                },
+              ),
+            ),
           ],
         )
       ],

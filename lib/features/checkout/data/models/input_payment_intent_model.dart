@@ -7,7 +7,7 @@ class InputPaymentIntentModel {
       {required this.amount, required this.currency, required this.customerId});
 
   toJson() => {
-        'amount': '${num.parse(amount) * 100}',
+        'amount': '${num.parse(amount).round() * 100}',
         'currency': currency,
         'customer': customerId,
       };

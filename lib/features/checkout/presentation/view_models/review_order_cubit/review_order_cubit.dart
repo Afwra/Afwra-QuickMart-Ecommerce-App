@@ -23,6 +23,7 @@ class ReviewOrderCubit extends Cubit<ReviewOrderState> {
       },
       (cart) {
         this.cart = cart;
+
         cartLoading = false;
         emit(GetCartSuccess());
       },
