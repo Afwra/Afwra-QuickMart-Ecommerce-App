@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:quick_mart/core/errors/failures.dart';
 import 'package:quick_mart/core/utils/stripe_service.dart';
-import 'package:quick_mart/features/checkout/data/models/input_payment_intent_model.dart';
+import 'package:quick_mart/features/checkout/data/models/stripe_models/input_payment_intent_model.dart';
 import 'package:quick_mart/features/checkout/data/repos/payment_repo.dart';
 
 class PaymentRepoImpl extends PaymentRepo {

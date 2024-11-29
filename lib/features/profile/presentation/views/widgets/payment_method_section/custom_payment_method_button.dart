@@ -5,7 +5,7 @@ import 'package:quick_mart/core/utils/app_colors.dart';
 import 'package:quick_mart/core/utils/app_routes.dart';
 import 'package:quick_mart/core/utils/app_settings.dart';
 import 'package:quick_mart/core/widgets/custom_button.dart';
-import 'package:quick_mart/features/checkout/data/models/input_payment_intent_model.dart';
+import 'package:quick_mart/features/checkout/data/models/stripe_models/input_payment_intent_model.dart';
 import 'package:quick_mart/features/checkout/presentation/view_models/checkout_cubit/checkout_cubit.dart';
 import 'package:quick_mart/features/checkout/presentation/view_models/payment_cubit/payment_cubit.dart';
 import 'package:quick_mart/features/checkout/presentation/view_models/payment_cubit/payment_state.dart';

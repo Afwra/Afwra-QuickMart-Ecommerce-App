@@ -1,10 +1,10 @@
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:quick_mart/core/utils/api_keys.dart';
 import 'package:quick_mart/core/utils/api_service.dart';
-import 'package:quick_mart/features/checkout/data/models/input_payment_intent_model.dart';
-import 'package:quick_mart/features/checkout/data/models/stripe_customer_model.dart';
-import 'package:quick_mart/features/checkout/data/models/stripe_ephemeral_key_model/stripe_ephemeral_key_model.dart';
-import 'package:quick_mart/features/checkout/data/models/stripe_payment_intent_model/stripe_payment_intent_model.dart';
+import 'package:quick_mart/features/checkout/data/models/stripe_models/input_payment_intent_model.dart';
+import 'package:quick_mart/features/checkout/data/models/stripe_models/stripe_customer_model.dart';
+import 'package:quick_mart/features/checkout/data/models/stripe_models/stripe_ephemeral_key_model/stripe_ephemeral_key_model.dart';
+import 'package:quick_mart/features/checkout/data/models/stripe_models/stripe_payment_intent_model/stripe_payment_intent_model.dart';
 
 class StripeService {
   final ApiService apiService;

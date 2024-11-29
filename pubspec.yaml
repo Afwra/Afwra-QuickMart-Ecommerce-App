@@ -20,6 +20,7 @@ dependencies:
   flutter_bloc: ^8.1.6
   flutter_launcher_icons: ^0.14.1
   flutter_map: ^7.0.2
+  flutter_paypal_payment: ^1.0.7
   flutter_screenutil: ^5.9.3
   flutter_stripe: ^11.3.0
   fluttertoast: ^8.2.8
