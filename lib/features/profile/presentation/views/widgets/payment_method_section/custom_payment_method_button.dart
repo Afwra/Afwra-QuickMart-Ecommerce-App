@@ -35,7 +35,9 @@ class CustomPaymentMethodButton extends StatelessWidget {
                     onPressed: () async {
                       await BlocProvider.of<PaymentCubit>(context).makePayment(
                           inputPaymentIntentModel: InputPaymentIntentModel(
-                              amount: '200', currency: 'EGP'));
+                              amount: '200',
+                              currency: 'EGP',
+                              customerId: 'cus_RJ4On7Ufz8Kmtc'));
                     },
                     color: AppSettings.darkMode
                         ? AppColors.kBrandColorCyan
