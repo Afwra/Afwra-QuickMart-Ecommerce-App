@@ -62,7 +62,7 @@ QuickMart is a modern, feature-rich eCommerce mobile application developed using
 ### Installation
 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/quickmart.git
+git clone https://github.com/Afwra/Afwra-QuickMart-Ecommerce-App.git
 ```
 
 2. Install dependencies
