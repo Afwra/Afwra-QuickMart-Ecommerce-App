@@ -5,10 +5,9 @@
 ## 🎬 App Showcase
 
 ### 📺 Video Demonstration
-<video width="640" height="360" controls>
-  <source src="assets/readme assets/app_video_preview.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+[🎥 Watch App Demo](https://drive.google.com/file/d/1UQ6ZPqQKRmcbB8nCdZ016mUcETAfurzH/view)
+
+
 
 ### 📱 Screenshots
 <p align="center">
@@ -18,6 +17,14 @@
   <img src="assets/readme assets/app mockup (4).png" width="200" />
   <img src="assets/readme assets/app mockup (5).png" width="200" />
   <img src="assets/readme assets/app mockup (6).png" width="200" />
+  <img src="assets/readme assets/app mockup (7).png" width="200" />
+  <img src="assets/readme assets/app mockup (8).png" width="200" />
+  <img src="assets/readme assets/app mockup (9).png" width="200" />
+  <img src="assets/readme assets/app mockup (10).png" width="200" />
+  <img src="assets/readme assets/app mockup (11).png" width="200" />
+  <img src="assets/readme assets/app mockup (12).png" width="200" />
+  <img src="assets/readme assets/app mockup (13).png" width="200" />
+  <img src="assets/readme assets/app mockup (14).png" width="200" />
 </p>
 
 ## 🚀 Project Overview
@@ -116,4 +123,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Harsh Advani for Design Inspiration
 
 ## 🤝 Contributing
-Contributions, issues, and feature requests are welcome! Feel free to check [issues page](https://github.com/yourusername/quickmart/issues).
+Contributions, issues, and feature requests are welcome! Feel free to check [issues page](https://github.com/Afwra/Afwra-QuickMart-Ecommerce-App/issues).
