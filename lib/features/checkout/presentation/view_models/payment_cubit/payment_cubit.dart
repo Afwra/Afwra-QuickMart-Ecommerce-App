@@ -3,21 +3,24 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
+import 'package:go_router/go_router.dart';
 import 'package:quick_mart/core/functions/flutter_toast.dart';
 import 'package:quick_mart/core/utils/api_keys.dart';
+import 'package:quick_mart/core/utils/app_routes.dart';
 import 'package:quick_mart/features/checkout/data/models/paypal_models/paypal_amount_model/details.dart';
 import 'package:quick_mart/features/checkout/data/models/paypal_models/paypal_amount_model/paypal_amount_model.dart';
 import 'package:quick_mart/features/checkout/data/models/paypal_models/paypal_items_model/item.dart';
 import 'package:quick_mart/features/checkout/data/models/paypal_models/paypal_items_model/paypal_items_model.dart';
 import 'package:quick_mart/features/checkout/data/models/stripe_models/input_payment_intent_model.dart';
 import 'package:quick_mart/features/checkout/data/repos/payment_repo.dart';
+import 'package:quick_mart/features/checkout/presentation/view_models/checkout_cubit/checkout_cubit.dart';
 import 'package:quick_mart/features/checkout/presentation/view_models/payment_cubit/payment_state.dart';
 
 class PaymentCubit extends Cubit<PaymentState> {
   PaymentCubit({required this.paymentRepo}) : super(PaymentCubitInitial());
 
   final PaymentRepo paymentRepo;
-  Future<void> makePayment(
+  Future<void> makeStripePayment(
       {required InputPaymentIntentModel inputPaymentIntentModel}) async {
     emit(PaymentCubitLoading());
     var result = await paymentRepo.makePayment(inputPaymentIntentModel);
@@ -30,17 +33,11 @@ class PaymentCubit extends Cubit<PaymentState> {
     });
   }
 
-  void paypalLogic(BuildContext context) {
-    var amount = PaypalAmountModel(
-        currency: 'USD',
-        details: Details(subtotal: '100', shipping: '0', shippingDiscount: 0),
-        total: '100');
-    List<Item> orderItems = [
-      Item(name: 'product 1', quantity: 1, price: '10', currency: 'USD'),
-      Item(name: 'product 2', quantity: 9, price: '10', currency: 'USD'),
-    ];
+  void makePaypalPayment(
+      {required BuildContext context,
+      required List<Item> orderItems,
+      required PaypalAmountModel amount}) {
     var orderItemsList = PaypalItemsModel(items: orderItems);
-    debugPrint(orderItemsList.toJson().toString());
     Navigator.of(context).push(MaterialPageRoute(
       builder: (BuildContext context) => PaypalCheckoutView(
         sandboxMode: true,
@@ -61,6 +58,7 @@ class PaymentCubit extends Cubit<PaymentState> {
         onSuccess: (Map params) async {
           log("onSuccess: $params");
           Navigator.pop(context);
+          GoRouter.of(context).go(AppRoutes.kPaymentSuccess);
         },
         onError: (error) {
           log("onError: $error");
@@ -72,5 +70,36 @@ class PaymentCubit extends Cubit<PaymentState> {
         },
       ),
     ));
+  }
+
+  void setupPaypalPayment(BuildContext context) {
+    var checkoutCubit = BlocProvider.of<CheckoutCubit>(context);
+    var cartItems = checkoutCubit.cartItemModel;
+    if (cartItems.cartItems.isEmpty) {
+      showFlutterToast(msg: 'No Items in cart.');
+      return;
+    } else {
+      var amount = PaypalAmountModel(
+        currency: 'USD',
+        details: Details(
+          subtotal: cartItems.subTotal.toString(),
+          shipping: '0',
+          shippingDiscount: 0,
+        ),
+        total: cartItems.total.toString(),
+      );
+      List<Item> items = [];
+      items.addAll(
+        cartItems.cartItems.map(
+          (e) => Item(
+            name: e.product.name,
+            quantity: e.quantity,
+            price: e.product.price.toString(),
+            currency: 'USD',
+          ),
+        ),
+      );
+      makePaypalPayment(context: context, orderItems: items, amount: amount);
+    }
   }
 }

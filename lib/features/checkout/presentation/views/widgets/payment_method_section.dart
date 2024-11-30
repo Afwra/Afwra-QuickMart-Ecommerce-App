@@ -5,14 +5,14 @@ import 'package:quick_mart/features/profile/presentation/views/widgets/payment_m
 import 'package:quick_mart/features/profile/presentation/views/widgets/payment_method_section/custom_payment_methods_widget.dart';
 
 class PaymentMethodSection extends StatelessWidget {
-  const PaymentMethodSection({super.key});
-
+  const PaymentMethodSection({super.key, this.profileScreen = false});
+  final bool profileScreen;
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
-        const SliverToBoxAdapter(
-          child: CustomPaymentMethodsWidget(),
+        SliverToBoxAdapter(
+          child: CustomPaymentMethodsWidget(profileScreen: profileScreen),
         ),
         SliverToBoxAdapter(
           child: SizedBox(height: 24.h),

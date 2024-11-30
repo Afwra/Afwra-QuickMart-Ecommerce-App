@@ -42,11 +42,12 @@ class CustomPaymentMethodButton extends StatelessWidget {
                   return CustomButton(
                     text: 'Save',
                     onPressed: () async {
-                      await BlocProvider.of<PaymentCubit>(context).makePayment(
-                          inputPaymentIntentModel: InputPaymentIntentModel(
-                              amount: '${cartItemModel.total}',
-                              currency: 'EGP',
-                              customerId: 'cus_RJ4On7Ufz8Kmtc'));
+                      await BlocProvider.of<PaymentCubit>(context)
+                          .makeStripePayment(
+                              inputPaymentIntentModel: InputPaymentIntentModel(
+                                  amount: '${cartItemModel.total}',
+                                  currency: 'EGP',
+                                  customerId: 'cus_RJ4On7Ufz8Kmtc'));
                     },
                     color: AppSettings.darkMode
                         ? AppColors.kBrandColorCyan
